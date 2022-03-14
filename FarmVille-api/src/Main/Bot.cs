@@ -5,27 +5,30 @@ using DSharpPlus.CommandsNext;
 using DSharpPlus.EventArgs;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
+using FarmVille_api.src.Main.Model.Utilities;
+using FarmVille_api.src.Main.View.Commands;
 
-
-/*
- * the main bot class
- * this file handles the initialization of the bot and what it should do
- * upon entering various states
- */
-namespace FarmVille {
-    public class Bot {
+/// <summary>
+/// This is the class that holds the Discord Bot configuration
+/// </summary>
+namespace FarmVille_api.src.Main
+{
+    public class Bot
+    {
         //declare the client and commands extenstions
         public DiscordClient client { get; set; }
         public CommandsNextExtension commands { get; set; }
 
         //upon bot startup, do this
-        public async Task RunAsync() {
+        public async Task RunAsync()
+        {
             //create the configuration of the bot
-            var clientConfig = new DiscordConfiguration {
+            var clientConfig = new DiscordConfiguration
+            {
                 AutoReconnect = true,
                 Intents = DiscordIntents.All,
                 Token = StaticUtil.token,
-                TokenType = TokenType.Bot,
+            TokenType = TokenType.Bot,
                 MinimumLogLevel = Microsoft.Extensions.Logging.LogLevel.Debug
             };
 
@@ -35,7 +38,8 @@ namespace FarmVille {
             client.Ready += OnReady;
 
             //initialize the commands configurations
-            var commandConfig = new CommandsNextConfiguration {
+            var commandConfig = new CommandsNextConfiguration
+            {
                 CaseSensitive = false,
                 EnableDefaultHelp = true,
                 EnableDms = false,
@@ -50,7 +54,8 @@ namespace FarmVille {
             commands.RegisterCommands<Farming>();
 
             //Set up interactivity
-            client.UseInteractivity(new InteractivityConfiguration() {
+            client.UseInteractivity(new InteractivityConfiguration()
+            {
                 Timeout = TimeSpan.FromMinutes(5)
             });
 
@@ -66,9 +71,9 @@ namespace FarmVille {
          * @param client: the client that is ready
          * @param e: the args that are passed in once the client is ready
          */
-        public async Task OnReady(DiscordClient client, ReadyEventArgs e) {
-            await Database.InitializeJsonItems();
-            await PlayerCommands.PlayerLoadAll();
+        public async Task OnReady(DiscordClient client, ReadyEventArgs e)
+        {
+            LoadDAO.load();
         }
 
         /*
@@ -77,8 +82,8 @@ namespace FarmVille {
          * @param client: the client that has joined a guild
          * @param e: the args that are passed in once the client connects to a guild
          */
-        public async Task OnGuildAvailable(DiscordClient client, GuildCreateEventArgs e) {
-            PlayerCommands.PlayerAddAll(e.Guild);
+        public async Task OnGuildAvailable(DiscordClient client, GuildCreateEventArgs e)
+        {
             await Task.CompletedTask;
         }
 

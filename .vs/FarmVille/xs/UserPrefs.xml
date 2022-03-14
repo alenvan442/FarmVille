@@ -1,8 +1,11 @@
 ﻿<Properties StartupConfiguration="{DF4B5D94-0CDC-435B-AF4D-0542ED87B87E}|Default">
   <MonoDevelop.Ide.ItemProperties.FarmVille PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FarmVille-api/src/Main/Bot.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FarmVille-api/src/Main/View/Commands/Menu.cs">
     <Files>
       <File FileName="FarmVille-api/src/Main/Bot.cs" Line="13" Column="8" />
+      <File FileName="FarmVille-api/src/Main/Model/Utilities/StaticUtil.cs" Line="4" Column="29" />
+      <File FileName="FarmVille-api/src/Main/View/Commands/Farming.cs" Line="1" Column="1" />
+      <File FileName="FarmVille-api/src/Main/View/Commands/Menu.cs" Line="6" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,7 +15,14 @@
               <Node name="FarmVille-api" expanded="True">
                 <Node name="src" expanded="True">
                   <Node name="Main" expanded="True">
-                    <Node name="Bot.cs" selected="True" />
+                    <Node name="Model" expanded="True">
+                      <Node name="Utilities" expanded="True" />
+                    </Node>
+                    <Node name="View" expanded="True">
+                      <Node name="Commands" expanded="True">
+                        <Node name="Menu.cs" selected="True" />
+                      </Node>
+                    </Node>
                   </Node>
                 </Node>
               </Node>
