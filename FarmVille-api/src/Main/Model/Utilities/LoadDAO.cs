@@ -10,6 +10,9 @@ namespace FarmVille_api.src.Main.Model.Utilities
         static SeedsFileDAO seedsFileDAO;
         static ShopFileDAO shopFileDAO;
 
+        /// <summary>
+        /// Loads the FileDAOs
+        /// </summary>
         public static void load() {
             JsonUtilities json = new JsonUtilities();
             playersFileDAO = new PlayersFileDAO(StaticUtil.playersJson, json);

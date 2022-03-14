@@ -1,3 +1,4 @@
+using FarmVille_api.src.Main.Model.Structures;
 using FarmVille_api.src.Main.Model.Utilities;
 
 namespace FarmVille_api.src.Main.Model.Persistence
@@ -8,6 +9,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
     public class PlayersFileDAO
     {
 
+        Dictionary<long, Player> playersData;
         string playersJson;
         JsonUtilities jsonUtilities;
 
@@ -18,8 +20,8 @@ namespace FarmVille_api.src.Main.Model.Persistence
             load();
         }
 
-        public void load() {
-
+        private void load() {
+            playersData = jsonUtilities.JsonDeserializeAsync<Dictionary<long, Player>>(playersJson).Result;
         }
         
     }

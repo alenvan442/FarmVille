@@ -28,7 +28,7 @@ namespace FarmVille_api.src.Main
                 AutoReconnect = true,
                 Intents = DiscordIntents.All,
                 Token = StaticUtil.token,
-            TokenType = TokenType.Bot,
+                TokenType = TokenType.Bot,
                 MinimumLogLevel = Microsoft.Extensions.Logging.LogLevel.Debug
             };
 
@@ -74,6 +74,7 @@ namespace FarmVille_api.src.Main
         public async Task OnReady(DiscordClient client, ReadyEventArgs e)
         {
             LoadDAO.load();
+            await Task.CompletedTask;
         }
 
         /*

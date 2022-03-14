@@ -1,3 +1,4 @@
+using FarmVille_api.src.Main.Model.Structures.Items;
 using FarmVille_api.src.Main.Model.Utilities;
 
 namespace FarmVille_api.src.Main.Model.Persistence
@@ -5,6 +6,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
     public class ShopFileDAO
     {
 
+        List<Items> shopList;
         string shopJson;
         JsonUtilities jsonUtilities;
 
@@ -14,8 +16,8 @@ namespace FarmVille_api.src.Main.Model.Persistence
             load();
         }
 
-        public void load() {
-
+        private void load() {
+            shopList = jsonUtilities.JsonDeserializeAsync<List<Items>>(shopJson).Result;
         }
 
     }

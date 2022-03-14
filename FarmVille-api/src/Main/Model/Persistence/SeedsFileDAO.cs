@@ -1,3 +1,4 @@
+using FarmVille_api.src.Main.Model.Structures.Items;
 using FarmVille_api.src.Main.Model.Utilities;
 
 namespace FarmVille_api.src.Main.Model.Persistence
@@ -17,6 +18,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
     {
 
         string seedsJson;
+        Dictionary<long, Seeds> seedsData;
         JsonUtilities jsonUtilities;
 
         public SeedsFileDAO(string seedsJson, JsonUtilities jsonUtilities)
@@ -26,8 +28,8 @@ namespace FarmVille_api.src.Main.Model.Persistence
             load();
         }
 
-        public void load() {
-
+        private void load() {
+            seedsData = jsonUtilities.JsonDeserializeAsync<Dictionary<long, Seeds>>(seedsJson).Result;
         }
         
     }
