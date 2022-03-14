@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{DF4B5D94-0CDC-435B-AF4D-0542ED87B87E}|Default">
+  <MonoDevelop.Ide.ItemProperties.FarmVille PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FarmVille-api/src/Main/Bot.cs">
+    <Files>
+      <File FileName="FarmVille-api/src/Main/Bot.cs" Line="13" Column="8" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FarmVille" expanded="True">
+            <Node name="FarmVille" expanded="True">
+              <Node name="FarmVille-api" expanded="True">
+                <Node name="src" expanded="True">
+                  <Node name="Main" expanded="True">
+                    <Node name="Bot.cs" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
