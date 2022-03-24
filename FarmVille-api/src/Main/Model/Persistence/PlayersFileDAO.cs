@@ -1,3 +1,4 @@
+using DSharpPlus.Entities;
 using FarmVille_api.src.Main.Model.Structures;
 using FarmVille_api.src.Main.Model.Utilities;
 
@@ -9,10 +10,15 @@ namespace FarmVille_api.src.Main.Model.Persistence
     public class PlayersFileDAO
     {
 
-        Dictionary<long, Player> playersData;
+        Dictionary<ulong, Player> playersData;
         string playersJson;
         JsonUtilities jsonUtilities;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="playersJson"></param>
+        /// <param name="jsonUtilities"></param>
         public PlayersFileDAO(string playersJson, JsonUtilities jsonUtilities)
         {
             this.playersJson = playersJson;
@@ -20,9 +26,57 @@ namespace FarmVille_api.src.Main.Model.Persistence
             load();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void load() {
-            playersData = jsonUtilities.JsonDeserializeAsync<Dictionary<long, Player>>(playersJson).Result;
+            playersData = jsonUtilities.JsonDeserializeAsync<Dictionary<ulong, Player>>(playersJson).Result;
         }
-        
+
+        private void save() {
+            jsonUtilities.JsonSerialize(playersData, playersJson);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UID"></param>
+        /// <returns></returns>
+        public Player getPlayer(ulong UID) {
+            Player result;
+            playersData.TryGetValue(UID, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public Player[] getPlayers() {
+            return playersData.Values.ToArray();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UID"></param>
+        /// <returns></returns>
+        public Boolean addPlayer(ulong UID) {
+            //TODO
+            save();
+            return false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UID"></param>
+        /// <returns></returns>
+        public Boolean deletePlayer(ulong UID) {
+            //TODO
+            save();
+            return false;
+        }
+
     }
 }

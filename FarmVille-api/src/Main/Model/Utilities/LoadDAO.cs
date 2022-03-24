@@ -16,10 +16,11 @@ namespace FarmVille_api.src.Main.Model.Utilities
         public static void load() {
             JsonUtilities json = new JsonUtilities();
             playersFileDAO = new PlayersFileDAO(StaticUtil.playersJson, json);
-            plantPotsFileDAO = new PlantPotsFileDAO(playersFileDAO);
             seedsFileDAO = new SeedsFileDAO(StaticUtil.seedsJson, json);
             shopFileDAO = new ShopFileDAO(StaticUtil.shopJson, json);
-        }
 
+            plantPotsFileDAO = new PlantPotsFileDAO(playersFileDAO, seedsFileDAO);
+            
+        }
     }
 }

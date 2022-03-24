@@ -6,13 +6,14 @@ namespace FarmVille_api.src.Main.Model.Utilities
     public class JsonUtilities
     {
 
-        /*
-         * Generic method that deserializes a file into the given object
-         * 
-         * @param filename: the string of the file's path
-         * 
-         * @return: the object created after deserializing
-         */
+        /// <summary>
+        /// Generic method that deserializes a file into the given object
+        /// </summary>
+        /// 
+        /// <param name="filename"> the string of the file's path </param>
+        /// <typeparam name="T"> the object type to deserialize to </typeparam>
+        /// 
+        /// <returns> the object created after deserializing </returns>
         public async Task<T> JsonDeserializeAsync<T>(string filename)
         {
             var json = string.Empty;
@@ -28,12 +29,13 @@ namespace FarmVille_api.src.Main.Model.Utilities
             return obj;
         }
 
-        /*
-         * Generic method that serializes an object into a json file
-         * 
-         * @param obj: the obj to be serialized
-         * @param filename: the path of the file to be written to
-         */
+        /// <summary>
+        /// Generic method that serializes an object into a json file
+        /// </summary>
+        /// 
+        /// <param name="obj"> the obj to be serialized </param>
+        /// <param name="filename"> the path of the file to be written to </param>
+        /// <typeparam name="T"> the object type to serialize to </typeparam>
         public void JsonSerialize<T>(T obj, string filename)
         {
             //serialize the obj into a json formatted string

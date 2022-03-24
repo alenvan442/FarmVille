@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace FarmVille_api.src.Main.Model.Structures.Outputs
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Outputs
     {
         
@@ -44,6 +47,19 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
                 return timeLeft.Duration();
 
             }
+        }
+
+        /// <summary>
+        /// Sets the attributes of the member of this output
+        /// </summary>
+        /// 
+        /// <param name="yield"> How much output is produced upon harvest </param>
+        /// <param name="growthDuration"> how long it takes until player can harvest </param>
+        /// <param name="startingTime"> when did the member first start growing? </param>
+        public void setAttributes(int yield, TimeSpan growthDuration, DateTime startingTime) {
+            this.yield = yield;
+            this.growthDuration = growthDuration;
+            this.startingTime = startingTime;
         }
 
     }

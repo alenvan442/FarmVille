@@ -65,26 +65,27 @@ namespace FarmVille_api.src.Main
 
         }
 
-        /*
-         * This function fires once the client is ready
-         * 
-         * @param client: the client that is ready
-         * @param e: the args that are passed in once the client is ready
-         */
+        /// <summary>
+        /// This function fires once the client is ready
+        /// </summary>
+        /// <param name="client"> the client that is ready </param>
+        /// <param name="e"> the args that are passed in once the client is ready </param>
+        /// <returns> a task </returns>
         public async Task OnReady(DiscordClient client, ReadyEventArgs e)
         {
             LoadDAO.load();
             await Task.CompletedTask;
         }
 
-        /*
-         * This function fires once the client joins a guild and recognizes the guild
-         * 
-         * @param client: the client that has joined a guild
-         * @param e: the args that are passed in once the client connects to a guild
-         */
+        /// <summary>
+        /// This function fires once the client joins a guild and recognizes the guild
+        /// </summary>
+        /// <param name="client"> the client that has joined a guild </param>
+        /// <param name="e"> the args that are passed in once the client connects to a guild </param>
+        /// <returns> a task </returns>
         public async Task OnGuildAvailable(DiscordClient client, GuildCreateEventArgs e)
         {
+            
             await Task.CompletedTask;
         }
 

@@ -1,3 +1,6 @@
+using FarmVille_api.src.Main.Model.Structures;
+using FarmVille_api.src.Main.Model.Structures.Items;
+
 namespace FarmVille_api.src.Main.Model.Persistence
 {
     /// <summary>
@@ -7,9 +10,34 @@ namespace FarmVille_api.src.Main.Model.Persistence
     public class PlantPotsFileDAO
     {
         PlayersFileDAO playersFileDAO;
+        SeedsFileDAO seedsFileDAO;
 
-        public PlantPotsFileDAO(PlayersFileDAO playersFileDAO) {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="playersFileDAO"></param>
+        /// <param name="seedsFileDAO"></param>
+        public PlantPotsFileDAO(PlayersFileDAO playersFileDAO, SeedsFileDAO seedsFileDAO) {
             this.playersFileDAO = playersFileDAO;
+            this.seedsFileDAO = seedsFileDAO;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UID"></param>
+        /// <param name="seedName"></param>
+        /// <returns></returns>
+        public Boolean plantSeed(ulong UID, string seedName) {
+            Seeds currSeed = new Seeds(this.seedsFileDAO.getSeeds(seedName), 1);
+            Player currPlayer = this.playersFileDAO.getPlayer(UID);
+
+            return currPlayer.plantSeed(currSeed);
+        }
+
+        public TimeSpan getRemainingTime(ulong UID, int potIndex) {
+            Player currPlayer = this.playersFileDAO.getPlayer(UID);
+            return currPlayer.getPotTime(potIndex);
         }
         
     }
