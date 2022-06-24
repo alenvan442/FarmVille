@@ -12,8 +12,11 @@ namespace FarmVille_api.src.Main.Model.Persistence
         PlayersFileDAO playersFileDAO;
         SeedsFileDAO seedsFileDAO;
 
+
         /// <summary>
-        /// 
+        /// Constructor for the plantpots DAO
+        /// Setups the object through injection of two other DAO files
+        /// Those two files will be utilized in manipulations of a player's plant pots
         /// </summary>
         /// <param name="playersFileDAO"></param>
         /// <param name="seedsFileDAO"></param>
@@ -22,12 +25,13 @@ namespace FarmVille_api.src.Main.Model.Persistence
             this.seedsFileDAO = seedsFileDAO;
         }
 
+
         /// <summary>
-        /// 
+        /// Plants a seed into a player's plant pot
         /// </summary>
-        /// <param name="UID"></param>
-        /// <param name="seedName"></param>
-        /// <returns></returns>
+        /// <param name="UID"> The UID of the player that requested to plant a seed </param>
+        /// <param name="seedName"> The name of the seed to plant </param>
+        /// <returns> A boolean to indicate if the planting was successful </returns>
         public Boolean plantSeed(ulong UID, string seedName) {
             Seeds currSeed = new Seeds(this.seedsFileDAO.getSeeds(seedName), 1);
             Player currPlayer = this.playersFileDAO.getPlayer(UID);
@@ -35,10 +39,29 @@ namespace FarmVille_api.src.Main.Model.Persistence
             return currPlayer.plantSeed(currSeed);
         }
 
-        public TimeSpan getRemainingTime(ulong UID, int potIndex) {
+        /// <summary>
+        /// Plants a seed into a player's plant pot
+        /// </summary>
+        /// <param name="UID"> The UID of the player that requested to plant a seed </param>
+        /// <param name="seedID"> The id of the seed to plant </param>
+        /// <returns> A boolean to indicate if the planting was successful </returns>
+        public Boolean plantSeed(ulong UID, long seedID)
+        {
+            Seeds currSeed = new Seeds(this.seedsFileDAO.getSeeds(seedID), 1);
             Player currPlayer = this.playersFileDAO.getPlayer(UID);
-            return currPlayer.getPotTime(potIndex);
+
+            return currPlayer.plantSeed(currSeed);
         }
-        
+
+        /// <summary>
+        /// Gets the display information on all plantpots associated with the player
+        /// </summary>
+        /// <param name="UID"> The UID of the player that invoked this request </param>
+        /// <returns> A list of strings that holds the display information for the plant pots </returns>
+        public string[] getPotData(ulong UID) {
+            Player currPlayer = this.playersFileDAO.getPlayer(UID);
+            return currPlayer.getPotTimes();
+        }
+
     }
 }

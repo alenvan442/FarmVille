@@ -6,7 +6,7 @@ using DSharpPlus.EventArgs;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
 using FarmVille_api.src.Main.Model.Utilities;
-using FarmVille_api.src.Main.View.Commands;
+using FarmVille.Commands;
 
 /// <summary>
 /// This is the class that holds the Discord Bot configuration

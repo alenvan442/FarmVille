@@ -17,13 +17,19 @@ namespace FarmVille_api.src.Main.Model.Persistence
     public class SeedsFileDAO
     {
 
+        //path of the json that holds the data of the seeds
         string seedsJson;
+        //collection of seeds with their IDs as the key
         Dictionary<long, Seeds> seedsDataID;
+        //collection of seeds with their names as the key
         Dictionary<string, Seeds> seedsDataString;
+        //json object
         JsonUtilities jsonUtilities;
 
         /// <summary>
-        /// 
+        /// Constructor for the seeds DAO object
+        /// setups the DAO
+        /// loads the seeds' information into a local collection
         /// </summary>
         /// <param name="seedsJson"></param>
         /// <param name="jsonUtilities"></param>
@@ -45,10 +51,10 @@ namespace FarmVille_api.src.Main.Model.Persistence
         }
 
         /// <summary>
-        /// 
+        /// Retrieves a seed based on its name
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="name"> The name of the seed to retrieve </param>
+        /// <returns> The seed object that was retrieved </returns>
         public Seeds getSeeds(string name) {
             Seeds result;
             seedsDataString.TryGetValue(name, out result);
@@ -56,13 +62,40 @@ namespace FarmVille_api.src.Main.Model.Persistence
         }
 
         /// <summary>
-        /// 
+        /// Retrieves a seed based on its id
         /// </summary>
-        /// <param name="ID"></param>
-        /// <returns></returns>
+        /// <param name="ID"> The id of the seed to retrieve </param>
+        /// <returns> The seed object that was retrieved </returns>
         public Seeds getSeeds(long ID) {
             Seeds result;
             seedsDataID.TryGetValue(ID, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Creates and returns a seed object with an amount > 1
+        /// </summary>
+        /// <param name="name"> The name of the seed to create </param>
+        /// <param name="amount"> The number of seeds to create </param>
+        /// <returns> A new seed object with the correct properties and amount </returns>
+        public Seeds getSeedsAmonut(string name, int amount) {
+            Seeds temp;
+            temp = this.getSeeds(name);
+            Seeds result = new Seeds(temp, amount);
+            return result;
+        }
+
+        /// <summary>
+        /// Creates and returns a seed object with an amount > 1
+        /// </summary>
+        /// <param name="ID"> The id of the seed to create </param>
+        /// <param name="amount"> The number of seeds to create </param>
+        /// <returns> A new seed object with the correct properties and amount </returns>
+        public Seeds getSeedsAmonut(long ID, int amount)
+        {
+            Seeds temp;
+            temp = this.getSeeds(ID);
+            Seeds result = new Seeds(temp, amount);
             return result;
         }
         

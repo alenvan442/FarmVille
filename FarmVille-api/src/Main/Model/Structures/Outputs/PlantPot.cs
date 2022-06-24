@@ -5,13 +5,17 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
     /// <summary>
     /// 
     /// </summary>
-    public class PlantPot : Outputs
+    public class PlantPot : Output
     {
 
         Seeds seed;
 
-        public PlantPot(int yield, TimeSpan growthDuration, DateTime startingTime) : base(yield, growthDuration, startingTime)
-        {
+        /// <summary>
+        /// Constructor for an empty plant pot
+        /// </summary>
+        /// <returns></returns>
+        public PlantPot(int id) : base(0, TimeSpan.Zero, DateTime.MinValue, id) {
+            
         }
 
         /// <summary>
@@ -48,6 +52,28 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
                 base.setAttributes(seed.yield, seed.growDuration, DateTime.Now);
                 return true;
             }
+        }
+
+        /// <summary>
+        /// ToString for a plant pot
+        /// Line 1: The identifier for the pot
+        /// Line 2: What the pot is growing, display empty if so
+        /// Line 3: The remaining time, not showned if the pot is empty
+        /// </summary>
+        /// <returns> a string displaying all information in regards to this plant pot </returns>
+        public override string ToString()
+        {
+            string result;
+            if(this.isEmpty()) {
+                result = "Plant Pot: #" + id + 1 +
+                                 "\nPlant: Empty\n\n";
+            } else
+            {
+                result = "Plant Pot: #" + id + 1 +
+                                "\nPlant: " + this.seed.plantName +
+                                "\n\nTime Remaining: " + base.ToString();
+            }
+            return result;
         }
 
     }

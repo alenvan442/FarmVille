@@ -5,18 +5,20 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
     /// <summary>
     /// 
     /// </summary>
-    public class Outputs
+    public class Output
     {
         
         public int yield { get; private set; }
         public TimeSpan growthDuration { get; private set; }
         public DateTime startingTime { get; private set; }
+        public int id { get; private set; }
 
         [JsonConstructor]
-        public Outputs(int yield, TimeSpan growthDuration, DateTime startingTime) {
+        public Output(int yield, TimeSpan growthDuration, DateTime startingTime, int id) {
             this.yield = yield;
             this.growthDuration = growthDuration;
             this.startingTime = startingTime;
+            this.id = id;
         }
 
         /// <summary>
@@ -60,6 +62,16 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
             this.yield = yield;
             this.growthDuration = growthDuration;
             this.startingTime = startingTime;
+        }
+
+        /// <summary>
+        /// The to string for an output
+        /// returns the string containing the remaining time of this output
+        /// </summary>
+        /// <returns> a string representing this output containiner </returns>
+        public override string ToString()
+        {
+            return this.remainingTime().ToString();
         }
 
     }
