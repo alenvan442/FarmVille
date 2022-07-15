@@ -5,12 +5,20 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
     public class Seeds: Item
     {
 
-        [JsonProperty("plantName")]
+        [JsonProperty("PlantName")]
         public string plantName { get; private set; }
-        [JsonProperty("yield")]
+        [JsonProperty("Yield")]
         public int yield { get; private set; }
-        [JsonProperty("growthDuration")]
+        [JsonProperty("GrowthDuration")]
         public TimeSpan growDuration { get; private set; }
+        [JsonProperty("PlantID")]
+        public long plantID { get; private set; }
+        [JsonProperty("Regrow")]
+        public Boolean regrow { get; private set; }
+        [JsonProperty("Season")]
+        public String season { get; private set; }
+
+
 
         /// <summary>
         /// Create a new item that is of type seed by giving it some passed in parameters
@@ -26,14 +34,21 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// <param name="plantName"> The name of the plant this seed grows </param> 
         /// <param name="yield"> The number of plants this seed will yield </param> 
         /// <param name="growthDuration"> How long it will take for the seed to fully grow </param> 
+        /// <param name="plantID"> The id of the plant this seed grows </param>
+        /// <param name="regrow"> A boolean indicating if this seed regrows after harvested </param>
+        /// <param name="season"> a string indicating which season this seed grows in </param>
         [JsonConstructor]
         public Seeds(long id, int amount, double buyPrice, double sellPrice,
-                        string name, string plantName, int yield, TimeSpan growthDuration): 
+                        string name, string plantName, int yield, TimeSpan growthDuration, long plantID,
+                        Boolean regrow, String season): 
                         base(id, amount, buyPrice, sellPrice, name) {
 
             this.plantName = plantName;
             this.yield = yield;
             this.growDuration = growDuration;
+            this.plantID = plantID;
+            this.regrow = regrow;
+            this.season = season;
 
         }
 
@@ -50,6 +65,9 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
             this.plantName = otherSeed.plantName;
             this.yield = otherSeed.yield;
             this.growDuration = otherSeed.growDuration;
+            this.plantID = otherSeed.plantID;
+            this.regrow = otherSeed.regrow;
+            this.season = otherSeed.season;
         }
 
         public override string ToString()

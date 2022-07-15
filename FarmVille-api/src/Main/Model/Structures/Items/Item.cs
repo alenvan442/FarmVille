@@ -5,15 +5,15 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
     public class Item
     {
 
-        [JsonProperty("name")]
+        [JsonProperty("Name")]
         public string name { get; private set; }
-        [JsonProperty("id")]
+        [JsonProperty("ID")]
         public long id { get; private set; }
-        [JsonProperty("amount")]
+        [JsonProperty("Amount")]
         public int amount;
-        [JsonProperty("buyPrice")]
+        [JsonProperty("BuyPrice")]
         public double buyPrice { get; private set; }
-        [JsonProperty("sellPrice")]
+        [JsonProperty("SellPrice")]
         public double sellPrice { get; private set; }
 
         /// <summary>

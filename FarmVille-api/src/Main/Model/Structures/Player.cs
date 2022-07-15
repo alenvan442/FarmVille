@@ -2,6 +2,7 @@ using System.Collections;
 using DSharpPlus.Entities;
 using FarmVille_api.src.Main.Model.Structures.Items;
 using FarmVille_api.src.Main.Model.Structures.Outputs;
+using Newtonsoft.Json;
 
 namespace FarmVille_api.src.Main.Model.Structures
 {
@@ -11,13 +12,21 @@ namespace FarmVille_api.src.Main.Model.Structures
     public class Player
     {
 
+        [JsonProperty("ID")]
         public ulong UID { get; private set; }
+        [JsonProperty("OutputContainers")]
         private Dictionary<int, PlantPot> outputContainer { get; set; }
-
+        [JsonProperty("Name")]
         public string name { get; private set; }
-        private Dictionary<long, Seeds> inventory { get; set; }
-        private long balance { get; set; }
+        [JsonProperty("Seeds")]
+        private Dictionary<long, Seeds> seeds { get; set; }
+        [JsonProperty("Plants")]
+        private Dictionary<long, Plant> plants { get; set; }
+        [JsonProperty("Balance")]
+        private double balance { get; set; }
 
+
+        private Dictionary<long, Item> inventory;
 
         /// <summary>
         /// Constructor for a new player
@@ -27,6 +36,7 @@ namespace FarmVille_api.src.Main.Model.Structures
             this.UID = member.Id;
             this.name = member.Username;
             outputContainer.Add(0, new PlantPot(0));
+            this.balance = 5.00;
         }
 
         /// <summary>
@@ -87,16 +97,43 @@ namespace FarmVille_api.src.Main.Model.Structures
             return result;
         }
 
-        public Boolean addItem(Seeds seed) {
-            Seeds prevSeed;
-            if(this.inventory.TryGetValue(seed.id, out prevSeed)) {
-                prevSeed.amount += seed.amount;
-                return this.inventory.TryAdd(seed.id, prevSeed);
-            } else
-            {
-                this.inventory.Add(seed.id, seed);
-                return true;
+        public Boolean addItem(Item item) {
+
+            if(item is null) {
+                return false;
             }
+            
+            if(item is Seeds) {
+                Seeds newSeed = (Seeds)item;
+                if(this.seeds.ContainsKey(item.id)) {
+                    this.seeds.TryGetValue(item.id, out newSeed);
+                    newSeed.amount += item.amount;
+                    this.seeds.Add(item.id, newSeed);
+                } else {
+                    this.seeds.Add(newSeed.id, newSeed);
+                }
+            } else if(item is Plant) {
+                Plant newPlant = (Plant)item;
+                if(this.plants.ContainsKey(item.id)) {
+                    this.plants.TryGetValue(item.id, out newPlant);
+                    newPlant.amount += item.amount;
+                    this.plants.Add(item.id, newPlant);
+                } else {
+                    this.plants.Add(newPlant.id, newPlant);
+                }
+            }
+
+            Item currItem;
+            if(this.inventory.ContainsKey(item.id)) {
+                this.inventory.TryGetValue(item.id, out currItem);
+                currItem.amount += item.amount;
+                this.inventory.Add(item.id, currItem);
+            } else {
+                this.inventory.Add(item.id, item);
+            }
+
+            return true;
+
         }
 
         public override string ToString()

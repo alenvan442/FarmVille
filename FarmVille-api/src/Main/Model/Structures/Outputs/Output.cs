@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace FarmVille_api.src.Main.Model.Structures.Outputs
 {
@@ -7,18 +8,24 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
     /// </summary>
     public class Output
     {
-        
+        [JsonProperty("Yield")]
         public int yield { get; private set; }
+        [JsonProperty("GrowthDuration")]
         public TimeSpan growthDuration { get; private set; }
+        [JsonProperty("StartingTime")]
         public DateTime startingTime { get; private set; }
+        [JsonProperty("ID")]
         public int id { get; private set; }
+        [JsonProperty("OutputID")]
+        public long outputID { get; private set; }
 
-        [JsonConstructor]
-        public Output(int yield, TimeSpan growthDuration, DateTime startingTime, int id) {
+        [Newtonsoft.Json.JsonConstructor]
+        public Output(int yield, TimeSpan growthDuration, DateTime startingTime, int id, long outputID) {
             this.yield = yield;
             this.growthDuration = growthDuration;
             this.startingTime = startingTime;
             this.id = id;
+            this.outputID = outputID;
         }
 
         /// <summary>
@@ -58,10 +65,11 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// <param name="yield"> How much output is produced upon harvest </param>
         /// <param name="growthDuration"> how long it takes until player can harvest </param>
         /// <param name="startingTime"> when did the member first start growing? </param>
-        public void setAttributes(int yield, TimeSpan growthDuration, DateTime startingTime) {
+        public void setAttributes(int yield, TimeSpan growthDuration, DateTime startingTime, long outputID) {
             this.yield = yield;
             this.growthDuration = growthDuration;
             this.startingTime = startingTime;
+            this.outputID = outputID;
         }
 
         /// <summary>

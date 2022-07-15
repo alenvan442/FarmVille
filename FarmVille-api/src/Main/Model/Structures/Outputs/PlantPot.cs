@@ -14,7 +14,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// Constructor for an empty plant pot
         /// </summary>
         /// <returns></returns>
-        public PlantPot(int id) : base(0, TimeSpan.Zero, DateTime.MinValue, id) {
+        public PlantPot(int id) : base(0, TimeSpan.Zero, DateTime.MinValue, id, 0) {
             
         }
 
@@ -49,7 +49,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
                 //if this plant pot is not occupied then plant the seed and set the attributes
                 //return true to indicate a successful plant
                 this.seed = seed;
-                base.setAttributes(seed.yield, seed.growDuration, DateTime.Now);
+                base.setAttributes(seed.yield, seed.growDuration, DateTime.Now, seed.plantID);
                 return true;
             }
         }
