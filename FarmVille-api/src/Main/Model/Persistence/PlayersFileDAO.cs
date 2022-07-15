@@ -13,6 +13,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         Dictionary<ulong, Player> playersData;
         string playersJson;
         JsonUtilities jsonUtilities;
+        SeedsFileDAO seedsFileDAO;
 
         /// <summary>
         /// Constructor for the PlayersFileDAO object
@@ -21,10 +22,11 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// </summary>
         /// <param name="playersJson"> The path to the json file </param>
         /// <param name="jsonUtilities"> An object that helps with json manipulations </param>
-        public PlayersFileDAO(string playersJson, JsonUtilities jsonUtilities)
+        public PlayersFileDAO(string playersJson, JsonUtilities jsonUtilities, SeedsFileDAO seedsFileDAO)
         {
             this.playersJson = playersJson;
             this.jsonUtilities = jsonUtilities;
+            this.seedsFileDAO = seedsFileDAO;
             load();
         }
 
@@ -67,16 +69,17 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// Adds a new player
         /// Creates a new player and adds them to the local collection then saves
         /// </summary>
-        /// <param name="UID"> The UID of the player to add </param>
+        /// <param name="member"> The discord member to add </param>
         /// <returns> A boolean to indicate whether or not the player was successfully created </returns>
-        public Boolean addPlayer(ulong UID) {
+        public Boolean addPlayer(DiscordMember member) {
             //Checks to see if the UID is already in the system
-            if(playersData.TryGetValue(UID, out _)) {
+            if(playersData.TryGetValue(member.Id, out _)) {
                 return false;
             } else
             {
-                Player newPlayer = new Player(UID);
-                playersData.Add(UID, newPlayer);
+                Player newPlayer = new Player(member);
+                newPlayer.addItem(seedsFileDAO.getSeeds("wheat"));
+                playersData.Add(member.Id, newPlayer);
                 save();
                 return true;
             }

@@ -85,7 +85,7 @@ namespace FarmVille_api.src.Main
         /// <returns> a task </returns>
         public async Task OnGuildAvailable(DiscordClient client, GuildCreateEventArgs e)
         {
-            
+            LoadDAO.addPlayers(e.Guild);
             await Task.CompletedTask;
         }
 

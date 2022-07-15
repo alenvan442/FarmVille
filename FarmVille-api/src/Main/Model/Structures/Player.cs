@@ -1,4 +1,5 @@
 using System.Collections;
+using DSharpPlus.Entities;
 using FarmVille_api.src.Main.Model.Structures.Items;
 using FarmVille_api.src.Main.Model.Structures.Outputs;
 
@@ -13,12 +14,18 @@ namespace FarmVille_api.src.Main.Model.Structures
         public ulong UID { get; private set; }
         private Dictionary<int, PlantPot> outputContainer { get; set; }
 
+        public string name { get; private set; }
+        private Dictionary<long, Seeds> inventory { get; set; }
+        private long balance { get; set; }
+
+
         /// <summary>
         /// Constructor for a new player
         /// Give them the first plant pot for free
         /// </summary>
-        public Player(ulong UID) {
-            this.UID = UID;
+        public Player(DiscordMember member) {
+            this.UID = member.Id;
+            this.name = member.Username;
             outputContainer.Add(0, new PlantPot(0));
         }
 
@@ -67,6 +74,38 @@ namespace FarmVille_api.src.Main.Model.Structures
                 potTimes[i.id] = i.ToString();
             }
             return potTimes;
+        }
+
+        public String[] getInventory() {
+            String[] result = new string[this.inventory.Count];
+            int index = 0;
+            foreach(Item i in this.inventory.Values) {
+                result[index] = i.ToString();
+                index++;
+            }
+            
+            return result;
+        }
+
+        public Boolean addItem(Seeds seed) {
+            Seeds prevSeed;
+            if(this.inventory.TryGetValue(seed.id, out prevSeed)) {
+                prevSeed.amount += seed.amount;
+                return this.inventory.TryAdd(seed.id, prevSeed);
+            } else
+            {
+                this.inventory.Add(seed.id, seed);
+                return true;
+            }
+        }
+
+        public override string ToString()
+        {
+            String result = "";
+            result += "\n" + this.name + "\n\n";
+            result += this.balance;
+
+            return result;
         }
 
     }

@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace FarmVille_api.src.Main.Model.Structures.Items
 {
-    public class Seeds: Items
+    public class Seeds: Item
     {
 
         [JsonProperty("plantName")]
@@ -50,6 +50,11 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
             this.plantName = otherSeed.plantName;
             this.yield = otherSeed.yield;
             this.growDuration = otherSeed.growDuration;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
 
     }

@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace FarmVille_api.src.Main.Model.Structures.Items
 {
-    public class Items
+    public class Item
     {
 
         [JsonProperty("name")]
@@ -24,12 +24,17 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// <param name="buyPrice"> How much to buy the item for </param>
         /// <param name="sellPrice"> How much one can sell the item for </param>
         /// <param name="name"> The name of the item </param>
-        public Items(long id, int amount, double buyPrice, double sellPrice, string name) {
+        public Item(long id, int amount, double buyPrice, double sellPrice, string name) {
             this.id = id;
             this.amount = amount;
             this.buyPrice = buyPrice;
             this.sellPrice = sellPrice;
             this.name = name;
+        }
+
+        public override string ToString()
+        {
+            return this.name + "        " + this.amount;
         }
 
     }

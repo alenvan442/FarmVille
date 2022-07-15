@@ -1,4 +1,5 @@
 using DSharpPlus.CommandsNext;
+using DSharpPlus.CommandsNext.Attributes;
 using FarmVille_api.src.Main.Controller;
 
 namespace FarmVille.Commands
@@ -14,6 +15,11 @@ namespace FarmVille.Commands
 
         public Farming(PlantPotController plantPotController) {
             this.plantPotController = plantPotController;
+        }
+
+        [Command("plant")]
+        public async Task plant(CommandContext ctx, string input) {
+            await Task.CompletedTask;
         }
         
     }

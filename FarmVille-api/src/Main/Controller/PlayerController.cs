@@ -1,4 +1,6 @@
+using DSharpPlus.Entities;
 using FarmVille_api.src.Main.Model.Persistence;
+using FarmVille_api.src.Main.Model.Structures;
 
 namespace FarmVille_api.src.Main.Controller
 {
@@ -12,6 +14,22 @@ namespace FarmVille_api.src.Main.Controller
         public PlayerController(PlayersFileDAO playersFileDAO)
         {
             this.playersFileDAO = playersFileDAO;
+        }
+
+        public Player getPlayer(ulong UID) {
+            return playersFileDAO.getPlayer(UID);
+        }
+
+        public Player[] getPlayers() {
+            return playersFileDAO.getPlayers();
+        }
+
+        public Boolean addPlayer(DiscordMember member) {
+            return playersFileDAO.addPlayer(member);
+        } 
+
+        public Boolean deletePlayer(ulong UID) {
+            return playersFileDAO.deletePlayer(UID);
         }
     }
 }

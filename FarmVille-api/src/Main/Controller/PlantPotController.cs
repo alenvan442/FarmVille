@@ -13,5 +13,19 @@ namespace FarmVille_api.src.Main.Controller
         {
             this.plantPotsFileDAO = plantPotsFileDAO;
         }
+
+        public Boolean plantSeed(ulong UID, string seedName) {
+            return plantPotsFileDAO.plantSeed(UID, seedName);
+        }
+
+        public Boolean plantSeed(ulong UID, long seedID)
+        {
+            return plantPotsFileDAO.plantSeed(UID, seedID);
+        }
+
+        public string[] getPotData(ulong UID) {
+            return plantPotsFileDAO.getPotData(UID);
+        }
+
     }
 }
