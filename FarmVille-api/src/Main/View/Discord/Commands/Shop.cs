@@ -11,6 +11,10 @@ namespace FarmVille.Commands
 
         ShopController shopController;
 
+        /// <summary>
+        /// Constructor of the shop commands
+        /// </summary>
+        /// <param name="shopController"> The class in charge of the delegation of shop related tasks </param>
         public Shop(ShopController shopController) {
             this.shopController = shopController;
         }

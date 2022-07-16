@@ -70,6 +70,12 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
             this.season = otherSeed.season;
         }
 
+        /// <summary>
+        /// The to string method of a seed
+        /// Utilizes the toString() method of the class: item
+        /// Format: (Seed Name)                   (Seed Amount)
+        /// </summary>
+        /// <returns> A string consisting of the data of a seed object </returns>
         public override string ToString()
         {
             return base.ToString();

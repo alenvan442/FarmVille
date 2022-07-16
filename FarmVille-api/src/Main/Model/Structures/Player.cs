@@ -37,6 +37,23 @@ namespace FarmVille_api.src.Main.Model.Structures
             this.name = member.Username;
             outputContainer.Add(0, new PlantPot(0));
             this.balance = 5.00;
+            loadInventory();
+        }
+
+        /// <summary>
+        /// Loads the inventory
+        /// This is utilized to bypass the json downside of utilizing inheritance
+        /// Upon player load, seeds and plants will be loaded into their respected dictionaries
+        /// In order to maintain their child type
+        /// Afterwards are loaded into one singular dictionary for further use
+        /// </summary>
+        public void loadInventory() {
+            foreach(Seeds i in this.seeds.Values) {
+                this.inventory.Add(i.id, i);
+            } 
+            foreach(Plant i in this.plants.Values) {
+                this.inventory.Add(i.id, i);
+            }
         }
 
         /// <summary>
@@ -86,6 +103,10 @@ namespace FarmVille_api.src.Main.Model.Structures
             return potTimes;
         }
 
+        /// <summary>
+        /// Retrieves a list of items in order to display the inventory
+        /// </summary>
+        /// <returns> An array of strings holding data of each item in the inventory </returns>
         public String[] getInventory() {
             String[] result = new string[this.inventory.Count];
             int index = 0;
@@ -97,6 +118,17 @@ namespace FarmVille_api.src.Main.Model.Structures
             return result;
         }
 
+        /// <summary>
+        /// Adds an item to the player's inventory
+        /// We check to see what child type the item is
+        /// Determine whether or not the item already exists in the player's inventory
+        ///     If it does: Add the amount of the input to the already existing item
+        ///     If not: Add the new item to the inventory
+        /// 
+        /// The item is added twice, both to the specified child type's dictionary as well as the overall inventory
+        /// </summary>
+        /// <param name="item"> The item being added </param>
+        /// <returns> A boolean indicating whether or not the action was successful </returns>
         public Boolean addItem(Item item) {
 
             if(item is null) {
@@ -136,6 +168,14 @@ namespace FarmVille_api.src.Main.Model.Structures
 
         }
 
+        /// <summary>
+        /// The toString method of the player class
+        /// Format: 
+        ///         (Player's Name)
+        /// 
+        ///         (Player's Balance)
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             String result = "";

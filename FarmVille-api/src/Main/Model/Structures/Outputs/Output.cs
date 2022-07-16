@@ -19,6 +19,14 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         [JsonProperty("OutputID")]
         public long outputID { get; private set; }
 
+        /// <summary>
+        /// Constructor of the output data class
+        /// </summary>
+        /// <param name="yield"> The amount of items that will be given upon harvesting </param>
+        /// <param name="growthDuration"> The time it takes before able to harvest </param>
+        /// <param name="startingTime"> The time that the growth duration started counting down from </param>
+        /// <param name="id"> The id of this output object </param>
+        /// <param name="outputID"> The id of the item obtained upon harvesting </param>
         [Newtonsoft.Json.JsonConstructor]
         public Output(int yield, TimeSpan growthDuration, DateTime startingTime, int id, long outputID) {
             this.yield = yield;

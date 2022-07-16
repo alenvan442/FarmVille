@@ -31,6 +31,11 @@ namespace FarmVille_api.src.Main.Model.Utilities
 
         }
 
+        /// <summary>
+        /// Adds every player in a discord guild to the database
+        /// Creating an empty, or basic player account
+        /// </summary>
+        /// <param name="guild"> The guild that was recently connected to </param>
         public async static void addPlayers(DiscordGuild guild) {
             foreach(DiscordMember i in await guild.GetAllMembersAsync()) {
                 playersFileDAO.addPlayer(i);

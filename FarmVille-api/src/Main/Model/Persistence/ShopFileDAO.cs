@@ -11,10 +11,10 @@ namespace FarmVille_api.src.Main.Model.Persistence
         JsonUtilities jsonUtilities;
 
         /// <summary>
-        /// 
+        /// Constructor of the shop DAO class
         /// </summary>
-        /// <param name="shopJson"></param>
-        /// <param name="jsonUtilities"></param>
+        /// <param name="shopJson"> The string that points to where the shopJson file is being held </param>
+        /// <param name="jsonUtilities"> A class that handles json manipulations </param>
         public ShopFileDAO(string shopJson, JsonUtilities jsonUtilities) {
             this.shopJson = shopJson;
             this.jsonUtilities = jsonUtilities;
@@ -22,7 +22,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         }
 
         /// <summary>
-        /// 
+        /// Loads the shop's data into a more local place for ease of access
         /// </summary>
         private void load() {
             shopList = jsonUtilities.JsonDeserializeAsync<List<Item>>(shopJson).Result;

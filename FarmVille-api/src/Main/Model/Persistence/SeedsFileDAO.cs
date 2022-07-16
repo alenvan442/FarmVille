@@ -41,7 +41,8 @@ namespace FarmVille_api.src.Main.Model.Persistence
         }
 
         /// <summary>
-        /// 
+        /// Iterates through the saved files consisting of the players' data and loads them into a local database
+        /// for ease of access
         /// </summary>
         private void load() {
             seedsDataID = jsonUtilities.JsonDeserializeAsync<Dictionary<long, Seeds>>(seedsJson).Result;
