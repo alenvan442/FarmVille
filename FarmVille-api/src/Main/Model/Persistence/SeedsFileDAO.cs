@@ -37,6 +37,8 @@ namespace FarmVille_api.src.Main.Model.Persistence
         {
             this.seedsJson = seedsJson;
             this.jsonUtilities = jsonUtilities;
+            this.seedsDataID = new Dictionary<long, Seeds>();
+            this.seedsDataString = new Dictionary<string, Seeds>();
             load();
         }
 

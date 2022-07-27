@@ -35,8 +35,12 @@ namespace FarmVille_api.src.Main.Model.Structures
         public Player(DiscordMember member) {
             this.UID = member.Id;
             this.name = member.Username;
+            this.outputContainer = new Dictionary<int, PlantPot>();
             outputContainer.Add(0, new PlantPot(0));
             this.balance = 5.00;
+            this.seeds = new Dictionary<long, Seeds>();
+            this.plants = new Dictionary<long, Plant>();
+            this.inventory = new Dictionary<long, Item>();
             loadInventory();
         }
 
@@ -47,7 +51,7 @@ namespace FarmVille_api.src.Main.Model.Structures
         /// In order to maintain their child type
         /// Afterwards are loaded into one singular dictionary for further use
         /// </summary>
-        public void loadInventory() {
+        private void loadInventory() {
             foreach(Seeds i in this.seeds.Values) {
                 this.inventory.Add(i.id, i);
             } 
@@ -136,7 +140,7 @@ namespace FarmVille_api.src.Main.Model.Structures
             }
             
             if(item is Seeds) {
-                Seeds newSeed = (Seeds)item;
+                Seeds? newSeed = (Seeds)item;
                 if(this.seeds.ContainsKey(item.id)) {
                     this.seeds.TryGetValue(item.id, out newSeed);
                     newSeed.amount += item.amount;
@@ -145,7 +149,7 @@ namespace FarmVille_api.src.Main.Model.Structures
                     this.seeds.Add(newSeed.id, newSeed);
                 }
             } else if(item is Plant) {
-                Plant newPlant = (Plant)item;
+                Plant? newPlant = (Plant)item;
                 if(this.plants.ContainsKey(item.id)) {
                     this.plants.TryGetValue(item.id, out newPlant);
                     newPlant.amount += item.amount;
@@ -155,7 +159,7 @@ namespace FarmVille_api.src.Main.Model.Structures
                 }
             }
 
-            Item currItem;
+            Item? currItem;
             if(this.inventory.ContainsKey(item.id)) {
                 this.inventory.TryGetValue(item.id, out currItem);
                 currItem.amount += item.amount;
@@ -166,6 +170,22 @@ namespace FarmVille_api.src.Main.Model.Structures
 
             return true;
 
+        }
+
+        /// <summary>
+        /// Retrieves a list of seeds in order to display the seeds this user has
+        /// </summary>
+        /// <returns> An array of strings holding data of each seed item </returns>
+        public String[] getSeeds() {
+            String[] result = new string[this.seeds.Count];
+            int index = 0;
+            foreach (Item i in this.seeds.Values)
+            {
+                result[index] = i.ToString();
+                index++;
+            }
+
+            return result;
         }
 
         /// <summary>

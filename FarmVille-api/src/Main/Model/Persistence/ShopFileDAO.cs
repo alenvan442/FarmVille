@@ -18,6 +18,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         public ShopFileDAO(string shopJson, JsonUtilities jsonUtilities) {
             this.shopJson = shopJson;
             this.jsonUtilities = jsonUtilities;
+            this.shopList = new List<Item>();
             load();
         }
 

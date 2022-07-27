@@ -27,6 +27,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
             this.playersJson = playersJson;
             this.jsonUtilities = jsonUtilities;
             this.seedsFileDAO = seedsFileDAO;
+            this.playersData = new Dictionary<ulong, Player>();
             load();
         }
 

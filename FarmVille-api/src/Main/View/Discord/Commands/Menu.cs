@@ -10,6 +10,7 @@ using DSharpPlus.Interactivity.Extensions;
 using FarmVille_api.src.Main.Controller;
 using FarmVille_api.src.Main.Model;
 using FarmVille_api.src.Main.Model.Structures;
+using FarmVille_api.src.Main.Model.Utilities;
 
 namespace FarmVille.Commands
 {
@@ -20,8 +21,11 @@ namespace FarmVille.Commands
     {
 
         PlayerController playerController;
-        public Menu(PlayerController playerController) {
+        EmbedUtilities embedUtilities;
+
+        public Menu(PlayerController playerController, EmbedUtilities embedUtilities) {
             this.playerController = playerController;
+            this.embedUtilities = embedUtilities;
         }
 
         /// <summary>
@@ -77,18 +81,14 @@ namespace FarmVille.Commands
         /// <returns></returns>
         [Command("bag")]
         public async Task displayPlayerInventory(CommandContext ctx) {
-            Player currPlayer = playerController.getPlayer(ctx.Member.Id);
+            Player currPlayer = playerController.getPlayer(ctx.User.Id);
             String[] inventory = currPlayer.getInventory();
-            DiscordChannel outputChannel = ctx.Channel;
-
-            DiscordClient client = ctx.Client;
-            var interactivity = client.GetInteractivity();
 
             //create the embed
             DiscordEmbedBuilder baseEmbed = new DiscordEmbedBuilder
             {
                 Color = DiscordColor.Azure,
-                Title = ctx.Member.Username + "'s Inventory"
+                Title = ctx.User.Username + "'s Inventory"
 
             };
 
@@ -97,24 +97,7 @@ namespace FarmVille.Commands
                 pageString += i + "\n";
             }
 
-            var pages = interactivity.GeneratePagesInEmbed(pageString);
-
-            //create the left and right emojis 
-            PaginationEmojis buttons = new PaginationEmojis
-            {
-                Left = DiscordEmoji.FromName(client, ":arrow_left:"),
-                Right = DiscordEmoji.FromName(client, ":arrow_right:"),
-                SkipLeft = null,
-                SkipRight = null,
-                Stop = null
-
-            };
-
-            //send the pages
-            await interactivity.SendPaginatedMessageAsync(ctx.Channel, ctx.User, pages, emojis: buttons,
-                PaginationBehaviour.Ignore,
-                PaginationDeletion.KeepEmojis);
-
+            await this.embedUtilities.sendPagination(ctx.Channel, pageString, ctx.User, ctx.Client);
 
         }
 

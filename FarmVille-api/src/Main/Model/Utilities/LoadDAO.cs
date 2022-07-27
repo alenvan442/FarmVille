@@ -1,4 +1,5 @@
 using DSharpPlus.Entities;
+using FarmVille.Commands;
 using FarmVille_api.src.Main.Controller;
 using FarmVille_api.src.Main.Model.Persistence;
 
@@ -14,12 +15,15 @@ namespace FarmVille_api.src.Main.Model.Utilities
         static PlantPotController plantPotController;
         static PlayerController playerController;
         static ShopController shopController;
+        static Farming farmingCommands;
+        static Menu menuCommands;
 
         /// <summary>
         /// Loads the FileDAOs
         /// </summary>
         public static void load() {
             JsonUtilities json = new JsonUtilities();
+            EmbedUtilities embedUtilities = new EmbedUtilities();
             playersFileDAO = new PlayersFileDAO(StaticUtil.playersJson, json, seedsFileDAO);
             seedsFileDAO = new SeedsFileDAO(StaticUtil.seedsJson, json);
             shopFileDAO = new ShopFileDAO(StaticUtil.shopJson, json);
@@ -28,6 +32,9 @@ namespace FarmVille_api.src.Main.Model.Utilities
             plantPotController = new PlantPotController(plantPotsFileDAO);
             playerController = new PlayerController(playersFileDAO);
             shopController = new ShopController(shopFileDAO);
+
+            farmingCommands = new Farming(plantPotController, playerController, embedUtilities);
+            menuCommands = new Menu(playerController, embedUtilities);
 
         }
 

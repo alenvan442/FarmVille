@@ -8,7 +8,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
     public class PlantPot : Output
     {
 
-        Seeds seed;
+        Seeds? seed;
 
         /// <summary>
         /// Constructor for an empty plant pot
@@ -16,7 +16,6 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// <param name="id"> The id of this plant pot </param>
         /// <returns></returns>
         public PlantPot(int id) : base(0, TimeSpan.Zero, DateTime.MinValue, id, 0) {
-            
         }
 
         /// <summary>
