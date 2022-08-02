@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using FarmVille_api.src.Main.Model.Structures.Items;
 using Newtonsoft.Json;
 
 namespace FarmVille_api.src.Main.Model.Structures.Outputs
@@ -15,9 +16,9 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         [JsonProperty("StartingTime")]
         public DateTime startingTime { get; private set; }
         [JsonProperty("ID")]
-        public int id { get; private set; }
+        public uint id { get; private set; }
         [JsonProperty("OutputID")]
-        public long outputID { get; private set; }
+        public uint outputID { get; private set; }
 
         /// <summary>
         /// Constructor of the output data class
@@ -28,7 +29,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// <param name="id"> The id of this output object </param>
         /// <param name="outputID"> The id of the item obtained upon harvesting </param>
         [Newtonsoft.Json.JsonConstructor]
-        public Output(int yield, TimeSpan growthDuration, DateTime startingTime, int id, long outputID) {
+        public Output(int yield, TimeSpan growthDuration, DateTime startingTime, uint id, uint outputID) {
             this.yield = yield;
             this.growthDuration = growthDuration;
             this.startingTime = startingTime;
@@ -73,11 +74,23 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// <param name="yield"> How much output is produced upon harvest </param>
         /// <param name="growthDuration"> how long it takes until player can harvest </param>
         /// <param name="startingTime"> when did the member first start growing? </param>
-        public void setAttributes(int yield, TimeSpan growthDuration, DateTime startingTime, long outputID) {
+        public void setAttributes(int yield, TimeSpan growthDuration, DateTime startingTime, uint outputID) {
             this.yield = yield;
             this.growthDuration = growthDuration;
             this.startingTime = startingTime;
             this.outputID = outputID;
+        }
+
+        public Item harvest() {
+
+            this.startingTime = DateTime.MinValue;
+            this.growthDuration = TimeSpan.Zero;
+
+            Item newItem = new Item(this.outputID, this.yield, 0, 0, "");
+            this.outputID = 0;
+            this.yield = 0;
+
+            return newItem;
         }
 
         /// <summary>

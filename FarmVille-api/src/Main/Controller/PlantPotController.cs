@@ -35,7 +35,7 @@ namespace FarmVille_api.src.Main.Controller
         /// <param name="UID"> The ID of the player planting the seed </param>
         /// <param name="seedID"> The ID of the seed being planted </param>
         /// <returns> A boolean indicating whether or not the action was successful </returns>
-        public Boolean plantSeed(ulong UID, long seedID)
+        public Boolean plantSeed(ulong UID, uint seedID)
         {
             return plantPotsFileDAO.plantSeed(UID, seedID);
         }

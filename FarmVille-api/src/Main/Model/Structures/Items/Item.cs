@@ -8,7 +8,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         [JsonProperty("Name")]
         public string name { get; private set; }
         [JsonProperty("ID")]
-        public long id { get; private set; }
+        public uint id { get; private set; }
         [JsonProperty("Amount")]
         public int amount;
         [JsonProperty("BuyPrice")]
@@ -24,7 +24,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// <param name="buyPrice"> How much to buy the item for </param>
         /// <param name="sellPrice"> How much one can sell the item for </param>
         /// <param name="name"> The name of the item </param>
-        public Item(long id, int amount, double buyPrice, double sellPrice, string name) {
+        public Item(uint id, int amount, double buyPrice, double sellPrice, string name) {
             this.id = id;
             this.amount = amount;
             this.buyPrice = buyPrice;

@@ -20,7 +20,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         //path of the json that holds the data of the seeds
         string seedsJson;
         //collection of seeds with their IDs as the key
-        Dictionary<long, Seeds> seedsDataID;
+        Dictionary<uint, Seeds> seedsDataID;
         //collection of seeds with their names as the key
         Dictionary<string, Seeds> seedsDataString;
         //json object
@@ -37,7 +37,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         {
             this.seedsJson = seedsJson;
             this.jsonUtilities = jsonUtilities;
-            this.seedsDataID = new Dictionary<long, Seeds>();
+            this.seedsDataID = new Dictionary<uint, Seeds>();
             this.seedsDataString = new Dictionary<string, Seeds>();
             load();
         }
@@ -47,9 +47,11 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// for ease of access
         /// </summary>
         private void load() {
-            seedsDataID = jsonUtilities.JsonDeserializeAsync<Dictionary<long, Seeds>>(seedsJson).Result;
-            foreach(Seeds seed in seedsDataID.Values) {
-                seedsDataString.Add(seed.name, seed);
+            List<Seeds> tempSeeds = jsonUtilities.JsonDeserializeAsync<List<Seeds>>(seedsJson).Result;
+
+            foreach(Seeds seed in tempSeeds) {
+                this.seedsDataString.Add(seed.name, seed);
+                this.seedsDataID.Add(seed.id, seed);
             }
         }
 
@@ -60,7 +62,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// <returns> The seed object that was retrieved </returns>
         public Seeds getSeeds(string name) {
             Seeds result;
-            seedsDataString.TryGetValue(name, out result);
+            this.seedsDataString.TryGetValue(name, out result);
             return result;
         }
 
@@ -69,7 +71,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// </summary>
         /// <param name="ID"> The id of the seed to retrieve </param>
         /// <returns> The seed object that was retrieved </returns>
-        public Seeds getSeeds(long ID) {
+        public Seeds getSeeds(uint ID) {
             Seeds result;
             seedsDataID.TryGetValue(ID, out result);
             return result;
@@ -94,7 +96,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// <param name="ID"> The id of the seed to create </param>
         /// <param name="amount"> The number of seeds to create </param>
         /// <returns> A new seed object with the correct properties and amount </returns>
-        public Seeds getSeedsAmonut(long ID, int amount)
+        public Seeds getSeedsAmonut(uint ID, int amount)
         {
             Seeds temp;
             temp = this.getSeeds(ID);

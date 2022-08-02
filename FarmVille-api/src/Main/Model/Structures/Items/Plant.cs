@@ -6,7 +6,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
     {
 
         [JsonProperty("SeedID")]
-        public long seedID { get; private set; }
+        public uint seedID { get; private set; }
 
         /// <summary>
         /// Constructor for a plant
@@ -16,9 +16,18 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// <param name="id"> The id of this plant object </param>
         /// <param name="buyPrice"> The amount a player can buy this plant for </param>
         /// <param name="sellPrice"> The amount a player can sell this plant for </param>
-        public Plant(String name, int amount, long id, double buyPrice, double sellPrice)
+        public Plant(String name, int amount, uint id, double buyPrice, double sellPrice, uint seedID)
                     :base(id, amount, buyPrice, sellPrice, name) {
 
+            this.seedID = seedID;
+
         }
+
+        public Plant(Plant oldPlant, int amount) 
+                    :base(oldPlant.id, oldPlant.amount, oldPlant.buyPrice, oldPlant.sellPrice, oldPlant.name) {
+
+            this.seedID = oldPlant.seedID;
+        }
+
     }
 }

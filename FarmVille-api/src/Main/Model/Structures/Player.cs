@@ -188,6 +188,22 @@ namespace FarmVille_api.src.Main.Model.Structures
             return result;
         }
 
+
+        public void harvest() {
+
+            List<Item> emptyItems = new List<Item>();
+
+            foreach(Output i in this.outputContainer.Values) {
+                if(i.remainingTime() == TimeSpan.Zero) {
+                    emptyItems.Add(i.harvest());
+                }
+            }
+
+            
+
+        }
+
+
         /// <summary>
         /// The toString method of the player class
         /// Format: 

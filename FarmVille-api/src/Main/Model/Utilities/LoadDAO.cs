@@ -8,15 +8,16 @@ namespace FarmVille_api.src.Main.Model.Utilities
     public static class LoadDAO
     {
 
-        static PlantPotsFileDAO plantPotsFileDAO;
-        static PlayersFileDAO playersFileDAO;
-        static SeedsFileDAO seedsFileDAO;
-        static ShopFileDAO shopFileDAO;
-        static PlantPotController plantPotController;
-        static PlayerController playerController;
-        static ShopController shopController;
-        static Farming farmingCommands;
-        static Menu menuCommands;
+        static PlantPotsFileDAO? plantPotsFileDAO;
+        static PlayersFileDAO? playersFileDAO;
+        static SeedsFileDAO? seedsFileDAO;
+        static ShopFileDAO? shopFileDAO;
+        static PlantPotController? plantPotController;
+        static PlayerController? playerController;
+        static ShopController? shopController;
+        static Farming? farmingCommands;
+        static Menu? menuCommands;
+        static PlantsFileDAO plantsFileDAO;
 
         /// <summary>
         /// Loads the FileDAOs
@@ -28,6 +29,7 @@ namespace FarmVille_api.src.Main.Model.Utilities
             seedsFileDAO = new SeedsFileDAO(StaticUtil.seedsJson, json);
             shopFileDAO = new ShopFileDAO(StaticUtil.shopJson, json);
             plantPotsFileDAO = new PlantPotsFileDAO(playersFileDAO, seedsFileDAO);
+            plantsFileDAO = new PlantsFileDAO(StaticUtil.plantsJson, json);
 
             plantPotController = new PlantPotController(plantPotsFileDAO);
             playerController = new PlayerController(playersFileDAO);
@@ -35,6 +37,8 @@ namespace FarmVille_api.src.Main.Model.Utilities
 
             farmingCommands = new Farming(plantPotController, playerController, embedUtilities);
             menuCommands = new Menu(playerController, embedUtilities);
+
+            IdentificationSearch.init(seedsFileDAO, plantsFileDAO);
 
         }
 

@@ -45,7 +45,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// <param name="UID"> The UID of the player that requested to plant a seed </param>
         /// <param name="seedID"> The id of the seed to plant </param>
         /// <returns> A boolean to indicate if the planting was successful </returns>
-        public Boolean plantSeed(ulong UID, long seedID)
+        public Boolean plantSeed(ulong UID, uint seedID)
         {
             Seeds currSeed = new Seeds(this.seedsFileDAO.getSeeds(seedID), 1);
             Player currPlayer = this.playersFileDAO.getPlayer(UID);

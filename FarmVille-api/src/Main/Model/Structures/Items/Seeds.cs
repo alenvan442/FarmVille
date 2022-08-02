@@ -12,7 +12,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         [JsonProperty("GrowthDuration")]
         public TimeSpan growDuration { get; private set; }
         [JsonProperty("PlantID")]
-        public long plantID { get; private set; }
+        public uint plantID { get; private set; }
         [JsonProperty("Regrow")]
         public Boolean regrow { get; private set; }
         [JsonProperty("Season")]
@@ -38,8 +38,8 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// <param name="regrow"> A boolean indicating if this seed regrows after harvested </param>
         /// <param name="season"> a string indicating which season this seed grows in </param>
         [JsonConstructor]
-        public Seeds(long id, int amount, double buyPrice, double sellPrice,
-                        string name, string plantName, int yield, TimeSpan growthDuration, long plantID,
+        public Seeds(uint id, int amount, double buyPrice, double sellPrice,
+                        string name, string plantName, int yield, TimeSpan growthDuration, uint plantID,
                         Boolean regrow, String season): 
                         base(id, amount, buyPrice, sellPrice, name) {
 

@@ -15,7 +15,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// </summary>
         /// <param name="id"> The id of this plant pot </param>
         /// <returns></returns>
-        public PlantPot(int id) : base(0, TimeSpan.Zero, DateTime.MinValue, id, 0) {
+        public PlantPot(uint id) : base(0, TimeSpan.Zero, DateTime.MinValue, id, 0) {
         }
 
         /// <summary>
