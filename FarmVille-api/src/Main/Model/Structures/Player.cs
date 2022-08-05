@@ -2,6 +2,7 @@ using System.Collections;
 using DSharpPlus.Entities;
 using FarmVille_api.src.Main.Model.Structures.Items;
 using FarmVille_api.src.Main.Model.Structures.Outputs;
+using FarmVille_api.src.Main.Model.Utilities;
 using Newtonsoft.Json;
 
 namespace FarmVille_api.src.Main.Model.Structures
@@ -81,14 +82,14 @@ namespace FarmVille_api.src.Main.Model.Structures
         /// </summary>
         /// <param name="seed"></param>
         /// <returns></returns>
-        public Boolean plantSeed(Seeds seed) {
+        public String plantSeed(Seeds seed) {
             PlantPot target = this.findFirstEmptyPot();
             if (target == null)
             {
-                return false;
+                return "All your plant pots are full!";
             } else {
                 target.plantSeed(seed);
-                return true;
+                return "Successfully planted your " + seed.name;
             }
         }
         
@@ -189,9 +190,16 @@ namespace FarmVille_api.src.Main.Model.Structures
         }
 
 
-        public void harvest() {
+        /// <summary>
+        /// Iterates through each output container associated
+        /// with the player and check to see if it is ready to be harvested
+        /// if so harvest then add the harvested output into the player's inventory
+        /// </summary>
+        /// <returns> A string the contains a list of what was harvested </returns>
+        public String harvest() {
 
             List<Item> emptyItems = new List<Item>();
+            String result = "";
 
             foreach(Output i in this.outputContainer.Values) {
                 if(i.remainingTime() == TimeSpan.Zero) {
@@ -199,8 +207,18 @@ namespace FarmVille_api.src.Main.Model.Structures
                 }
             }
 
-            
+            foreach(Item i in emptyItems) {
+                Item tempItem = IdentificationSearch.idSearch(i);
+                this.addItem(tempItem);
+                result += tempItem.amount + " " + tempItem.name + "\n";
+            }
 
+            if(emptyItems.Count == 0) {
+                return "Nothing was ready to be harvested!";
+            } else
+            {
+                return result;
+            }
         }
 
 
@@ -212,8 +230,8 @@ namespace FarmVille_api.src.Main.Model.Structures
         ///         (Player's Balance)
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
+        public override string ToString() {
+
             String result = "";
             result += "\n" + this.name + "\n\n";
             result += this.balance;

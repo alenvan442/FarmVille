@@ -25,7 +25,7 @@ namespace FarmVille_api.src.Main.Controller
         /// <param name="UID"> THe ID of the player planting the seed </param>
         /// <param name="seedName"> The name of the seed being planted </param>
         /// <returns> A boolean indicating whether or not the action was successful </returns>
-        public Boolean plantSeed(ulong UID, string seedName) {
+        public String plantSeed(ulong UID, string seedName) {
             return plantPotsFileDAO.plantSeed(UID, seedName);
         }
 
@@ -35,9 +35,17 @@ namespace FarmVille_api.src.Main.Controller
         /// <param name="UID"> The ID of the player planting the seed </param>
         /// <param name="seedID"> The ID of the seed being planted </param>
         /// <returns> A boolean indicating whether or not the action was successful </returns>
-        public Boolean plantSeed(ulong UID, uint seedID)
-        {
+        public String plantSeed(ulong UID, uint seedID) {
             return plantPotsFileDAO.plantSeed(UID, seedID);
+        }
+
+        /// <summary>
+        /// invokes the harvest command in the PlantPotsFileDAO given a player's id
+        /// </summary>
+        /// <param name="UID"> THe player who invoked the action </param>
+        /// <returns> A message for the player in correspondence to the state of the harvest </returns>
+        public String harvest(ulong UID) {
+            return plantPotsFileDAO.harvest(UID);
         }
 
         /// <summary>

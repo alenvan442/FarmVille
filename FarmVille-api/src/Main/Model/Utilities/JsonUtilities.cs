@@ -14,8 +14,8 @@ namespace FarmVille_api.src.Main.Model.Utilities
         /// <typeparam name="T"> the object type to deserialize to </typeparam>
         /// 
         /// <returns> the object created after deserializing </returns>
-        public async Task<T> JsonDeserializeAsync<T>(string filename)
-        {
+        public async Task<T> JsonDeserializeAsync<T>(string filename) {
+
             var json = string.Empty;
 
             //open the file to read
@@ -36,8 +36,8 @@ namespace FarmVille_api.src.Main.Model.Utilities
         /// <param name="obj"> the obj to be serialized </param>
         /// <param name="filename"> the path of the file to be written to </param>
         /// <typeparam name="T"> the object type to serialize to </typeparam>
-        public void JsonSerialize<T>(T obj, string filename)
-        {
+        public void JsonSerialize<T>(T obj, string filename) {
+            
             //serialize the obj into a json formatted string
             string jsonStr = JsonConvert.SerializeObject(obj, formatting: Formatting.Indented);
 

@@ -81,6 +81,14 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
             this.outputID = outputID;
         }
 
+        /// <summary>
+        /// The action of harvesting from this plant pot
+        /// We reset the time the input was placed into the output container
+        /// We reset the time it takes for the input to become harvestable
+        /// Create a new "empty" item which consists of only the outputted item's
+        /// id and amount
+        /// </summary>
+        /// <returns> The created "empty" item that was harvested </returns>
         public Item harvest() {
 
             this.startingTime = DateTime.MinValue;

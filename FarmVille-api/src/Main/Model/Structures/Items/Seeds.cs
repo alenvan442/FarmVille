@@ -76,8 +76,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// Format: (Seed Name)                   (Seed Amount)
         /// </summary>
         /// <returns> A string consisting of the data of a seed object </returns>
-        public override string ToString()
-        {
+        public override string ToString() {
             return base.ToString();
         }
 

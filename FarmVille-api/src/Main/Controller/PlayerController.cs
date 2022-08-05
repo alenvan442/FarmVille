@@ -17,8 +17,7 @@ namespace FarmVille_api.src.Main.Controller
         /// Utilizes the player DAO
         /// </summary>
         /// <param name="playersFileDAO"> A class that holds methods that correspond with the manipulation of data with players </param>
-        public PlayerController(PlayersFileDAO playersFileDAO)
-        {
+        public PlayerController(PlayersFileDAO playersFileDAO) {
             this.playersFileDAO = playersFileDAO;
         }
 

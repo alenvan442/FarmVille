@@ -37,8 +37,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// Format: (Item Name)              (Item Amount)
         /// </summary>
         /// <returns> A string consisting of the data of an item </returns>
-        public override string ToString()
-        {
+        public override string ToString() {
             return this.name + "        " + this.amount;
         }
 

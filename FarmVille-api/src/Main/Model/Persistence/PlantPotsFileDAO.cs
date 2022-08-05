@@ -32,7 +32,8 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// <param name="UID"> The UID of the player that requested to plant a seed </param>
         /// <param name="seedName"> The name of the seed to plant </param>
         /// <returns> A boolean to indicate if the planting was successful </returns>
-        public Boolean plantSeed(ulong UID, string seedName) {
+        public String plantSeed(ulong UID, string seedName) {
+
             Seeds currSeed = new Seeds(this.seedsFileDAO.getSeeds(seedName), 1);
             Player currPlayer = this.playersFileDAO.getPlayer(UID);
 
@@ -45,12 +46,23 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// <param name="UID"> The UID of the player that requested to plant a seed </param>
         /// <param name="seedID"> The id of the seed to plant </param>
         /// <returns> A boolean to indicate if the planting was successful </returns>
-        public Boolean plantSeed(ulong UID, uint seedID)
-        {
+        public String plantSeed(ulong UID, uint seedID) {
+
             Seeds currSeed = new Seeds(this.seedsFileDAO.getSeeds(seedID), 1);
             Player currPlayer = this.playersFileDAO.getPlayer(UID);
 
             return currPlayer.plantSeed(currSeed);
+        }
+
+        /// <summary>
+        /// Harvests a player's plant pots
+        /// </summary>
+        /// <param name="UID"> The id of the player who invoked the command </param>
+        /// <returns> A string consisting of what was harvested </returns>
+        public String harvest(ulong UID) {
+
+            Player currPlayer = this.playersFileDAO.getPlayer(UID);
+            return currPlayer.harvest();
         }
 
         /// <summary>

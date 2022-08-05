@@ -20,8 +20,8 @@ namespace FarmVille_api.src.Main
         public CommandsNextExtension commands { get; set; }
 
         //upon bot startup, do this
-        public async Task RunAsync()
-        {
+        public async Task RunAsync() {
+
             //create the configuration of the bot
             var clientConfig = new DiscordConfiguration
             {
@@ -71,8 +71,7 @@ namespace FarmVille_api.src.Main
         /// <param name="client"> the client that is ready </param>
         /// <param name="e"> the args that are passed in once the client is ready </param>
         /// <returns> a task </returns>
-        public async Task OnReady(DiscordClient client, ReadyEventArgs e)
-        {
+        public async Task OnReady(DiscordClient client, ReadyEventArgs e) {
             LoadDAO.load();
             await Task.CompletedTask;
         }
@@ -83,8 +82,7 @@ namespace FarmVille_api.src.Main
         /// <param name="client"> the client that has joined a guild </param>
         /// <param name="e"> the args that are passed in once the client connects to a guild </param>
         /// <returns> a task </returns>
-        public async Task OnGuildAvailable(DiscordClient client, GuildCreateEventArgs e)
-        {
+        public async Task OnGuildAvailable(DiscordClient client, GuildCreateEventArgs e) {
             LoadDAO.addPlayers(e.Guild);
             await Task.CompletedTask;
         }

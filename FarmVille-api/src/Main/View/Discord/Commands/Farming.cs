@@ -17,6 +17,7 @@ namespace FarmVille.Commands
     {
 
         PlantPotController plantPotController;
+
         PlayerController playerController;
         EmbedUtilities embedUtilities;
 
@@ -35,29 +36,60 @@ namespace FarmVille.Commands
         /// </summary>
         /// <param name="ctx"> The context of the command </param>
         /// <param name="input"> Any input the player makes, whether it is a seed name or seed id </param>
-        /// <returns></returns>
+        /// <returns>  </returns>
         [Command("plant")]
         public async Task plant(CommandContext ctx, string input) {
             Player currPlayer = this.playerController.getPlayer(ctx.User.Id);
-            String[] seeds = currPlayer.getSeeds();
 
-            //create the embed
-            DiscordEmbedBuilder baseEmbed = new DiscordEmbedBuilder
+            if (input.Length <= 0 || input == null)
             {
-                Color = DiscordColor.Azure,
-                Title = ctx.User.Username + "'s Seeds"
+                String[] seeds = currPlayer.getSeeds();
+
+                //create the embed
+                DiscordEmbedBuilder baseEmbed = new DiscordEmbedBuilder
+                {
+                    Color = DiscordColor.Azure,
+                    Title = ctx.User.Username + "'s Seeds"
+
+                };
+
+                String pageString = "";
+                foreach (String i in seeds)
+                {
+                    pageString += i + "\n";
+                }
+
+                await ctx.Channel.SendMessageAsync("Please enter a seed to plant and use the command: /plant (seed name)");
+                await this.embedUtilities.sendPagination(ctx.Channel, pageString, ctx.User, ctx.Client);
+            } else {
+                this.plantPotController.plantSeed(currPlayer.UID, input);
+            }
+        }
+
+
+        /// <summary>
+        /// The harvest command.
+        /// This will invoke the harvest mechanism on a player
+        /// harvesting all harvestable outputs at the same time.
+        /// Once the harvesting is finished, send an embed to the discord channel
+        /// displaying what was harvested
+        /// </summary>
+        /// <param name="ctx"> The context of the command </param>
+        /// <returns> an embed displaying the result of the harvest </returns>
+        [Command("harvest")]
+        public async Task harvest(CommandContext ctx) {
+            Player currPlayer = this.playerController.getPlayer(ctx.User.Id);
+            String result = this.plantPotController.harvest(currPlayer.UID);
+
+            DiscordEmbedBuilder embed = new DiscordEmbedBuilder
+            {
+
+                Title = currPlayer.name + "'s Harvest",
+                Description = "\n" + result
 
             };
 
-            String pageString = "";
-            foreach (String i in seeds)
-            {
-                pageString += i + "\n";
-            }
-
-            await this.embedUtilities.sendPagination(ctx.Channel, pageString, ctx.User, ctx.Client);
-
-            await Task.CompletedTask;
+            await ctx.Channel.SendMessageAsync(embed);
         }
         
     }

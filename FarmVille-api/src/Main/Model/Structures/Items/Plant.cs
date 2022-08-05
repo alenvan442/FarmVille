@@ -23,6 +23,14 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
 
         }
 
+        /// <summary>
+        /// Plant cloning
+        /// Utilizes an already existing plant object and create a new one
+        /// based off of the original
+        /// THe only noticeable difference will be in the amount of the two objects
+        /// </summary>
+        /// <param name="oldPlant"></param>
+        /// <param name="amount"></param>
         public Plant(Plant oldPlant, int amount) 
                     :base(oldPlant.id, oldPlant.amount, oldPlant.buyPrice, oldPlant.sellPrice, oldPlant.name) {
 

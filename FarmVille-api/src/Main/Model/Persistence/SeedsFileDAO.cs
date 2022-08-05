@@ -33,8 +33,8 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// </summary>
         /// <param name="seedsJson"></param>
         /// <param name="jsonUtilities"></param>
-        public SeedsFileDAO(string seedsJson, JsonUtilities jsonUtilities)
-        {
+        public SeedsFileDAO(string seedsJson, JsonUtilities jsonUtilities) {
+
             this.seedsJson = seedsJson;
             this.jsonUtilities = jsonUtilities;
             this.seedsDataID = new Dictionary<uint, Seeds>();
@@ -96,8 +96,8 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// <param name="ID"> The id of the seed to create </param>
         /// <param name="amount"> The number of seeds to create </param>
         /// <returns> A new seed object with the correct properties and amount </returns>
-        public Seeds getSeedsAmonut(uint ID, int amount)
-        {
+        public Seeds getSeedsAmonut(uint ID, int amount) {
+            
             Seeds temp;
             temp = this.getSeeds(ID);
             Seeds result = new Seeds(temp, amount);

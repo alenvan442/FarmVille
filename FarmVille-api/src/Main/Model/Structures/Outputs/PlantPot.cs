@@ -61,8 +61,8 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// Line 3: The remaining time, not showned if the pot is empty
         /// </summary>
         /// <returns> a string displaying all information in regards to this plant pot </returns>
-        public override string ToString()
-        {
+        public override string ToString() { 
+            
             string result;
             if(this.isEmpty()) {
                 result = "Plant Pot: #" + id + 1 +
