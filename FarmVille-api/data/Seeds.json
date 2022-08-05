@@ -2,11 +2,11 @@
     "Seeds:Spinach": {
         "GrowthDuration": "00:30:00",
         "PlantName": "Spinach",
-        "PlantID": 529,
+        "PlantID": 131073,
         "Yield": 2,
         "Regrow": false,
         "Season": "Fall",
-        "ID": 273,
+        "ID": 65537,
         "Name": "Spinach Seeds",
         "BuyPrice": 4.00,
         "SellPrice": 0.00
@@ -14,11 +14,11 @@
     "Seeds:Turnip": {
         "GrowthDuration": "00:30:00",
         "PlantName": "Turnip",
-        "PlantID": 530,
+        "PlantID": 131074,
         "Yield": 2,
         "Regrow": false,
         "Season": "Spring",
-        "ID": 274,
+        "ID": 65538,
         "Name": "Turnip Seeds",
         "BuyPrice": 4.00,
         "SellPrice": 0.00
@@ -26,11 +26,11 @@
     "Seeds:Beets": {
         "GrowthDuration": "01:00:00",
         "PlantName": "Beets",
-        "PlantID": 545,
+        "PlantID": 131075,
         "Yield": 3,
         "Regrow": false,
         "Season": "Winter",
-        "ID": 289,
+        "ID": 65539,
         "Name": "Beet Seeds",
         "BuyPrice": 8.00,
         "SellPrice": 0.00
@@ -38,11 +38,11 @@
     "Seeds:Carrot": {
         "GrowthDuration": "01:30:00",
         "PlantName": "Carrots",
-        "PlantID": 546,
+        "PlantID": 131076,
         "Yield": 2,
         "Regrow": false,
         "Season": "Fall",
-        "ID": 290,
+        "ID": 65540,
         "Name": "Carrot Seeds",
         "BuyPrice": 8.00,
         "SellPrice": 0.00
@@ -50,11 +50,11 @@
     "Seeds:Celery": {
         "GrowthDuration": "01:30:00",
         "PlantName": "Celery",
-        "PlantID": 547,
+        "PlantID": 131077,
         "Yield": 3,
         "Regrow": false,
         "Season": "Winter",
-        "ID": 291,
+        "ID": 65541,
         "Name": "Celery Seeds",
         "BuyPrice": 8.00,
         "SellPrice": 0.00
@@ -62,11 +62,11 @@
     "Seeds:Cucumber": {
         "GrowthDuration": "01:10:00",
         "PlantName": "Cucumber",
-        "PlantID": 548,
+        "PlantID": 131078,
         "Yield": 3,
         "Regrow": false,
         "Season": "Summer",
-        "ID": 292,
+        "ID": 65542,
         "Name": "Cucumber Seeds",
         "BuyPrice": 8.00,
         "SellPrice": 0.00
@@ -74,11 +74,11 @@
     "Seeds:Beans": {
         "GrowthDuration": "03:00:00",
         "PlantName": "Beans",
-        "PlantID": 561,
+        "PlantID": 131079,
         "Yield": 8,
         "Regrow": false,
         "Season": "Spring",
-        "ID": 305,
+        "ID": 65543,
         "Name": "Bean Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
@@ -86,11 +86,11 @@
     "Seeds:Corn": {
         "GrowthDuration": "04:15:00",
         "PlantName": "Corn",
-        "PlantID": 562,
+        "PlantID": 131080,
         "Yield": 2,
         "Regrow": true,
         "Season": "Summer",
-        "ID": 306,
+        "ID": 65544,
         "Name": "Corn Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
@@ -98,11 +98,11 @@
     "Seeds:Lettuce": {
         "GrowthDuration": "02:30:00",
         "PlantName": "Lettuce",
-        "PlantID": 563,
+        "PlantID": 131081,
         "Yield": 3,
         "Regrow": false,
         "Season": "Spring",
-        "ID": 307,
+        "ID": 65545,
         "Name": "Lettuce Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
@@ -110,11 +110,11 @@
     "Seeds:Peppers": {
         "GrowthDuration": "04:15:00",
         "PlantName": "Peppers",
-        "PlantID": 564,
+        "PlantID": 131082,
         "Yield": 4,
         "Regrow": true,
         "Season": "Fall",
-        "ID": 308,
+        "ID": 65546,
         "Name": "Pepper Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
@@ -122,11 +122,11 @@
     "Seeds:Tomato": {
         "GrowthDuration": "04:15:00",
         "PlantName": "Tomato",
-        "PlantID": 565,
+        "PlantID": 131083,
         "Yield": 4,
         "Regrow": true,
         "Season": "Summer",
-        "ID": 309,
+        "ID": 65547,
         "Name": "Tomato Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
@@ -134,11 +134,11 @@
     "Seeds:Watermelon": {
         "GrowthDuration": "03:00:00",
         "PlantName": "Watermelon",
-        "PlantID": 566,
+        "PlantID": 131084,
         "Yield": 2,
         "Regrow": false,
         "Season": "Summer",
-        "ID": 310,
+        "ID": 65548,
         "Name": "Watermelon Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
@@ -146,11 +146,11 @@
     "Seeds:Broccoli": {
         "GrowthDuration": "03:45:00",
         "PlantName": "Broccoli",
-        "PlantID": 577,
+        "PlantID": 131085,
         "Yield": 3,
         "Regrow": false,
         "Season": "Winter",
-        "ID": 321,
+        "ID": 65549,
         "Name": "Broccoli Seeds",
         "BuyPrice": 40.00,
         "SellPrice": 0.00
@@ -158,11 +158,11 @@
     "Seeds:Cauliflower": {
         "GrowthDuration": "03:45:00",
         "PlantName": "Cauliflower",
-        "PlantID": 578,
+        "PlantID": 131086,
         "Yield": 2,
         "Regrow": false,
         "Season": "Winter",
-        "ID": 322,
+        "ID": 65550,
         "Name": "Cauliflower",
         "BuyPrice": 40.00,
         "SellPrice": 0.00
@@ -170,11 +170,11 @@
     "Seeds:Onion": {
         "GrowthDuration": "05:00:00",
         "PlantName": "Onion",
-        "PlantID": 579,
+        "PlantID": 131087,
         "Yield": 2,
         "Regrow": false,
         "Season": "Summer",
-        "ID": 323,
+        "ID": 65551,
         "Name": "Onion Seeds",
         "BuyPrice": 40.00,
         "SellPrice": 0.00
@@ -182,11 +182,11 @@
     "Seeds:Potato": {
         "GrowthDuration": "05:00:00",
         "PlantName": "Potato",
-        "PlantID": 580,
+        "PlantID": 131088,
         "Yield": 4,
         "Regrow": false,
         "Season": "Spring",
-        "ID": 324,
+        "ID": 65552,
         "Name": "Potato Seeds",
         "BuyPrice": 40.00,
         "SellPrice": 0.00
@@ -194,11 +194,11 @@
     "Seeds:Cabbage": {
         "GrowthDuration": "07:00:00",
         "PlantName": "Cabbage",
-        "PlantID": 593,
+        "PlantID": 131089,
         "Yield": 3,
         "Regrow": false,
         "Season": "Winter",
-        "ID": 337,
+        "ID": 65553,
         "Name": "Cabbage Seeds",
         "BuyPrice": 80.00,
         "SellPrice": 0.00
@@ -206,11 +206,11 @@
     "Seeds:Eggplant": {
         "GrowthDuration": "12:00:00",
         "PlantName": "Eggplant",
-        "PlantID": 594,
+        "PlantID": 131090,
         "Yield": 4,
         "Regrow": true,
         "Season": "Fall",
-        "ID": 338,
+        "ID": 65554,
         "Name": "Eggplant Seeds",
         "BuyPrice": 80.00,
         "SellPrice": 0.00
@@ -218,11 +218,11 @@
     "Seeds:Pumpkin": {
         "GrowthDuration": "10:00:00",
         "PlantName": "Pumpkin",
-        "PlantID": 595,
+        "PlantID": 131091,
         "Yield": 2,
         "Regrow": true,
         "Season": "Fall",
-        "ID": 339,
+        "ID": 65555,
         "Name": "Pumpkin Seeds",
         "BuyPrice": 80.00,
         "SellPrice": 0.00
@@ -230,11 +230,11 @@
     "Seeds:Wheat": {
         "GrowthDuration": "16:00:00",
         "PlantName": "Wheat",
-        "PlantID": 609,
+        "PlantID": 131092,
         "Yield": 9,
         "Regrow": true,
         "Season": "Spring",
-        "ID": 353,
+        "ID": 65556,
         "Name": "Wheat Seeds",
         "BuyPrice": 120.00,
         "SellPrice": 0.00
