@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Collections;
 using DSharpPlus.Entities;
 using FarmVille_api.src.Main.Model.Structures.Items;
@@ -20,14 +21,26 @@ namespace FarmVille_api.src.Main.Model.Structures
         [JsonProperty("Name")]
         public string name { get; private set; }
         [JsonProperty("Seeds")]
-        private Dictionary<long, Seeds> seeds { get; set; }
+        private Dictionary<uint, Seeds> seeds { get; set; }
         [JsonProperty("Plants")]
-        private Dictionary<long, Plant> plants { get; set; }
+        private Dictionary<uint, Plant> plants { get; set; }
         [JsonProperty("Balance")]
         private double balance { get; set; }
 
-
         private Dictionary<long, Item> inventory;
+
+        [JsonConstructor]
+        public Player(ulong ID, Dictionary<int, PlantPot> OutputContainers, string Name, Dictionary<uint, Seeds> Seeds,
+                        Dictionary<uint, Plant> Plants, double Balance) {
+            this.UID = ID;
+            this.name = Name;
+            this.outputContainer = OutputContainers;
+            this.balance = Balance;
+            this.seeds = Seeds;
+            this.plants = Plants;
+            this.inventory = new Dictionary<long, Item>();
+            loadInventory();
+        }
 
         /// <summary>
         /// Constructor for a new player
@@ -39,8 +52,8 @@ namespace FarmVille_api.src.Main.Model.Structures
             this.outputContainer = new Dictionary<int, PlantPot>();
             outputContainer.Add(0, new PlantPot(0));
             this.balance = 5.00;
-            this.seeds = new Dictionary<long, Seeds>();
-            this.plants = new Dictionary<long, Plant>();
+            this.seeds = new Dictionary<uint, Seeds>();
+            this.plants = new Dictionary<uint, Plant>();
             this.inventory = new Dictionary<long, Item>();
             loadInventory();
         }
@@ -89,6 +102,7 @@ namespace FarmVille_api.src.Main.Model.Structures
                 return "All your plant pots are full!";
             } else {
                 target.plantSeed(seed);
+                this.removeItem(seed, 1);
                 return "Successfully planted your " + seed.name;
             }
         }
@@ -123,6 +137,34 @@ namespace FarmVille_api.src.Main.Model.Structures
             return result;
         }
 
+        public Boolean removeItem(Item item, int amount = int.MaxValue) {
+            if(item is null) {
+                return false;
+            }
+
+            Item tempItem = IdentificationSearch.idSearch(item); 
+
+            if(tempItem is Seeds) {
+                Seeds tempSeed;
+                this.seeds.TryGetValue(item.id, out tempSeed);
+                tempSeed.amount -= amount;
+                if(tempSeed.amount <= 0) {
+                    this.seeds.Remove(item.id);
+                }
+            } else if(tempItem is Plant) {
+                Plant tempPlant;
+                this.plants.TryGetValue(item.id, out tempPlant);
+                tempPlant.amount -= amount;
+                if (tempPlant.amount <= 0)
+                {
+                    this.plants.Remove(item.id);
+                }
+            }
+            this.inventory.Remove(item.id);
+
+            return true;
+        }
+
         /// <summary>
         /// Adds an item to the player's inventory
         /// We check to see what child type the item is
@@ -139,8 +181,10 @@ namespace FarmVille_api.src.Main.Model.Structures
             if(item is null) {
                 return false;
             }
+
+            Item tempItem = IdentificationSearch.idSearch(item);
             
-            if(item is Seeds) {
+            if(tempItem is Seeds) {
                 Seeds? newSeed = (Seeds)item;
                 if(this.seeds.ContainsKey(item.id)) {
                     this.seeds.TryGetValue(item.id, out newSeed);
@@ -149,7 +193,7 @@ namespace FarmVille_api.src.Main.Model.Structures
                 } else {
                     this.seeds.Add(newSeed.id, newSeed);
                 }
-            } else if(item is Plant) {
+            } else if(tempItem is Plant) {
                 Plant? newPlant = (Plant)item;
                 if(this.plants.ContainsKey(item.id)) {
                     this.plants.TryGetValue(item.id, out newPlant);
@@ -221,6 +265,16 @@ namespace FarmVille_api.src.Main.Model.Structures
             }
         }
 
+        public Boolean purchaseItem(Item item) {
+            if(item.buyPrice > this.balance) {
+                return false;
+            } else {
+                this.balance -= item.buyPrice;
+                this.addItem(item);
+                return true;
+            }
+        }
+
 
         /// <summary>
         /// The toString method of the player class
@@ -233,8 +287,8 @@ namespace FarmVille_api.src.Main.Model.Structures
         public override string ToString() {
 
             String result = "";
-            result += "\n" + this.name + "\n\n";
-            result += this.balance;
+            result += "\nUsername: " + this.name + "\n\n";
+            result += "Balance: " + this.balance;
 
             return result;
         }

@@ -1,3 +1,4 @@
+using System.Diagnostics.Tracing;
 using System;
 using System.Threading.Tasks;
 using DSharpPlus;
@@ -22,6 +23,8 @@ namespace FarmVille_api.src.Main
         //upon bot startup, do this
         public async Task RunAsync() {
 
+            LoadDAO.load(); 
+            
             //create the configuration of the bot
             var clientConfig = new DiscordConfiguration
             {
@@ -44,7 +47,7 @@ namespace FarmVille_api.src.Main
                 EnableDefaultHelp = true,
                 EnableDms = false,
                 IgnoreExtraArguments = true,
-                StringPrefixes = new string[] { "." },
+                StringPrefixes = new string[] { ".", "/" },
 
             };
 
@@ -56,7 +59,7 @@ namespace FarmVille_api.src.Main
             //Set up interactivity
             client.UseInteractivity(new InteractivityConfiguration()
             {
-                Timeout = TimeSpan.FromMinutes(5)
+                Timeout = TimeSpan.FromMinutes(2)
             });
 
             //connect the bot to the client
@@ -72,7 +75,6 @@ namespace FarmVille_api.src.Main
         /// <param name="e"> the args that are passed in once the client is ready </param>
         /// <returns> a task </returns>
         public async Task OnReady(DiscordClient client, ReadyEventArgs e) {
-            LoadDAO.load();
             await Task.CompletedTask;
         }
 
@@ -86,6 +88,7 @@ namespace FarmVille_api.src.Main
             LoadDAO.addPlayers(e.Guild);
             await Task.CompletedTask;
         }
+
 
     }
 }

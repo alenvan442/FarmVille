@@ -47,11 +47,14 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// for ease of access
         /// </summary>
         private void load() {
-            List<Seeds> tempSeeds = jsonUtilities.JsonDeserializeAsync<List<Seeds>>(seedsJson).Result;
-
-            foreach(Seeds seed in tempSeeds) {
-                this.seedsDataString.Add(seed.name, seed);
-                this.seedsDataID.Add(seed.id, seed);
+            Dictionary<string, Seeds> tempSeeds = jsonUtilities.JsonDeserializeAsync<Dictionary<string, Seeds>>(seedsJson).Result;
+            if (tempSeeds != null)
+            {
+                foreach (Seeds seed in tempSeeds.Values)
+                {
+                    this.seedsDataString.Add(seed.name, seed);
+                    this.seedsDataID.Add(seed.id, seed);
+                }
             }
         }
 

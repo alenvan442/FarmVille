@@ -24,7 +24,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// <param name="buyPrice"> How much to buy the item for </param>
         /// <param name="sellPrice"> How much one can sell the item for </param>
         /// <param name="name"> The name of the item </param>
-        public Item(uint id, int amount, double buyPrice, double sellPrice, string name) {
+        public Item(uint id, double buyPrice, double sellPrice, string name, int amount = 0) {
             this.id = id;
             this.amount = amount;
             this.buyPrice = buyPrice;

@@ -11,6 +11,7 @@ using FarmVille_api.src.Main.Controller;
 using FarmVille_api.src.Main.Model;
 using FarmVille_api.src.Main.Model.Structures;
 using FarmVille_api.src.Main.Model.Utilities;
+using FarmVille_api.src.Main.View.Discord.Commands;
 
 namespace FarmVille.Commands
 {
@@ -20,21 +21,13 @@ namespace FarmVille.Commands
     public class Menu: BaseCommandModule
     {
 
-        PlayerController playerController;
-        EmbedUtilities embedUtilities;
-
-        public Menu(PlayerController playerController, EmbedUtilities embedUtilities) {
-            this.playerController = playerController;
-            this.embedUtilities = embedUtilities;
-        }
-
         /// <summary>
         /// Will display the help menu 
         /// This will display various categories and commands with their functionality
         /// </summary>
         /// <param name="ctx"> The Context of the command </param>
         /// <returns></returns>
-        [Command("help")]
+        [Command("helpMenu")]
         public async Task helpMenu(CommandContext ctx) {
             await Task.CompletedTask;
         }
@@ -59,7 +52,7 @@ namespace FarmVille.Commands
         [Command("status")]
         public async Task displayPlayerStatus(CommandContext ctx) {
 
-            Player currPlayer = playerController.getPlayer(ctx.Member.Id);
+            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.Member.Id);
 
             //create the embed
             DiscordEmbedBuilder baseEmbed = new DiscordEmbedBuilder
@@ -81,7 +74,7 @@ namespace FarmVille.Commands
         /// <returns></returns>
         [Command("bag")]
         public async Task displayPlayerInventory(CommandContext ctx) {
-            Player currPlayer = playerController.getPlayer(ctx.User.Id);
+            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
             String[] inventory = currPlayer.getInventory();
 
             //create the embed
@@ -94,14 +87,13 @@ namespace FarmVille.Commands
 
             String pageString = "";
             foreach(String i in inventory) {
-                pageString += i + "\n";
+                pageString += "\n" + i;
             }
+            pageString += "\n";
 
-            await this.embedUtilities.sendPagination(ctx.Channel, pageString, ctx.User, ctx.Client);
+            await CommandsHelper.embedUtilities.sendPagination(ctx.Channel, pageString, ctx.User, ctx.Client, baseEmbed);
 
         }
-
-
         
     }
 }

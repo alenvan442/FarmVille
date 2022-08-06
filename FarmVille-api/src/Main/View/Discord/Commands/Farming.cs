@@ -1,3 +1,4 @@
+using System.Drawing;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
@@ -6,6 +7,7 @@ using DSharpPlus.Interactivity.Extensions;
 using FarmVille_api.src.Main.Controller;
 using FarmVille_api.src.Main.Model.Structures;
 using FarmVille_api.src.Main.Model.Utilities;
+using FarmVille_api.src.Main.View.Discord.Commands;
 
 namespace FarmVille.Commands
 {
@@ -16,20 +18,7 @@ namespace FarmVille.Commands
     public class Farming: BaseCommandModule
     {
 
-        PlantPotController plantPotController;
-
-        PlayerController playerController;
-        EmbedUtilities embedUtilities;
-
-        /// <summary>
-        /// Constructor of the Farming commands class
-        /// </summary>
-        /// <param name="plantPotController"> The controller that will be handling the delegation of plant pot interactions </param>
-        public Farming(PlantPotController plantPotController, PlayerController playerController, EmbedUtilities embedUtilities) {
-            this.plantPotController = plantPotController;
-            this.playerController = playerController;
-            this.embedUtilities = embedUtilities;
-        }
+        
 
         /// <summary>
         /// The plant command, used for a player to plant a seed into a plant pot
@@ -38,10 +27,10 @@ namespace FarmVille.Commands
         /// <param name="input"> Any input the player makes, whether it is a seed name or seed id </param>
         /// <returns>  </returns>
         [Command("plant")]
-        public async Task plant(CommandContext ctx, string input) {
-            Player currPlayer = this.playerController.getPlayer(ctx.User.Id);
+        public async Task plant(CommandContext ctx, string input = "") {
+            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
 
-            if (input.Length <= 0 || input == null)
+            if (input?.Length <= 0 || input == null)
             {
                 String[] seeds = currPlayer.getSeeds();
 
@@ -56,13 +45,14 @@ namespace FarmVille.Commands
                 String pageString = "";
                 foreach (String i in seeds)
                 {
-                    pageString += i + "\n";
+                    pageString += "\n" + i;
                 }
+                pageString += "\n";
 
                 await ctx.Channel.SendMessageAsync("Please enter a seed to plant and use the command: /plant (seed name)");
-                await this.embedUtilities.sendPagination(ctx.Channel, pageString, ctx.User, ctx.Client);
+                await CommandsHelper.embedUtilities.sendPagination(ctx.Channel, pageString, ctx.User, ctx.Client, baseEmbed);
             } else {
-                this.plantPotController.plantSeed(currPlayer.UID, input);
+                CommandsHelper.plantPotController.plantSeed(currPlayer.UID, input);
             }
         }
 
@@ -78,12 +68,12 @@ namespace FarmVille.Commands
         /// <returns> an embed displaying the result of the harvest </returns>
         [Command("harvest")]
         public async Task harvest(CommandContext ctx) {
-            Player currPlayer = this.playerController.getPlayer(ctx.User.Id);
-            String result = this.plantPotController.harvest(currPlayer.UID);
+            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
+            String result = CommandsHelper.plantPotController.harvest(currPlayer.UID);
 
             DiscordEmbedBuilder embed = new DiscordEmbedBuilder
             {
-
+                Color = DiscordColor.Azure,
                 Title = currPlayer.name + "'s Harvest",
                 Description = "\n" + result
 

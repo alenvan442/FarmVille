@@ -14,7 +14,11 @@ namespace FarmVille_api.src.Main.Model.Utilities
             plantsFileDAO = plantsDAO;
         }
 
-        public static Item idSearch(Item item) {
+        public static Item? idSearch(Item item) {
+            if(item is null) {
+                return null;
+            }
+
             uint id = item.id;
             uint itemType = id >> 16;
             Item result;

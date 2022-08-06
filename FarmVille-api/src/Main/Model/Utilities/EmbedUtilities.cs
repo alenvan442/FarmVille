@@ -1,3 +1,4 @@
+using System.Threading;
 using DSharpPlus;
 using DSharpPlus.Entities;
 using DSharpPlus.Interactivity;
@@ -9,7 +10,7 @@ namespace FarmVille_api.src.Main.Model.Utilities
     public class EmbedUtilities
     {
         public async Task sendPagination(DiscordChannel channel, string message,
-                                        DiscordUser user, DiscordClient client) {
+                                        DiscordUser user, DiscordClient client, DiscordEmbedBuilder embed) {
 
             //create the left and right emojis 
             PaginationEmojis buttons = new PaginationEmojis
@@ -23,12 +24,12 @@ namespace FarmVille_api.src.Main.Model.Utilities
             };
 
             var interactivity = client.GetInteractivity();
-            var pages = interactivity.GeneratePagesInContent(message);
+            var pages = interactivity.GeneratePagesInEmbed(message, SplitType.Line, embed);
 
             //send the pages
             await interactivity.SendPaginatedMessageAsync(channel, user, pages, emojis: buttons,
                 PaginationBehaviour.Ignore,
-                PaginationDeletion.KeepEmojis);
+                PaginationDeletion.DeleteEmojis);
 
         } 
     }

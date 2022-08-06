@@ -41,7 +41,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         public Seeds(uint id, int amount, double buyPrice, double sellPrice,
                         string name, string plantName, int yield, TimeSpan growthDuration, uint plantID,
                         Boolean regrow, String season): 
-                        base(id, amount, buyPrice, sellPrice, name) {
+                        base(id, buyPrice, sellPrice, name, amount) {
 
             this.plantName = plantName;
             this.yield = yield;
@@ -60,7 +60,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// <param name="otherSeed"></param> The seed to use to clone
         /// <param name="amount"></param> The new amount of the seed, remember this seed is considered an item
         public Seeds(Seeds otherSeed, int amount): 
-                        base(otherSeed.id, amount, otherSeed.buyPrice, otherSeed.sellPrice, otherSeed.name) {
+                        base(otherSeed.id, otherSeed.buyPrice, otherSeed.sellPrice, otherSeed.name, amount) {
 
             this.plantName = otherSeed.plantName;
             this.yield = otherSeed.yield;

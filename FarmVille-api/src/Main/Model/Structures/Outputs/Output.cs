@@ -94,7 +94,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
             this.startingTime = DateTime.MinValue;
             this.growthDuration = TimeSpan.Zero;
 
-            Item newItem = new Item(this.outputID, this.yield, 0, 0, "");
+            Item newItem = new Item(this.outputID, 0, 0, "", this.yield);
             this.outputID = 0;
             this.yield = 0;
 

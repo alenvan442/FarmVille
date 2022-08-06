@@ -1,5 +1,5 @@
 {
-    "Plants:Spinach": {
+    "Spinach": {
         "ID": 131073,
         "Name": "Spinach",
         "SeedName": "Spinach Seeds",
@@ -7,7 +7,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 2.50
     },
-    "Plants:Turnip": {
+    "Turnip": {
         "ID": 131074,
         "Name": "Turnip",
         "SeedName": "Turnip Seeds",
@@ -15,7 +15,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 2.50
     },
-    "Plants:Beets": {
+    "Beets": {
         "ID": 131075,
         "Name": "Beets",
         "SeedName": "Beet Seeds",
@@ -23,7 +23,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 3.40
     },
-    "Plants:Carrot": {
+    "Carrot": {
         "ID": 131076,
         "Name": "Carrot",
         "SeedName": "Carrot Seeds",
@@ -31,7 +31,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 5.60
     },
-    "Plants:Celery": {
+    "Celery": {
         "ID": 131077,
         "Name": "Celery",
         "SeedName": "Celery Seeds",
@@ -39,7 +39,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 3.73
     },
-    "Plants:Cucumber": {
+    "Cucumber": {
         "ID": 131078,
         "Name": "Cucumber",
         "SeedName": "Cucumber Seeds",
@@ -47,7 +47,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 3.50
     },
-    "Plants:Beans": {
+    "Beans": {
         "ID": 131079,
         "Name": "Beans",
         "SeedName": "Bean Seeds",
@@ -55,7 +55,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 3.30
     },
-    "Plants:Corn": {
+    "Corn": {
         "ID": 131080,
         "Name": "Corn",
         "SeedName": "Corn Seeds",
@@ -63,7 +63,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 4.00
     },
-    "Plants:Lettuce": {
+    "Lettuce": {
         "ID": 131081,
         "Name": "Lettuce",
         "SeedName": "Lettuce Seeds",
@@ -71,7 +71,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 8.45
     },
-    "Plants:Peppers": {
+    "Peppers": {
         "ID": 131082,
         "Name": "Peppers",
         "SeedName": "Pepper Seeds",
@@ -79,7 +79,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 2.00
     },
-    "Plants:Tomato": {
+    "Tomato": {
         "ID": 131083,
         "Name": "Tomato",
         "SeedName": "Tomato Seeds",
@@ -87,7 +87,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 2.00
     },
-    "Plants:Watermelon": {
+    "Watermelon": {
         "ID": 131084,
         "Name": "Watermelon",
         "SeedName": "Watermelon Seeds",
@@ -95,7 +95,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 13.21
     },
-    "Plants:Broccoli": {
+    "Broccoli": {
         "ID": 131085,
         "Name": "Broccoli",
         "SeedName": "Broccoli Seeds",
@@ -103,7 +103,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 16.15
     },
-    "Plants:Cauliflower": {
+    "Cauliflower": {
         "ID": 131086,
         "Name": "Cauliflower",
         "SeedName": "Cauliflower Seeds",
@@ -111,7 +111,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 24.20
     },
-    "Plants:Onion": {
+    "Onion": {
         "ID": 131087,
         "Name": "Onion",
         "SeedName": "Onion Seeds",
@@ -119,7 +119,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 25.60
     },
-    "Plants:Potato": {
+    "Potato": {
         "ID": 131088,
         "Name": "Potato",
         "SeedName": "Potato Seeds",
@@ -127,7 +127,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 12.80
     },
-    "Plants:Cabbage": {
+    "Cabbage": {
         "ID": 131089,
         "Name": "Cabbage",
         "SeedName": "Cabbage Seeds",
@@ -135,7 +135,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 15.95
     },
-    "Plants:Eggplant": {
+    "Eggplant": {
         "ID": 131090,
         "Name": "Eggplant",
         "SeedName": "Eggplant Seeds",
@@ -143,7 +143,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 12.50
     },
-    "Plants:Pumpkin": {
+    "Pumpkin": {
         "ID": 131091,
         "Name": "Pumpkin",
         "SeedName": "Pumpkin Seeds",
@@ -151,7 +151,7 @@
         "BuyPrice": 0.00,
         "SellPrice": 27.50
     },
-    "Plants:Wheat": {
+    "Wheat": {
         "ID": 131092,
         "Name": "Wheat",
         "SeedName": "Wheat Seeds",

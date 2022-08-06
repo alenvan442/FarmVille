@@ -27,7 +27,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
             this.playersJson = playersJson;
             this.jsonUtilities = jsonUtilities;
             this.seedsFileDAO = seedsFileDAO;
-            this.playersData = new Dictionary<ulong, Player>();
+            playersData = new Dictionary<ulong, Player>();
             load();
         }
 
@@ -36,7 +36,10 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// The data is then saved into a local collection for easier access
         /// </summary>
         private void load() {
-            playersData = jsonUtilities.JsonDeserializeAsync<Dictionary<ulong, Player>>(playersJson).Result;
+            var tempData = jsonUtilities.JsonDeserializeAsync<Dictionary<ulong, Player>>(playersJson).Result;
+            if(tempData != null) {
+                this.playersData = tempData;
+            }
         }
 
         /// <summary>

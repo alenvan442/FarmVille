@@ -6,7 +6,8 @@ namespace FarmVille_api.src.Main.Model.Persistence
     public class ShopFileDAO
     {
 
-        List<Item> shopList;
+        //List<Item> shopList;
+        Dictionary<string, Item> shopList;
         string shopJson;
         JsonUtilities jsonUtilities;
 
@@ -18,7 +19,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         public ShopFileDAO(string shopJson, JsonUtilities jsonUtilities) {
             this.shopJson = shopJson;
             this.jsonUtilities = jsonUtilities;
-            this.shopList = new List<Item>();
+            this.shopList = new Dictionary<string, Item>();
             load();
         }
 
@@ -26,7 +27,26 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// Loads the shop's data into a more local place for ease of access
         /// </summary>
         private void load() {
-            shopList = jsonUtilities.JsonDeserializeAsync<List<Item>>(shopJson).Result;
+            shopList = jsonUtilities.JsonDeserializeAsync<Dictionary<string, Item>>(shopJson).Result;
+        }
+
+        public List<Item> getPage(int pageNumber) {
+            int lowerBound = (pageNumber * 10) - 10;
+            List<Item> itemCatalogue = this.shopList.Values.ToList();
+            return itemCatalogue.GetRange(lowerBound, 10);
+
+        }
+
+        public Item? buy(string item) {
+            Item? tempItem;
+            this.shopList.TryGetValue(item, out tempItem);
+
+            if(tempItem is null) {
+                return null;
+            } else {
+                return IdentificationSearch.idSearch(tempItem);
+            }
+
         }
 
     }

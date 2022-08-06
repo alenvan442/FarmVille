@@ -9,6 +9,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         string plantsJson;
         JsonUtilities jsonUtilities;
         Dictionary<uint, Plant> plantsId;
+        Dictionary<string, Plant> plantsName;
 
         /// <summary>
         /// Constructor for the DAO for plant items
@@ -20,6 +21,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
             this.plantsJson = plantsJson;
             this.jsonUtilities = jsonUtilities;
             this.plantsId = new Dictionary<uint, Plant>();
+            this.plantsName = new Dictionary<string, Plant>();
             this.load();
         }
 
@@ -28,10 +30,14 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// ease of access throughout the program
         /// </summary>
         private void load() {
-            List<Plant> tempPlants = jsonUtilities.JsonDeserializeAsync<List<Plant>>(plantsJson).Result;
-
-            foreach(Plant plant in tempPlants) {
-                this.plantsId.Add(plant.id, plant);
+            Dictionary<string, Plant> tempPlants = jsonUtilities.JsonDeserializeAsync<Dictionary<string, Plant>>(plantsJson).Result;
+            if (tempPlants != null)
+            {
+                foreach (Plant plant in tempPlants.Values)
+                {
+                    this.plantsId.Add(plant.id, plant);
+                    this.plantsName.Add(plant.name, plant);
+                }
             }
 
         }

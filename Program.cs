@@ -1,4 +1,5 @@
 ﻿using System;
+using FarmVille_api.src.Main;
 
 namespace FarmVille
 {
@@ -6,7 +7,8 @@ namespace FarmVille
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Bot bot = new Bot();
+            bot.RunAsync().GetAwaiter().GetResult();
         }
     }
 }
