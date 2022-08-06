@@ -55,6 +55,7 @@ namespace FarmVille_api.src.Main
             commands = client.UseCommandsNext(commandConfig);
             commands.RegisterCommands<Menu>();
             commands.RegisterCommands<Farming>();
+            commands.RegisterCommands<Shop>();
 
             //Set up interactivity
             client.UseInteractivity(new InteractivityConfiguration()

@@ -185,30 +185,27 @@ namespace FarmVille_api.src.Main.Model.Structures
             Item tempItem = IdentificationSearch.idSearch(item);
             
             if(tempItem is Seeds) {
-                Seeds? newSeed = (Seeds)item;
-                if(this.seeds.ContainsKey(item.id)) {
-                    this.seeds.TryGetValue(item.id, out newSeed);
-                    newSeed.amount += item.amount;
-                    this.seeds.Add(item.id, newSeed);
+                Seeds pastSeed;
+                if(this.seeds.ContainsKey(tempItem.id)) {
+                    this.seeds.TryGetValue(tempItem.id, out pastSeed);
+                    pastSeed.amount += tempItem.amount;
                 } else {
-                    this.seeds.Add(newSeed.id, newSeed);
+                    this.seeds.Add(tempItem.id, (Seeds)tempItem);
                 }
             } else if(tempItem is Plant) {
-                Plant? newPlant = (Plant)item;
-                if(this.plants.ContainsKey(item.id)) {
-                    this.plants.TryGetValue(item.id, out newPlant);
-                    newPlant.amount += item.amount;
-                    this.plants.Add(item.id, newPlant);
+                Plant pastPlant;
+                if(this.plants.ContainsKey(tempItem.id)) {
+                    this.plants.TryGetValue(tempItem.id, out pastPlant);
+                    pastPlant.amount += tempItem.amount;
                 } else {
-                    this.plants.Add(newPlant.id, newPlant);
+                    this.plants.Add(tempItem.id, (Plant)tempItem);
                 }
             }
 
-            Item? currItem;
+            Item currItem;
             if(this.inventory.ContainsKey(item.id)) {
                 this.inventory.TryGetValue(item.id, out currItem);
                 currItem.amount += item.amount;
-                this.inventory.Add(item.id, currItem);
             } else {
                 this.inventory.Add(item.id, item);
             }
@@ -266,10 +263,11 @@ namespace FarmVille_api.src.Main.Model.Structures
         }
 
         public Boolean purchaseItem(Item item) {
-            if(item.buyPrice > this.balance) {
+            double price = item.buyPrice * item.amount;
+            if(price > this.balance) {
                 return false;
             } else {
-                this.balance -= item.buyPrice;
+                this.balance -= price;
                 this.addItem(item);
                 return true;
             }

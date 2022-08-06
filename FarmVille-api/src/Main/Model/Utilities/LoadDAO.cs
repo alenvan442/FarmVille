@@ -32,9 +32,9 @@ namespace FarmVille_api.src.Main.Model.Utilities
             plantPotsFileDAO = new PlantPotsFileDAO(playersFileDAO, seedsFileDAO);
             plantsFileDAO = new PlantsFileDAO(StaticUtil.plantsJson, json);
 
-            plantPotController = new PlantPotController(plantPotsFileDAO);
+            plantPotController = new PlantPotController(plantPotsFileDAO, playersFileDAO);
             playerController = new PlayerController(playersFileDAO);
-            shopController = new ShopController(shopFileDAO);
+            shopController = new ShopController(shopFileDAO, playersFileDAO);
 
             CommandsHelper.setup(plantPotController, playerController, embedUtilities, shopController);
             

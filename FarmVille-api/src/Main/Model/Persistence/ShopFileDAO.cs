@@ -33,6 +33,12 @@ namespace FarmVille_api.src.Main.Model.Persistence
         public List<Item> getPage(int pageNumber) {
             int lowerBound = (pageNumber * 10) - 10;
             List<Item> itemCatalogue = this.shopList.Values.ToList();
+            int numOfPages = (int)Math.Ceiling((double)itemCatalogue.Count / 10.0);
+
+            if(pageNumber > numOfPages) {
+                pageNumber = numOfPages;
+            }
+
             return itemCatalogue.GetRange(lowerBound, 10);
 
         }

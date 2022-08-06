@@ -9,14 +9,16 @@ namespace FarmVille_api.src.Main.Controller
     public class PlantPotController
     {
         PlantPotsFileDAO plantPotsFileDAO;
+        PlayersFileDAO playersFileDAO;
 
         /// <summary>
         /// Constructor for the plant pot controller
         /// </summary>
         /// <param name="plantPotsFileDAO"> A DAO file that handles data manipulation of individual plant pots </param>
-        public PlantPotController(PlantPotsFileDAO plantPotsFileDAO)
+        public PlantPotController(PlantPotsFileDAO plantPotsFileDAO, PlayersFileDAO playersFileDAO)
         {
             this.plantPotsFileDAO = plantPotsFileDAO;
+            this.playersFileDAO = playersFileDAO;
         }
 
         /// <summary>
@@ -26,7 +28,9 @@ namespace FarmVille_api.src.Main.Controller
         /// <param name="seedName"> The name of the seed being planted </param>
         /// <returns> A boolean indicating whether or not the action was successful </returns>
         public String plantSeed(ulong UID, string seedName) {
-            return plantPotsFileDAO.plantSeed(UID, seedName);
+            String result = plantPotsFileDAO.plantSeed(UID, seedName);
+            this.playersFileDAO.save();
+            return result;
         }
 
         /// <summary>
@@ -36,7 +40,9 @@ namespace FarmVille_api.src.Main.Controller
         /// <param name="seedID"> The ID of the seed being planted </param>
         /// <returns> A boolean indicating whether or not the action was successful </returns>
         public String plantSeed(ulong UID, uint seedID) {
-            return plantPotsFileDAO.plantSeed(UID, seedID);
+            String result = plantPotsFileDAO.plantSeed(UID, seedID);
+            this.playersFileDAO.save();
+            return result;
         }
 
         /// <summary>
@@ -45,7 +51,9 @@ namespace FarmVille_api.src.Main.Controller
         /// <param name="UID"> THe player who invoked the action </param>
         /// <returns> A message for the player in correspondence to the state of the harvest </returns>
         public String harvest(ulong UID) {
-            return plantPotsFileDAO.harvest(UID);
+            String result = plantPotsFileDAO.harvest(UID);
+            this.playersFileDAO.save();
+            return result;
         }
 
         /// <summary>

@@ -1,5 +1,5 @@
 {
-    "Spinach Seeds": {
+    "Spinach": {
         "GrowthDuration": "00:00:15",
         "PlantName": "Spinach",
         "PlantID": 131073,
@@ -11,7 +11,7 @@
         "BuyPrice": 4.00,
         "SellPrice": 0.00
     },
-    "Turnip Seeds": {
+    "Turnip": {
         "GrowthDuration": "00:30:00",
         "PlantName": "Turnip",
         "PlantID": 131074,
@@ -23,7 +23,7 @@
         "BuyPrice": 4.00,
         "SellPrice": 0.00
     },
-    "Beet Seeds": {
+    "Beet": {
         "GrowthDuration": "01:00:00",
         "PlantName": "Beets",
         "PlantID": 131075,
@@ -35,7 +35,7 @@
         "BuyPrice": 8.00,
         "SellPrice": 0.00
     },
-    "Carrot Seeds": {
+    "Carrot": {
         "GrowthDuration": "01:30:00",
         "PlantName": "Carrots",
         "PlantID": 131076,
@@ -47,7 +47,7 @@
         "BuyPrice": 8.00,
         "SellPrice": 0.00
     },
-    "Celery Seeds": {
+    "Celery": {
         "GrowthDuration": "01:30:00",
         "PlantName": "Celery",
         "PlantID": 131077,
@@ -59,7 +59,7 @@
         "BuyPrice": 8.00,
         "SellPrice": 0.00
     },
-    "Cucumber Seeds": {
+    "Cucumber": {
         "GrowthDuration": "01:10:00",
         "PlantName": "Cucumber",
         "PlantID": 131078,
@@ -71,7 +71,7 @@
         "BuyPrice": 8.00,
         "SellPrice": 0.00
     },
-    "Bean Seeds": {
+    "Bean": {
         "GrowthDuration": "03:00:00",
         "PlantName": "Beans",
         "PlantID": 131079,
@@ -83,7 +83,7 @@
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Corn Seeds": {
+    "Corn": {
         "GrowthDuration": "04:15:00",
         "PlantName": "Corn",
         "PlantID": 131080,
@@ -95,7 +95,7 @@
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Lettuce Seeds": {
+    "Lettuce": {
         "GrowthDuration": "02:30:00",
         "PlantName": "Lettuce",
         "PlantID": 131081,
@@ -107,7 +107,7 @@
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Pepper Seeds": {
+    "Pepper": {
         "GrowthDuration": "04:15:00",
         "PlantName": "Peppers",
         "PlantID": 131082,
@@ -119,7 +119,7 @@
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Tomato Seeds": {
+    "Tomato": {
         "GrowthDuration": "04:15:00",
         "PlantName": "Tomato",
         "PlantID": 131083,
@@ -131,7 +131,7 @@
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Watermelon Seeds": {
+    "Watermelon": {
         "GrowthDuration": "03:00:00",
         "PlantName": "Watermelon",
         "PlantID": 131084,
@@ -143,7 +143,7 @@
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Broccoli Seeds": {
+    "Broccoli": {
         "GrowthDuration": "03:45:00",
         "PlantName": "Broccoli",
         "PlantID": 131085,
@@ -155,7 +155,7 @@
         "BuyPrice": 40.00,
         "SellPrice": 0.00
     },
-    "Cauliflower Seeds": {
+    "Cauliflower": {
         "GrowthDuration": "03:45:00",
         "PlantName": "Cauliflower",
         "PlantID": 131086,
@@ -167,7 +167,7 @@
         "BuyPrice": 40.00,
         "SellPrice": 0.00
     },
-    "Onion Seeds": {
+    "Onion": {
         "GrowthDuration": "05:00:00",
         "PlantName": "Onion",
         "PlantID": 131087,
@@ -179,7 +179,7 @@
         "BuyPrice": 40.00,
         "SellPrice": 0.00
     },
-    "Potato Seeds": {
+    "Potato": {
         "GrowthDuration": "05:00:00",
         "PlantName": "Potato",
         "PlantID": 131088,
@@ -191,7 +191,7 @@
         "BuyPrice": 40.00,
         "SellPrice": 0.00
     },
-    "Cabbage Seeds": {
+    "Cabbage": {
         "GrowthDuration": "07:00:00",
         "PlantName": "Cabbage",
         "PlantID": 131089,
@@ -203,7 +203,7 @@
         "BuyPrice": 80.00,
         "SellPrice": 0.00
     },
-    "Eggplant Seeds": {
+    "Eggplant": {
         "GrowthDuration": "12:00:00",
         "PlantName": "Eggplant",
         "PlantID": 131090,
@@ -215,7 +215,7 @@
         "BuyPrice": 80.00,
         "SellPrice": 0.00
     },
-    "Pumpkin Seeds": {
+    "Pumpkin": {
         "GrowthDuration": "10:00:00",
         "PlantName": "Pumpkin",
         "PlantID": 131091,
@@ -227,7 +227,7 @@
         "BuyPrice": 80.00,
         "SellPrice": 0.00
     },
-    "Wheat Seeds": {
+    "Wheat": {
         "GrowthDuration": "16:00:00",
         "PlantName": "Wheat",
         "PlantID": 131092,

@@ -59,7 +59,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// <param name="id"> The id of the plant to clone </param>
         /// <param name="amount"> The amount to set the clone to have </param>
         /// <returns> The newly cloned plant </returns>
-        public Plant getPlantAmount(uint id, int amount) {
+        public Plant getPlantAmount(uint id, int amount = 1) {
             Plant originalPlant = this.getPlant(id);
             Plant newPlant = new Plant(originalPlant, amount);
 

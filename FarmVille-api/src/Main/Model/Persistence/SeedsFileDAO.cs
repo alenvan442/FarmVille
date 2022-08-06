@@ -52,9 +52,9 @@ namespace FarmVille_api.src.Main.Model.Persistence
             {
                 foreach (Seeds seed in tempSeeds.Values)
                 {
-                    this.seedsDataString.Add(seed.name, seed);
                     this.seedsDataID.Add(seed.id, seed);
                 }
+                seedsDataString = tempSeeds;
             }
         }
 
@@ -86,7 +86,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// <param name="name"> The name of the seed to create </param>
         /// <param name="amount"> The number of seeds to create </param>
         /// <returns> A new seed object with the correct properties and amount </returns>
-        public Seeds getSeedsAmonut(string name, int amount) {
+        public Seeds getSeedsAmonut(string name, int amount = 1) {
             Seeds temp;
             temp = this.getSeeds(name);
             Seeds result = new Seeds(temp, amount);
@@ -99,7 +99,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// <param name="ID"> The id of the seed to create </param>
         /// <param name="amount"> The number of seeds to create </param>
         /// <returns> A new seed object with the correct properties and amount </returns>
-        public Seeds getSeedsAmonut(uint ID, int amount) {
+        public Seeds getSeedsAmonut(uint ID, int amount = 1) {
             
             Seeds temp;
             temp = this.getSeeds(ID);

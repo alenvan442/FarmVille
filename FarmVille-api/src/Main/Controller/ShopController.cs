@@ -8,14 +8,16 @@ namespace FarmVille_api.src.Main.Controller
     public class ShopController
     {
         ShopFileDAO shopFileDAO;
+        PlayersFileDAO playersFileDAO;
         readonly int lineCount = 20;
 
         /// <summary>
         /// Constructor of the shop controller
         /// </summary>
         /// <param name="shopFileDAO"> Handles data manipulation of the shop </param>
-        public ShopController(ShopFileDAO shopFileDAO) {
+        public ShopController(ShopFileDAO shopFileDAO, PlayersFileDAO playersFileDAO) {
             this.shopFileDAO = shopFileDAO;
+            this.playersFileDAO = playersFileDAO;
         }
 
         public String shopPage(int pageNumber) {
@@ -25,8 +27,9 @@ namespace FarmVille_api.src.Main.Controller
             foreach(Item i in page) {
                 result += i.name;
                 String price = i.buyPrice.ToString();
-                result += Enumerable.Repeat(" ", lineCount - i.name.Length - price.Length);
-                result.Concat(price);
+                String spacing = new String('.', (lineCount - i.name.Length - price.Length)*3);
+                result += spacing;
+                result += "$" + i.buyPrice;
                 result += "\n";
             }
 
@@ -41,12 +44,14 @@ namespace FarmVille_api.src.Main.Controller
         /// <returns> 0 for success
         ///           1 for insufficient balance 
         ///           2 for unknown item </returns>
-        public int buy(Player player, string item) {
+        public int buy(Player player, string item, int amount = 1) {
             Item? boughtItem = this.shopFileDAO.buy(item);
             if(boughtItem is null) {
                 return 2;
             } else {
+                boughtItem.amount = amount;
                 if(player.purchaseItem(boughtItem)) {
+                    this.playersFileDAO.save();
                     return 0;
                 } else {
                     return 1;

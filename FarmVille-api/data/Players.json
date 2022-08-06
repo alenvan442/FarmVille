@@ -3,17 +3,17 @@
     "ID": 336759879765065730,
     "OutputContainers": {
       "0": {
-        "Yield": 0,
+        "Yield": 2,
         "GrowthDuration": "00:00:00",
-        "StartingTime": "0001-01-01T00:00:00",
+        "StartingTime": "2022-08-06T17:24:04.565639-04:00",
         "ID": 0,
-        "OutputID": 0
+        "OutputID": 131073
       }
     },
     "Name": "Sobdh",
     "Seeds": {},
     "Plants": {},
-    "Balance": 5.0
+    "Balance": 1.0
   },
   "365975655608745985": {
     "ID": 365975655608745985,

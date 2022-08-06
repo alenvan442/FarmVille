@@ -1,119 +1,119 @@
 {
-    "Seeds:Spinach": {
+    "Spinach": {
         "ID": 65537,
         "Name": "Spinach Seeds",
         "BuyPrice": 4.00,
         "SellPrice": 0.00
     },
-    "Seeds:Turnip": {
+    "Turnip": {
         "ID": 65538,
         "Name": "Turnip Seeds",
         "BuyPrice": 4.00,
         "SellPrice": 0.00
     },
-    "Seeds:Beets": {
+    "Beets": {
         "ID": 65539,
         "Name": "Beet Seeds",
         "BuyPrice": 8.00,
         "SellPrice": 0.00
     },
-    "Seeds:Carrot": {
+    "Carrot": {
         "ID": 65540,
         "Name": "Carrot Seeds",
         "BuyPrice": 8.00,
         "SellPrice": 0.00
     },
-    "Seeds:Celery": {
+    "Celery": {
         "ID": 65541,
         "Name": "Celery Seeds",
         "BuyPrice": 8.00,
         "SellPrice": 0.00
     },
-    "Seeds:Cucumber": {
+    "Cucumber": {
         "ID": 65542,
         "Name": "Cucumber Seeds",
         "BuyPrice": 8.00,
         "SellPrice": 0.00
     },
-    "Seeds:Beans": {
+    "Beans": {
         "ID": 65543,
         "Name": "Bean Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Seeds:Corn": {
+    "Corn": {
         "ID": 65544,
         "Name": "Corn Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Seeds:Lettuce": {
+    "Lettuce": {
         "ID": 65545,
         "Name": "Lettuce Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Seeds:Peppers": {
+    "Peppers": {
         "ID": 65546,
         "Name": "Pepper Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Seeds:Tomato": {
+    "Tomato": {
         "ID": 65547,
         "Name": "Tomato Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Seeds:Watermelon": {
+    "Watermelon": {
         "ID": 65548,
         "Name": "Watermelon Seeds",
         "BuyPrice": 20.00,
         "SellPrice": 0.00
     },
-    "Seeds:Broccoli": {
+    "Broccoli": {
         "ID": 65549,
         "Name": "Broccoli Seeds",
         "BuyPrice": 40.00,
         "SellPrice": 0.00
     },
-    "Seeds:Cauliflower": {
+    "Cauliflower": {
         "ID": 65550,
         "Name": "Cauliflower",
         "BuyPrice": 40.00,
         "SellPrice": 0.00
     },
-    "Seeds:Onion": {
+    "Onion": {
         "ID": 65551,
         "Name": "Onion Seeds",
         "BuyPrice": 40.00,
         "SellPrice": 0.00
     },
-    "Seeds:Potato": {
+    "Potato": {
         "ID": 65552,
         "Name": "Potato Seeds",
         "BuyPrice": 40.00,
         "SellPrice": 0.00
     },
-    "Seeds:Cabbage": {
+    "Cabbage": {
         "ID": 65553,
         "Name": "Cabbage Seeds",
         "BuyPrice": 80.00,
         "SellPrice": 0.00
     },
-    "Seeds:Eggplant": {
+    "Eggplant": {
         "ID": 65554,
         "Name": "Eggplant Seeds",
         "BuyPrice": 80.00,
         "SellPrice": 0.00
     },
-    "Seeds:Pumpkin": {
+    "Pumpkin": {
         "ID": 65555,
         "Name": "Pumpkin Seeds",
         "BuyPrice": 80.00,
         "SellPrice": 0.00
     },
-    "Seeds:Wheat": {
+    "Wheat": {
         "ID": 65556,
         "Name": "Wheat Seeds",
         "BuyPrice": 120.00,

@@ -24,7 +24,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// <param name="buyPrice"> How much to buy the item for </param>
         /// <param name="sellPrice"> How much one can sell the item for </param>
         /// <param name="name"> The name of the item </param>
-        public Item(uint id, double buyPrice, double sellPrice, string name, int amount = 0) {
+        public Item(uint id, double buyPrice, double sellPrice, string name, int amount = 1) {
             this.id = id;
             this.amount = amount;
             this.buyPrice = buyPrice;
@@ -38,7 +38,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// </summary>
         /// <returns> A string consisting of the data of an item </returns>
         public override string ToString() {
-            return this.name + "        " + this.amount;
+            return this.name + "........................" + this.amount;
         }
 
     }

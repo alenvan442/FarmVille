@@ -34,7 +34,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// <returns> A boolean to indicate if the planting was successful </returns>
         public String plantSeed(ulong UID, string seedName) {
 
-            Seeds currSeed = new Seeds(this.seedsFileDAO.getSeeds(seedName), 1);
+            Seeds currSeed = seedsFileDAO.getSeedsAmonut(seedName, 1);
             Player currPlayer = this.playersFileDAO.getPlayer(UID);
 
             return currPlayer.plantSeed(currSeed);

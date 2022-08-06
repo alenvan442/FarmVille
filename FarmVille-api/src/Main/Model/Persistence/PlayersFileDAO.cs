@@ -46,7 +46,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// Serializes the local collection of player data into the json file
         /// This acts as saving player data
         /// </summary>
-        private void save() {
+        public void save() {
             jsonUtilities.JsonSerialize(playersData, playersJson);
         }
 
