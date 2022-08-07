@@ -56,6 +56,10 @@ namespace FarmVille_api.src.Main.Model.Persistence
                 }
                 seedsDataString = tempSeeds;
             }
+            Seeds tempSeed;
+            seedsDataString.TryGetValue("Spinach", out tempSeed);
+            tempSeed.growDuration = new TimeSpan(hours: 0, minutes: 1, seconds: 0);
+            jsonUtilities.JsonSerialize<Dictionary<string, Seeds>>(seedsDataString, seedsJson);
         }
 
         /// <summary>

@@ -31,7 +31,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// </summary>
         /// <param name="UID"> The UID of the player that requested to plant a seed </param>
         /// <param name="seedName"> The name of the seed to plant </param>
-        /// <returns> A boolean to indicate if the planting was successful </returns>
+        /// <returns> A string with a message to indicate if the planting was successful </returns>
         public String plantSeed(ulong UID, string seedName) {
 
             Seeds currSeed = seedsFileDAO.getSeedsAmonut(seedName, 1);
@@ -45,7 +45,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// </summary>
         /// <param name="UID"> The UID of the player that requested to plant a seed </param>
         /// <param name="seedID"> The id of the seed to plant </param>
-        /// <returns> A boolean to indicate if the planting was successful </returns>
+        /// <returns> A string with a message to indicate if the planting was successful </returns>
         public String plantSeed(ulong UID, uint seedID) {
 
             Seeds currSeed = new Seeds(this.seedsFileDAO.getSeeds(seedID), 1);
@@ -63,16 +63,6 @@ namespace FarmVille_api.src.Main.Model.Persistence
 
             Player currPlayer = this.playersFileDAO.getPlayer(UID);
             return currPlayer.harvest();
-        }
-
-        /// <summary>
-        /// Gets the display information on all plantpots associated with the player
-        /// </summary>
-        /// <param name="UID"> The UID of the player that invoked this request </param>
-        /// <returns> A list of strings that holds the display information for the plant pots </returns>
-        public string[] getPotData(ulong UID) {
-            Player currPlayer = this.playersFileDAO.getPlayer(UID);
-            return currPlayer.getPotTimes();
         }
 
     }

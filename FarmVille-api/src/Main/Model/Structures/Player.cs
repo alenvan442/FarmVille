@@ -114,27 +114,55 @@ namespace FarmVille_api.src.Main.Model.Structures
         /// As well as the remaining time left on the plant pot
         /// </summary>
         /// <returns> An array of strings containing each of the player's plant pots to strings </returns>
-        public string[] getPotTimes() {
-            string[] potTimes = new string[this.outputContainer.Count];
+        public List<String> getPots(int pageNumber) {
+            List<String> potData = new List<string>();
             foreach(PlantPot i in this.outputContainer.Values) {
-                potTimes[i.id] = i.ToString();
+                potData.Add(i.ToString());
             }
-            return potTimes;
+            
+            int numOfPages = (int)Math.Ceiling((double)potData.Count / 4.0);
+
+            if(pageNumber > numOfPages) {
+                pageNumber = numOfPages;
+            }
+            
+            int lowerBound = (4 * pageNumber) - 4;
+
+            if (pageNumber == numOfPages)
+            {
+                return potData.GetRange(lowerBound, (potData.Count - lowerBound));
+            }
+            else
+            {
+                return potData.GetRange(lowerBound, 4);
+            }
         }
 
         /// <summary>
         /// Retrieves a list of items in order to display the inventory
         /// </summary>
         /// <returns> An array of strings holding data of each item in the inventory </returns>
-        public String[] getInventory() {
-            String[] result = new string[this.inventory.Count];
-            int index = 0;
+        public List<String> getInventory(int pageIndex) {
+            List<String> result = new List<string>();
+
             foreach(Item i in this.inventory.Values) {
-                result[index] = i.ToString();
-                index++;
+                result.Add(i.ToString());
             }
-            
-            return result;
+
+            int numOfPages = (int)Math.Ceiling((double)result.Count / 10);
+
+            if(pageIndex > numOfPages) {
+                pageIndex = numOfPages;
+            }
+
+            int lowerBound = (10 * pageIndex) - 10;
+
+            if (pageIndex == numOfPages)
+            {
+                return result.GetRange(lowerBound, (result.Count - lowerBound));
+            } else {
+                return result.GetRange(lowerBound, 10);
+            }
         }
 
         public Boolean removeItem(Item item, int amount = int.MaxValue) {
@@ -150,6 +178,7 @@ namespace FarmVille_api.src.Main.Model.Structures
                 tempSeed.amount -= amount;
                 if(tempSeed.amount <= 0) {
                     this.seeds.Remove(item.id);
+                    this.inventory.Remove(item.id);
                 }
             } else if(tempItem is Plant) {
                 Plant tempPlant;
@@ -158,9 +187,9 @@ namespace FarmVille_api.src.Main.Model.Structures
                 if (tempPlant.amount <= 0)
                 {
                     this.plants.Remove(item.id);
+                    this.inventory.Remove(item.id);
                 }
             }
-            this.inventory.Remove(item.id);
 
             return true;
         }
@@ -202,12 +231,9 @@ namespace FarmVille_api.src.Main.Model.Structures
                 }
             }
 
-            Item currItem;
-            if(this.inventory.ContainsKey(item.id)) {
-                this.inventory.TryGetValue(item.id, out currItem);
-                currItem.amount += item.amount;
-            } else {
-                this.inventory.Add(item.id, item);
+            if (!this.inventory.ContainsKey(item.id))
+            {
+                this.inventory.Add(item.id, tempItem);
             }
 
             return true;
@@ -218,16 +244,29 @@ namespace FarmVille_api.src.Main.Model.Structures
         /// Retrieves a list of seeds in order to display the seeds this user has
         /// </summary>
         /// <returns> An array of strings holding data of each seed item </returns>
-        public String[] getSeeds() {
-            String[] result = new string[this.seeds.Count];
-            int index = 0;
+        public List<String> getSeeds(int pageIndex) {
+            List<String> result = new List<string>();
             foreach (Item i in this.seeds.Values)
             {
-                result[index] = i.ToString();
-                index++;
+                result.Add(i.ToString());
             }
+    
+            int numOfPages = (int)Math.Ceiling((double)result.Count / 10);
 
-            return result;
+            if(pageIndex > numOfPages) {
+                pageIndex = numOfPages;
+            }
+            
+            int lowerBound = (10 * pageIndex) - 10;
+
+            if (pageIndex == numOfPages)
+            {
+                return result.GetRange(lowerBound, (result.Count - lowerBound));
+            }
+            else
+            {
+                return result.GetRange(lowerBound, 10);
+            }
         }
 
 
@@ -242,7 +281,7 @@ namespace FarmVille_api.src.Main.Model.Structures
             List<Item> emptyItems = new List<Item>();
             String result = "";
 
-            foreach(Output i in this.outputContainer.Values) {
+            foreach(PlantPot i in this.outputContainer.Values) {
                 if(i.remainingTime() == TimeSpan.Zero) {
                     emptyItems.Add(i.harvest());
                 }
@@ -269,6 +308,22 @@ namespace FarmVille_api.src.Main.Model.Structures
             } else {
                 this.balance -= price;
                 this.addItem(item);
+                return true;
+            }
+        }
+
+        public Boolean sellItem(Item item) {
+            Item beingSold;
+            this.inventory.TryGetValue(item.id, out beingSold);
+
+            if(beingSold.amount < item.amount || beingSold is null) {
+                return false;
+            } else {
+                beingSold.amount -= item.amount;
+                this.balance += beingSold.sellPrice * item.amount;
+                if(beingSold.amount == 0) {
+                    this.removeItem(beingSold);
+                }
                 return true;
             }
         }

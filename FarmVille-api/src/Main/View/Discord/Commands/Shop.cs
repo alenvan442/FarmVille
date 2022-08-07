@@ -3,6 +3,7 @@ using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
 using FarmVille_api.src.Main.Controller;
 using FarmVille_api.src.Main.Model.Structures;
+using FarmVille_api.src.Main.Model.Structures.Items;
 using FarmVille_api.src.Main.View.Discord.Commands;
 
 namespace FarmVille.Commands
@@ -56,6 +57,33 @@ namespace FarmVille.Commands
             await ctx.Channel.SendMessageAsync(embed);
 
         } 
+
+        [Command("sell")]
+        public async Task sell(CommandContext ctx, string item, int amount = 1) {
+            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
+            Item soldItem = CommandsHelper.shopController.sell(currPlayer, item, amount);
+
+            String message = "";
+            if(soldItem is null) {
+                message = "Unable to find the item: " + item;
+            } else {
+                if(soldItem.amount == -1) {
+                    message = "You do not have enough items to sell!";
+                } else
+                {
+                    message = "Sold " + soldItem.amount + " " + soldItem.name + " for $" + soldItem.sellPrice * soldItem.amount;
+                }
+            }
+
+            DiscordEmbedBuilder embed = new DiscordEmbedBuilder
+            {
+                Description = message,
+                Color = DiscordColor.Aquamarine
+            };
+
+            await ctx.Channel.SendMessageAsync(embed);
+
+        }
         
     }
 }

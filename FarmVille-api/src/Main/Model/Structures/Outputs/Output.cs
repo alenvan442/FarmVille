@@ -89,7 +89,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// id and amount
         /// </summary>
         /// <returns> The created "empty" item that was harvested </returns>
-        public Item harvest() {
+        public Item output() {
 
             this.startingTime = DateTime.MinValue;
             this.growthDuration = TimeSpan.Zero;

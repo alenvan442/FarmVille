@@ -4,16 +4,39 @@
     "OutputContainers": {
       "0": {
         "Yield": 2,
-        "GrowthDuration": "00:00:00",
-        "StartingTime": "2022-08-06T17:24:04.565639-04:00",
+        "GrowthDuration": "00:01:00",
+        "StartingTime": "2022-08-06T22:05:13.679848-04:00",
         "ID": 0,
         "OutputID": 131073
       }
     },
     "Name": "Sobdh",
-    "Seeds": {},
-    "Plants": {},
-    "Balance": 1.0
+    "Seeds": {
+      "65537": {
+        "Amount": 2,
+        "PlantName": "Spinach",
+        "Yield": 2,
+        "GrowthDuration": "00:00:00",
+        "PlantID": 131073,
+        "Regrow": false,
+        "Season": "Fall",
+        "Name": "Spinach Seeds",
+        "ID": 65537,
+        "BuyPrice": 4.0,
+        "SellPrice": 0.0
+      }
+    },
+    "Plants": {
+      "131074": {
+        "Amount": 4,
+        "SeedID": 65538,
+        "Name": "Turnip",
+        "ID": 131074,
+        "BuyPrice": 0.0,
+        "SellPrice": 2.5
+      }
+    },
+    "Balance": 6.0
   },
   "365975655608745985": {
     "ID": 365975655608745985,

@@ -32,28 +32,34 @@ namespace FarmVille.Commands
 
             if (input?.Length <= 0 || input == null)
             {
-                String[] seeds = currPlayer.getSeeds();
-
-                //create the embed
-                DiscordEmbedBuilder baseEmbed = new DiscordEmbedBuilder
-                {
-                    Color = DiscordColor.Azure,
-                    Title = ctx.User.Username + "'s Seeds"
-
-                };
-
-                String pageString = "";
-                foreach (String i in seeds)
-                {
-                    pageString += "\n" + i;
-                }
-                pageString += "\n";
-
-                await ctx.Channel.SendMessageAsync("Please enter a seed to plant and use the command: /plant (seed name)");
-                await CommandsHelper.embedUtilities.sendPagination(ctx.Channel, pageString, ctx.User, ctx.Client, baseEmbed);
+                await ctx.Channel.SendMessageAsync("Please enter a seed to plant and use the command: /plant (seed name)\n" +
+                                                    "Or use the command: /seeds (page number), to view your list of seeds");
             } else {
-                CommandsHelper.plantPotController.plantSeed(currPlayer.UID, input);
+                input = input[0].ToString().ToUpper() + input.Substring(1);
+                String result = CommandsHelper.plantPotController.plantSeed(currPlayer.UID, input);
+
+                await ctx.Channel.SendMessageAsync(result);
             }
+        }
+
+        [Command("seeds")]
+        public async Task seedsList(CommandContext ctx, int pageIndex = 1) {
+            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
+            List<String> seeds = currPlayer.getSeeds(pageIndex);
+
+            String message = "\n";
+            foreach(string i in seeds) {
+                message += i + "\n";
+            }
+
+            DiscordEmbedBuilder embed = new DiscordEmbedBuilder
+            {
+                Title = ctx.User.Username + "'s Seeds",
+                Description = message,
+            }.WithFooter("page " + pageIndex);
+
+            await ctx.Channel.SendMessageAsync(embed);
+
         }
 
 

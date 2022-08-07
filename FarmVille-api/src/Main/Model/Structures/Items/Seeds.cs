@@ -10,7 +10,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         [JsonProperty("Yield")]
         public int yield { get; private set; }
         [JsonProperty("GrowthDuration")]
-        public TimeSpan growDuration { get; private set; }
+        public TimeSpan growDuration { get; set; }
         [JsonProperty("PlantID")]
         public uint plantID { get; private set; }
         [JsonProperty("Regrow")]
@@ -39,7 +39,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// <param name="season"> a string indicating which season this seed grows in </param>
         [JsonConstructor]
         public Seeds(uint id, int amount, double buyPrice, double sellPrice,
-                        string name, string plantName, int yield, TimeSpan growthDuration, uint plantID,
+                        string name, string plantName, int yield, TimeSpan growDuration, uint plantID,
                         Boolean regrow, String season): 
                         base(id, buyPrice, sellPrice, name, amount) {
 

@@ -2,6 +2,7 @@ using System.Globalization;
 using FarmVille_api.src.Main.Model.Persistence;
 using FarmVille_api.src.Main.Model.Structures;
 using FarmVille_api.src.Main.Model.Structures.Items;
+using FarmVille_api.src.Main.Model.Utilities;
 
 namespace FarmVille_api.src.Main.Controller
 {
@@ -9,15 +10,17 @@ namespace FarmVille_api.src.Main.Controller
     {
         ShopFileDAO shopFileDAO;
         PlayersFileDAO playersFileDAO;
+        PlantsFileDAO plantsFileDAO;
         readonly int lineCount = 20;
 
         /// <summary>
         /// Constructor of the shop controller
         /// </summary>
         /// <param name="shopFileDAO"> Handles data manipulation of the shop </param>
-        public ShopController(ShopFileDAO shopFileDAO, PlayersFileDAO playersFileDAO) {
+        public ShopController(ShopFileDAO shopFileDAO, PlayersFileDAO playersFileDAO, PlantsFileDAO plantsFileDAO) {
             this.shopFileDAO = shopFileDAO;
             this.playersFileDAO = playersFileDAO;
+            this.plantsFileDAO = plantsFileDAO;
         }
 
         public String shopPage(int pageNumber) {
@@ -55,6 +58,23 @@ namespace FarmVille_api.src.Main.Controller
                     return 0;
                 } else {
                     return 1;
+                }
+            }
+        }
+
+        public Item sell(Player player, string item, int amount = 1) {
+            Item? soldItem = this.plantsFileDAO.getPlant(item);
+            if(soldItem is null) {
+                return null;
+            } else {
+                soldItem.amount = amount;
+                if(player.sellItem(soldItem)) {
+                    this.playersFileDAO.save();
+                    return soldItem;
+                } else
+                {
+                    soldItem.amount = -1;
+                    return soldItem;
                 }
             }
         }

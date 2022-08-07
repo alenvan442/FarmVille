@@ -30,6 +30,11 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
             return (this.seed == null);
         } 
 
+        public Item harvest() {
+            this.seed = null;
+            return base.output();
+        } 
+
         /// <summary>
         /// Plant a seed in this specific plant pot
         /// </summary>

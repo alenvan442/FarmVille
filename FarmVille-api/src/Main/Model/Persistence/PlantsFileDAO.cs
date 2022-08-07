@@ -53,6 +53,12 @@ namespace FarmVille_api.src.Main.Model.Persistence
             return result;
         }
 
+        public Plant getPlant(string name) {
+            Plant result;
+            this.plantsName.TryGetValue(name, out result);
+            return result;
+        }
+
         /// <summary>
         /// Creates a clone of a plant with a different amount
         /// </summary>

@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using System.Drawing;
 using System.Net.Http;
 using DSharpPlus;
@@ -67,31 +68,56 @@ namespace FarmVille.Commands
 
         }
 
+        [Command("pots")]
+        public async Task displayPots(CommandContext ctx, int pageIndex = 1) {
+            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
+            List<String> pots = currPlayer.getPots(pageIndex);
+
+            String pageString = "\n";
+            foreach (String i in pots)
+            {
+                pageString += i + "\n\n";
+            }
+
+            DiscordEmbedBuilder embed = new DiscordEmbedBuilder
+            {
+                Color = DiscordColor.Turquoise,
+                Title = ctx.User.Username + "'s Pots",
+                Description = pageString
+            }.WithFooter("page " + pageIndex);
+
+            await ctx.Channel.SendMessageAsync(embed);
+
+        }
+
         /// <summary>
         /// Displays a player's inventory
         /// </summary>
         /// <param name="ctx"> The Context of the command </param>
         /// <returns></returns>
         [Command("bag")]
-        public async Task displayPlayerInventory(CommandContext ctx) {
+        public async Task displayPlayerInventory(CommandContext ctx, int pageIndex = 1) {
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
-            String[] inventory = currPlayer.getInventory();
+            List<String> inventory = currPlayer.getInventory(pageIndex);
+
+            String pageString = "";
+            foreach (String i in inventory)
+            {
+                pageString += "\n" + i;
+            }
+
+            pageString += "\n";
 
             //create the embed
             DiscordEmbedBuilder baseEmbed = new DiscordEmbedBuilder
             {
                 Color = DiscordColor.Azure,
-                Title = ctx.User.Username + "'s Inventory"
+                Title = ctx.User.Username + "'s Inventory",
+                Description = pageString
 
-            };
+            }.WithFooter("page " + pageIndex);
 
-            String pageString = "";
-            foreach(String i in inventory) {
-                pageString += "\n" + i;
-            }
-            pageString += "\n";
-
-            await CommandsHelper.embedUtilities.sendPagination(ctx.Channel, pageString, ctx.User, ctx.Client, baseEmbed);
+            await ctx.Channel.SendMessageAsync(baseEmbed);
 
         }
         

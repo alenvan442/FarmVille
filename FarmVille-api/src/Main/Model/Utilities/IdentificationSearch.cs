@@ -40,11 +40,11 @@ namespace FarmVille_api.src.Main.Model.Utilities
         }
 
         private static Seeds seedSearch(uint id) {
-            return seedsFileDAO.getSeeds(id);
+            return seedsFileDAO.getSeedsAmonut(id, 1);
         }
 
         private static Plant plantSearch(uint id) {
-            return plantsFileDAO.getPlant(id);
+            return plantsFileDAO.getPlantAmount(id, 1);
         }
 
     }

@@ -56,14 +56,5 @@ namespace FarmVille_api.src.Main.Controller
             return result;
         }
 
-        /// <summary>
-        /// Retrieves the data of a player's plant pots
-        /// </summary>
-        /// <param name="UID"> The ID of the player who requested this retrieval </param>
-        /// <returns> An array of strings consisting of the data of the plant pots </returns>
-        public string[] getPotData(ulong UID) {
-            return plantPotsFileDAO.getPotData(UID);
-        }
-
     }
 }
