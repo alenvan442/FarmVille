@@ -30,6 +30,12 @@ namespace FarmVille_api.src.Main.Model.Persistence
             shopList = jsonUtilities.JsonDeserializeAsync<Dictionary<string, Item>>(shopJson).Result;
         }
 
+        /// <summary>
+        /// Returns a list of items corresponding to a page in the shop
+        /// Each page lists 10 items
+        /// </summary>
+        /// <param name="pageNumber"> the page number that is to be shown </param>
+        /// <returns> a list of item, where the items are what can be seen on the specified page </returns>
         public List<Item> getPage(int pageNumber) {
             
             List<Item> itemCatalogue = this.shopList.Values.ToList();
@@ -37,6 +43,11 @@ namespace FarmVille_api.src.Main.Model.Persistence
 
             if(pageNumber > numOfPages) {
                 pageNumber = numOfPages;
+            }
+
+            if (pageNumber == 0)
+            {
+                pageNumber = 1;
             }
             
             int lowerBound = (pageNumber * 10) - 10;
@@ -52,6 +63,12 @@ namespace FarmVille_api.src.Main.Model.Persistence
 
         }
 
+        /// <summary>
+        /// The backend that handles the buy command
+        /// Search and determine what item is being sought after and return it
+        /// </summary>
+        /// <param name="item"> the name of the item that is sought after </param>
+        /// <returns> a copy of the sought after item, null if no item was found </returns>
         public Item? buy(string item) {
             Item? tempItem;
             this.shopList.TryGetValue(item, out tempItem);

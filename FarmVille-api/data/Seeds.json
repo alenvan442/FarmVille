@@ -210,7 +210,7 @@
   "Cabbage": {
     "Amount": 0,
     "PlantName": "Cabbage",
-    "Yield": 3,
+    "Yield": 6,
     "GrowthDuration": "03:30:00",
     "PlantID": 131089,
     "Regrow": false,
@@ -257,6 +257,19 @@
     "Name": "Wheat Seeds",
     "ID": 65556,
     "BuyPrice": 120.0,
+    "SellPrice": 0.0
+  },
+  "Cake": {
+    "Amount": 0,
+    "PlantName": "Cake",
+    "Yield": 1,
+    "GrowthDuration": "00:01:00",
+    "PlantID": 131093,
+    "Regrow": false,
+    "Season": "Fall",
+    "Name": "Cake Seeds",
+    "ID": 65557,
+    "BuyPrice": 0.0,
     "SellPrice": 0.0
   }
 }

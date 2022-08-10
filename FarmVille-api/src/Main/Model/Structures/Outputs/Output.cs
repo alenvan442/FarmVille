@@ -7,7 +7,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
     /// <summary>
     /// 
     /// </summary>
-    public class Output
+    public class Output : Item
     {
         [JsonProperty("Yield")]
         public int yield { get; private set; }
@@ -15,8 +15,6 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         public TimeSpan growthDuration { get; private set; }
         [JsonProperty("StartingTime")]
         public DateTime startingTime { get; private set; }
-        [JsonProperty("ID")]
-        public uint id { get; private set; }
         [JsonProperty("OutputID")]
         public uint outputID { get; private set; }
 
@@ -29,11 +27,11 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// <param name="id"> The id of this output object </param>
         /// <param name="outputID"> The id of the item obtained upon harvesting </param>
         [Newtonsoft.Json.JsonConstructor]
-        public Output(int yield, TimeSpan growthDuration, DateTime startingTime, uint id, uint outputID) {
+        public Output(int yield, TimeSpan growthDuration, DateTime startingTime, uint outputID, uint id) : 
+                        base(id, 0.0, 0.0, "Plant Pot") {
             this.yield = yield;
             this.growthDuration = growthDuration;
             this.startingTime = startingTime;
-            this.id = id;
             this.outputID = outputID;
         }
 

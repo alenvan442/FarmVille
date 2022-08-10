@@ -68,6 +68,13 @@ namespace FarmVille.Commands
 
         }
 
+        /// <summary>
+        /// Displays a list of plant pots that the player has
+        /// separated based on pages
+        /// </summary>
+        /// <param name="ctx"> The context of the command </param>
+        /// <param name="pageIndex"> The page to display </param>
+        /// <returns></returns>
         [Command("pots")]
         public async Task displayPots(CommandContext ctx, int pageIndex = 1) {
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
@@ -91,9 +98,10 @@ namespace FarmVille.Commands
         }
 
         /// <summary>
-        /// Displays a player's inventory
+        /// Displays a player's inventory based on pages
         /// </summary>
         /// <param name="ctx"> The Context of the command </param>
+        /// <param name="pageIndex"> The page to display </param>
         /// <returns></returns>
         [Command("bag")]
         public async Task displayPlayerInventory(CommandContext ctx, int pageIndex = 1) {

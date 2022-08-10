@@ -133,7 +133,7 @@
         "SeedName": "Cabbage Seeds",
         "SeedID": 65553,
         "BuyPrice": 0.00,
-        "SellPrice": 15.95
+        "SellPrice": 14.2
     },
     "Eggplant": {
         "ID": 131090,
@@ -149,7 +149,7 @@
         "SeedName": "Pumpkin Seeds",
         "SeedID": 65555,
         "BuyPrice": 0.00,
-        "SellPrice": 27.50
+        "SellPrice": 42.50
     },
     "Wheat": {
         "ID": 131092,
@@ -157,6 +157,14 @@
         "SeedName": "Wheat Seeds",
         "SeedID": 65556,
         "BuyPrice": 0.00,
-        "SellPrice": 8.30
+        "SellPrice": 12.30
+    },
+    "Cake": {
+        "ID": 131093,
+        "Name": "Cake",
+        "SeedName": "Cake Seeds",
+        "SeedID": 65557,
+        "BuyPrice": 0.00,
+        "SellPrice": 50.00
     }
 }

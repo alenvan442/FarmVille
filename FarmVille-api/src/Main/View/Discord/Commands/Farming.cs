@@ -42,6 +42,13 @@ namespace FarmVille.Commands
             }
         }
 
+        /// <summary>
+        /// Displays an embed listing the seeds that the player has in their inventory
+        /// seperated by pages
+        /// </summary>
+        /// <param name="ctx"> The context of the command </param>
+        /// <param name="pageIndex"> The page to display </param>
+        /// <returns></returns>
         [Command("seeds")]
         public async Task seedsList(CommandContext ctx, int pageIndex = 1) {
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);

@@ -25,7 +25,6 @@ namespace FarmVille_api.src.Main.Model.Utilities
         /// </summary>
         public static void load() {
             JsonUtilities json = new JsonUtilities();
-            EmbedUtilities embedUtilities = new EmbedUtilities();
             seedsFileDAO = new SeedsFileDAO(StaticUtil.seedsJson, json);
             playersFileDAO = new PlayersFileDAO(StaticUtil.playersJson, json, seedsFileDAO);
             shopFileDAO = new ShopFileDAO(StaticUtil.shopJson, json);
@@ -36,7 +35,7 @@ namespace FarmVille_api.src.Main.Model.Utilities
             playerController = new PlayerController(playersFileDAO);
             shopController = new ShopController(shopFileDAO, playersFileDAO, plantsFileDAO);
 
-            CommandsHelper.setup(plantPotController, playerController, embedUtilities, shopController);
+            CommandsHelper.setup(plantPotController, playerController, shopController);
             
 
             IdentificationSearch.init(seedsFileDAO, plantsFileDAO);

@@ -9,19 +9,17 @@ namespace FarmVille_api.src.Main.View.Discord.Commands
         public static PlantPotController plantPotController;
 
         public static PlayerController playerController;
-        public static EmbedUtilities embedUtilities;
         public static ShopController shopController;
 
         /// <summary>
         /// Constructor of the Farming commands class
         /// </summary>
         /// <param name="plantPotController"> The controller that will be handling the delegation of plant pot interactions </param>
-        public static void setup(PlantPotController plantPotController1, PlayerController playerController1, EmbedUtilities embedUtilities1,
+        public static void setup(PlantPotController plantPotController1, PlayerController playerController1,
                                     ShopController shopController1)
         {
             plantPotController = plantPotController1;
             playerController = playerController1;
-            embedUtilities = embedUtilities1;
             shopController = shopController1;
         }
     }

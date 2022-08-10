@@ -1,4 +1,5 @@
 using FarmVille_api.src.Main.Model.Structures.Items;
+using Newtonsoft.Json;
 
 namespace FarmVille_api.src.Main.Model.Structures.Outputs
 {
@@ -7,7 +8,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
     /// </summary>
     public class PlantPot : Output
     {
-
+        [JsonProperty("Seed")]
         Seeds? seed;
 
         /// <summary>
@@ -15,7 +16,9 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// </summary>
         /// <param name="id"> The id of this plant pot </param>
         /// <returns></returns>
-        public PlantPot(uint id) : base(0, TimeSpan.Zero, DateTime.MinValue, id, 0) {
+        public PlantPot(Seeds Seed = null) : base(0, TimeSpan.Zero, DateTime.MinValue, 0, 196609) {
+            this.seed = Seed;
+
         }
 
         /// <summary>
@@ -30,6 +33,10 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
             return (this.seed == null);
         } 
 
+        /// <summary>
+        /// Harvests the crop and resets the plant pot for further planting another seed
+        /// </summary>
+        /// <returns> The item that was harvested </returns>
         public Item harvest() {
             this.seed = null;
             return base.output();
@@ -66,15 +73,15 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// Line 3: The remaining time, not showned if the pot is empty
         /// </summary>
         /// <returns> a string displaying all information in regards to this plant pot </returns>
-        public override string ToString() { 
+        public string ToString(int index) { 
             
             string result;
             if(this.isEmpty()) {
-                result = "Plant Pot: #" + id + 1 +
+                result = "Plant Pot: #" + index +
                                  "\nPlant: Empty\n\n";
             } else
             {
-                result = "Plant Pot: #" + id + 1 +
+                result = "Plant Pot: #" + index +
                                 "\nPlant: " + this.seed.plantName +
                                 "\n\nTime Remaining: " + base.ToString();
             }

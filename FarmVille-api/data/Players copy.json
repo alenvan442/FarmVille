@@ -1,0 +1,248 @@
+{
+  "336759879765065730": {
+    "ID": 336759879765065730,
+    "OutputContainers": {
+      "0": {
+        "Seed": {
+          "Amount": 1,
+          "PlantName": "Potato",
+          "Yield": 4,
+          "GrowthDuration": "02:35:00",
+          "PlantID": 131088,
+          "Regrow": false,
+          "Season": "Spring",
+          "Name": "Potato Seeds",
+          "ID": 65552,
+          "BuyPrice": 40.0,
+          "SellPrice": 0.0
+        },
+        "Yield": 4,
+        "GrowthDuration": "02:35:00",
+        "StartingTime": "2022-08-08T11:14:46.721308-04:00",
+        "ID": 0,
+        "OutputID": 131088
+      }
+    },
+    "Name": "Sobdh",
+    "Seeds": {},
+    "Plants": {
+      "131073": {
+        "Amount": 2,
+        "SeedID": 65537,
+        "Name": "Spinach",
+        "ID": 131073,
+        "BuyPrice": 0.0,
+        "SellPrice": 2.5
+      }
+    },
+    "Balance": 3.8600000000000136
+  },
+  "365975655608745985": {
+    "ID": 365975655608745985,
+    "OutputContainers": {
+      "0": {
+        "Seed": null,
+        "Yield": 0,
+        "GrowthDuration": "00:00:00",
+        "StartingTime": "0001-01-01T00:00:00",
+        "ID": 0,
+        "OutputID": 0
+      }
+    },
+    "Name": "Pokécord",
+    "Seeds": {},
+    "Plants": {},
+    "Balance": 5.0
+  },
+  "447257136913711105": {
+    "ID": 447257136913711105,
+    "OutputContainers": {
+      "0": {
+        "Seed": null,
+        "Yield": 0,
+        "GrowthDuration": "00:00:00",
+        "StartingTime": "0001-01-01T00:00:00",
+        "ID": 0,
+        "OutputID": 0
+      }
+    },
+    "Name": "SmoothPandaz",
+    "Seeds": {},
+    "Plants": {},
+    "Balance": 5.0
+  },
+  "719239031296098394": {
+    "ID": 719239031296098394,
+    "OutputContainers": {
+      "0": {
+        "Seed": null,
+        "Yield": 0,
+        "GrowthDuration": "00:00:00",
+        "StartingTime": "0001-01-01T00:00:00",
+        "ID": 0,
+        "OutputID": 0
+      }
+    },
+    "Name": "Sobdh123",
+    "Seeds": {},
+    "Plants": {},
+    "Balance": 5.0
+  },
+  "924122381419692082": {
+    "ID": 924122381419692082,
+    "OutputContainers": {
+      "0": {
+        "Seed": null,
+        "Yield": 0,
+        "GrowthDuration": "00:00:00",
+        "StartingTime": "0001-01-01T00:00:00",
+        "ID": 0,
+        "OutputID": 0
+      }
+    },
+    "Name": "FarmVille",
+    "Seeds": {},
+    "Plants": {},
+    "Balance": 5.0
+  },
+  "438057969251254293": {
+    "ID": 438057969251254293,
+    "OutputContainers": {
+      "0": {
+        "Seed": null,
+        "Yield": 0,
+        "GrowthDuration": "00:00:00",
+        "StartingTime": "0001-01-01T00:00:00",
+        "ID": 0,
+        "OutputID": 0
+      }
+    },
+    "Name": "Myuu",
+    "Seeds": {},
+    "Plants": {},
+    "Balance": 5.0
+  },
+  "159985870458322944": {
+    "ID": 159985870458322944,
+    "OutputContainers": {
+      "0": {
+        "Seed": null,
+        "Yield": 0,
+        "GrowthDuration": "00:00:00",
+        "StartingTime": "0001-01-01T00:00:00",
+        "ID": 0,
+        "OutputID": 0
+      }
+    },
+    "Name": "MEE6",
+    "Seeds": {},
+    "Plants": {},
+    "Balance": 5.0
+  },
+  "363537272739463168": {
+    "ID": 363537272739463168,
+    "OutputContainers": {
+      "0": {
+        "Seed": {
+          "Amount": 1,
+          "PlantName": "Lettuce",
+          "Yield": 3,
+          "GrowthDuration": "01:30:00",
+          "PlantID": 131081,
+          "Regrow": false,
+          "Season": "Spring",
+          "Name": "Lettuce Seeds",
+          "ID": 65545,
+          "BuyPrice": 20.0,
+          "SellPrice": 0.0
+        },
+        "Yield": 3,
+        "GrowthDuration": "01:30:00",
+        "StartingTime": "2022-08-08T11:21:36.166361-04:00",
+        "ID": 0,
+        "OutputID": 131081
+      }
+    },
+    "Name": "Starberry",
+    "Seeds": {},
+    "Plants": {
+      "131093": {
+        "Amount": 1,
+        "SeedID": 65557,
+        "Name": "Cake",
+        "ID": 131093,
+        "BuyPrice": 0.0,
+        "SellPrice": 50.0
+      }
+    },
+    "Balance": 6.489999999999998
+  },
+  "472256680152006660": {
+    "ID": 472256680152006660,
+    "OutputContainers": {
+      "0": {
+        "Seed": null,
+        "Yield": 0,
+        "GrowthDuration": "00:00:00",
+        "StartingTime": "0001-01-01T00:00:00",
+        "ID": 0,
+        "OutputID": 0
+      }
+    },
+    "Name": "snowfa",
+    "Seeds": {},
+    "Plants": {},
+    "Balance": 5.0
+  },
+  "768268608639598624": {
+    "ID": 768268608639598624,
+    "OutputContainers": {
+      "0": {
+        "Seed": null,
+        "Yield": 0,
+        "GrowthDuration": "00:00:00",
+        "StartingTime": "0001-01-01T00:00:00",
+        "ID": 0,
+        "OutputID": 0
+      }
+    },
+    "Name": "StormBeatz",
+    "Seeds": {},
+    "Plants": {},
+    "Balance": 5.0
+  },
+  "829421412488970270": {
+    "ID": 829421412488970270,
+    "OutputContainers": {
+      "0": {
+        "Seed": null,
+        "Yield": 0,
+        "GrowthDuration": "00:00:00",
+        "StartingTime": "0001-01-01T00:00:00",
+        "ID": 0,
+        "OutputID": 0
+      }
+    },
+    "Name": "SnowieTest",
+    "Seeds": {},
+    "Plants": {},
+    "Balance": 5.0
+  },
+  "853726320932028466": {
+    "ID": 853726320932028466,
+    "OutputContainers": {
+      "0": {
+        "Seed": null,
+        "Yield": 0,
+        "GrowthDuration": "00:00:00",
+        "StartingTime": "0001-01-01T00:00:00",
+        "ID": 0,
+        "OutputID": 0
+      }
+    },
+    "Name": "RolesHandler",
+    "Seeds": {},
+    "Plants": {},
+    "Balance": 5.0
+  }
+}

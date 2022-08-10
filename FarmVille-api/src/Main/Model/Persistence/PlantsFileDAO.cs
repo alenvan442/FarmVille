@@ -50,13 +50,18 @@ namespace FarmVille_api.src.Main.Model.Persistence
         public Plant getPlant(uint id) {
             Plant result;
             this.plantsId.TryGetValue(id, out result);
-            return result;
+            return this.getPlantAmount(result.id);
         }
 
+        /// <summary>
+        /// Retrieves a plant based on the name given
+        /// </summary>
+        /// <param name="name"> The name of the plant that is sought after </param>
+        /// <returns> The sought after plant </returns>
         public Plant getPlant(string name) {
             Plant result;
             this.plantsName.TryGetValue(name, out result);
-            return result;
+            return this.getPlantAmount(result.id);
         }
 
         /// <summary>

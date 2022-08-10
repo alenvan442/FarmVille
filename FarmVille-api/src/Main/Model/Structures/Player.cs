@@ -16,8 +16,8 @@ namespace FarmVille_api.src.Main.Model.Structures
 
         [JsonProperty("ID")]
         public ulong UID { get; private set; }
-        [JsonProperty("OutputContainers")]
-        private Dictionary<int, PlantPot> outputContainer { get; set; }
+        [JsonProperty("Pots")]
+        private List<PlantPot> plantPots { get; set; }
         [JsonProperty("Name")]
         public string name { get; private set; }
         [JsonProperty("Seeds")]
@@ -30,11 +30,11 @@ namespace FarmVille_api.src.Main.Model.Structures
         private Dictionary<long, Item> inventory;
 
         [JsonConstructor]
-        public Player(ulong ID, Dictionary<int, PlantPot> OutputContainers, string Name, Dictionary<uint, Seeds> Seeds,
+        public Player(ulong ID, List<PlantPot> plantPots, string Name, Dictionary<uint, Seeds> Seeds,
                         Dictionary<uint, Plant> Plants, double Balance) {
             this.UID = ID;
             this.name = Name;
-            this.outputContainer = OutputContainers;
+            this.plantPots = plantPots;
             this.balance = Balance;
             this.seeds = Seeds;
             this.plants = Plants;
@@ -49,8 +49,7 @@ namespace FarmVille_api.src.Main.Model.Structures
         public Player(DiscordMember member) {
             this.UID = member.Id;
             this.name = member.Username;
-            this.outputContainer = new Dictionary<int, PlantPot>();
-            outputContainer.Add(0, new PlantPot(0));
+            this.plantPots = new List<PlantPot>() {new PlantPot()};
             this.balance = 5.00;
             this.seeds = new Dictionary<uint, Seeds>();
             this.plants = new Dictionary<uint, Plant>();
@@ -80,7 +79,7 @@ namespace FarmVille_api.src.Main.Model.Structures
         /// </summary>
         /// <returns></returns>
         private PlantPot findFirstEmptyPot() {
-            foreach(PlantPot i in outputContainer.Values) {
+            foreach(PlantPot i in plantPots) {
                 if(i.isEmpty()) {
                     return i;
                 }
@@ -93,7 +92,7 @@ namespace FarmVille_api.src.Main.Model.Structures
         /// that this player has.
         /// Return a true if the plant was successful, false otherwise.
         /// </summary>
-        /// <param name="seed"></param>
+        /// <param name="seed"> The seed that is to be planted </param>
         /// <returns></returns>
         public String plantSeed(Seeds seed) {
             PlantPot target = this.findFirstEmptyPot();
@@ -106,18 +105,19 @@ namespace FarmVille_api.src.Main.Model.Structures
                 return "Successfully planted your " + seed.name;
             }
         }
-        
+
         /// <summary>
         /// Gets a collective view of all of the player's plant pot's data
         /// Each of these data includes the plant pot's number
         /// What the pot is currently growing
         /// As well as the remaining time left on the plant pot
         /// </summary>
+        /// <param name="pageIndex"> the page number that is to be shown </param>
         /// <returns> An array of strings containing each of the player's plant pots to strings </returns>
         public List<String> getPots(int pageNumber) {
             List<String> potData = new List<string>();
-            foreach(PlantPot i in this.outputContainer.Values) {
-                potData.Add(i.ToString());
+            foreach(PlantPot i in this.plantPots) {
+                potData.Add(i.ToString(potData.Count+1));
             }
             
             int numOfPages = (int)Math.Ceiling((double)potData.Count / 4.0);
@@ -125,12 +125,19 @@ namespace FarmVille_api.src.Main.Model.Structures
             if(pageNumber > numOfPages) {
                 pageNumber = numOfPages;
             }
+
+            if (pageNumber == 0)
+            {
+                pageNumber = 1;
+            }
             
             int lowerBound = (4 * pageNumber) - 4;
 
             if (pageNumber == numOfPages)
             {
                 return potData.GetRange(lowerBound, (potData.Count - lowerBound));
+            } else if(potData.Count() == 0) {
+                return potData;
             }
             else
             {
@@ -139,8 +146,17 @@ namespace FarmVille_api.src.Main.Model.Structures
         }
 
         /// <summary>
+        /// Returns the number of plant pots the player currently holds
+        /// </summary>
+        /// <returns> an integer representing their plant pot count </returns>
+        public int getPotsCount() {
+            return this.plantPots.Count();
+        }
+
+        /// <summary>
         /// Retrieves a list of items in order to display the inventory
         /// </summary>
+        /// <param name="pageIndex"> The page of the inventory that is to be shown </param>
         /// <returns> An array of strings holding data of each item in the inventory </returns>
         public List<String> getInventory(int pageIndex) {
             List<String> result = new List<string>();
@@ -155,16 +171,29 @@ namespace FarmVille_api.src.Main.Model.Structures
                 pageIndex = numOfPages;
             }
 
+            if (pageIndex == 0)
+            {
+                pageIndex = 1;
+            }
+
             int lowerBound = (10 * pageIndex) - 10;
 
             if (pageIndex == numOfPages)
             {
                 return result.GetRange(lowerBound, (result.Count - lowerBound));
+            } else if(result.Count == 0) {
+                return result;
             } else {
                 return result.GetRange(lowerBound, 10);
             }
         }
 
+        /// <summary>
+        /// Removes an item from the player's inventory
+        /// </summary>
+        /// <param name="item"> The item that is to be removed </param>
+        /// <param name="amount"> how many of the item is to be removed, defaults to all </param>
+        /// <returns> a boolean indicating if the action was sucessful </returns>
         public Boolean removeItem(Item item, int amount = int.MaxValue) {
             if(item is null) {
                 return false;
@@ -256,12 +285,18 @@ namespace FarmVille_api.src.Main.Model.Structures
             if(pageIndex > numOfPages) {
                 pageIndex = numOfPages;
             }
+
+            if(pageIndex == 0) {
+                pageIndex = 1;
+            }
             
             int lowerBound = (10 * pageIndex) - 10;
 
             if (pageIndex == numOfPages)
             {
                 return result.GetRange(lowerBound, (result.Count - lowerBound));
+            } else if(result.Count() == 0) {
+                return result;
             }
             else
             {
@@ -281,7 +316,7 @@ namespace FarmVille_api.src.Main.Model.Structures
             List<Item> emptyItems = new List<Item>();
             String result = "";
 
-            foreach(PlantPot i in this.outputContainer.Values) {
+            foreach(PlantPot i in this.plantPots) {
                 if(i.remainingTime() == TimeSpan.Zero) {
                     emptyItems.Add(i.harvest());
                 }
@@ -290,7 +325,12 @@ namespace FarmVille_api.src.Main.Model.Structures
             foreach(Item i in emptyItems) {
                 Item tempItem = IdentificationSearch.idSearch(i);
                 this.addItem(tempItem);
-                result += tempItem.amount + " " + tempItem.name + "\n";
+                if(tempItem.name == "Cake") {
+                    result += tempItem.amount + " Happy Birthday!" + "\n";
+                } else
+                {
+                    result += tempItem.amount + " " + tempItem.name + "\n";
+                }
             }
 
             if(emptyItems.Count == 0) {
@@ -301,17 +341,46 @@ namespace FarmVille_api.src.Main.Model.Structures
             }
         }
 
+        /// <summary>
+        /// The player's method that handles the purchasing command
+        /// </summary>
+        /// <param name="item"> The item that is to be purchased </param>
+        /// <returns> a boolean indicating whether or not the purchase was successful </returns>
         public Boolean purchaseItem(Item item) {
-            double price = item.buyPrice * item.amount;
-            if(price > this.balance) {
-                return false;
-            } else {
-                this.balance -= price;
-                this.addItem(item);
-                return true;
+            double price = 0;
+            if(item is PlantPot) {
+                price = 100 * Math.Pow(2, this.getPotsCount() - 1);
+                if (price > this.balance)
+                {
+                    return false;
+                }
+                else
+                {
+                    this.plantPots.Add(new PlantPot());
+                }
+            } else
+            {
+                price = item.buyPrice * item.amount;
+
+                if (price > this.balance)
+                {
+                    return false;
+                }
+                else
+                {
+                    this.addItem(item);
+                }
             }
+            this.balance -= price;
+            return true;
         }
 
+        /// <summary>
+        /// The player method that handles selling an item that they have in their
+        /// inventory
+        /// </summary>
+        /// <param name="item"> The item that is to be sold </param>
+        /// <returns> a boolean representing if the player was able to sell the item </returns>
         public Boolean sellItem(Item item) {
             Item beingSold;
             this.inventory.TryGetValue(item.id, out beingSold);

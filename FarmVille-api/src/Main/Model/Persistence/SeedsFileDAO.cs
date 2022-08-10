@@ -56,10 +56,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
                 }
                 seedsDataString = tempSeeds;
             }
-            Seeds tempSeed;
-            seedsDataString.TryGetValue("Spinach", out tempSeed);
-            tempSeed.growDuration = new TimeSpan(hours: 0, minutes: 1, seconds: 0);
-            jsonUtilities.JsonSerialize<Dictionary<string, Seeds>>(seedsDataString, seedsJson);
+
         }
 
         /// <summary>
@@ -70,7 +67,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         public Seeds getSeeds(string name) {
             Seeds result;
             this.seedsDataString.TryGetValue(name, out result);
-            return result;
+            return this.getSeedsAmonut(result.id);
         }
 
         /// <summary>
@@ -81,7 +78,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         public Seeds getSeeds(uint ID) {
             Seeds result;
             seedsDataID.TryGetValue(ID, out result);
-            return result;
+            return this.getSeedsAmonut(result.id);
         }
 
         /// <summary>
