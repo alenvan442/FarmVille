@@ -12,7 +12,7 @@ namespace FarmVille_api.src.Main.Controller
         ShopFileDAO shopFileDAO;
         PlayersFileDAO playersFileDAO;
         PlantsFileDAO plantsFileDAO;
-        readonly int lineCount = 20;
+        readonly int lineCount = 30;
 
         /// <summary>
         /// Constructor of the shop controller
@@ -30,27 +30,27 @@ namespace FarmVille_api.src.Main.Controller
         /// </summary>
         /// <param name="currPlayer"> The player requesting the command </param>
         /// <param name="pageNumber"> What page number of the shop to view </param>
-        /// <returns> A string containing the items on the page in a string format </returns>
-        public String shopPage(Player currPlayer, int pageNumber) {
-            List<Item> page = this.shopFileDAO.getPage(pageNumber);
-            String result = "\n";
+        /// <returns> A tuple containing the page number and the items on the page in a string format </returns>
+        public Tuple<int, String> shopPage(Player currPlayer, int pageNumber) {
+            Tuple<int, List<Item>> pageInfo = this.shopFileDAO.getPage(pageNumber);
+            String displayString = "\n";
 
             double price = 0;
-            foreach(Item i in page) {
+            foreach(Item i in pageInfo.Item2) {
                 if(i.id == 196609) {
                     price = 100 * Math.Pow(2, currPlayer.getPotsCount() - 1);
                 } else {
                     price = i.buyPrice;
                 }
-                result += i.name;
+                displayString += i.name;
                 String priceString = price.ToString();
                 String spacing = new String('.', (lineCount - i.name.Length - priceString.Length)*3);
-                result += spacing;
-                result += "$" + price;
-                result += "\n";
+                displayString += spacing;
+                displayString += "$" + price;
+                displayString += "\n";
             }
 
-            return result;
+            return new Tuple<int, String>(pageInfo.Item1, displayString);
         }
 
         /// <summary>

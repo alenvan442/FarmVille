@@ -23,34 +23,13 @@ namespace FarmVille.Commands
     {
 
         /// <summary>
-        /// Will display the help menu 
-        /// This will display various categories and commands with their functionality
-        /// </summary>
-        /// <param name="ctx"> The Context of the command </param>
-        /// <returns></returns>
-        [Command("helpMenu")]
-        public async Task helpMenu(CommandContext ctx) {
-            await Task.CompletedTask;
-        }
-
-        /// <summary>
-        /// Will display a menu that holds some various commands or navigations
-        /// Inventory, staus, help, achievements etc.
-        /// </summary>
-        /// <param name="ctx"> The Context of the command </param>
-        /// <returns></returns>
-        [Command("menu")]
-        public async Task displayMenu(CommandContext ctx) {
-            await Task.CompletedTask;
-        }
-
-        /// <summary>
         /// Displays the player's status
         /// Ex: Name, Id, and current money holdings
         /// </summary>
         /// <param name="ctx"> The Context of the command </param>
         /// <returns></returns>
         [Command("status")]
+        [Description("Displays the player's status: .status")]
         public async Task displayPlayerStatus(CommandContext ctx) {
 
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.Member.Id);
@@ -76,7 +55,9 @@ namespace FarmVille.Commands
         /// <param name="pageIndex"> The page to display </param>
         /// <returns></returns>
         [Command("pots")]
-        public async Task displayPots(CommandContext ctx, int pageIndex = 1) {
+        [Description("Displays the player's plant pots: .pots (page number)")]
+        public async Task displayPots(CommandContext ctx,
+                        [Description("The number of the page to display, defailts to 1")] int pageIndex = 1) {
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
             List<String> pots = currPlayer.getPots(pageIndex);
 
@@ -104,9 +85,13 @@ namespace FarmVille.Commands
         /// <param name="pageIndex"> The page to display </param>
         /// <returns></returns>
         [Command("bag")]
-        public async Task displayPlayerInventory(CommandContext ctx, int pageIndex = 1) {
+        [Description("Displays the player's inventory: .bag (page number)")]
+        public async Task displayPlayerInventory(CommandContext ctx,
+                        [Description("The number of the page to display, defaults to 1")] int pageIndex = 1) {
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
             List<String> inventory = currPlayer.getInventory(pageIndex);
+            string pageNum = inventory.First();
+            inventory.RemoveAt(0);
 
             String pageString = "";
             foreach (String i in inventory)
@@ -123,7 +108,7 @@ namespace FarmVille.Commands
                 Title = ctx.User.Username + "'s Inventory",
                 Description = pageString
 
-            }.WithFooter("page " + pageIndex);
+            }.WithFooter("page " + pageNum);
 
             await ctx.Channel.SendMessageAsync(baseEmbed);
 

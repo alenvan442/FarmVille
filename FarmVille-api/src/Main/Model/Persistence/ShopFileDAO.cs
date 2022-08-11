@@ -35,8 +35,10 @@ namespace FarmVille_api.src.Main.Model.Persistence
         /// Each page lists 10 items
         /// </summary>
         /// <param name="pageNumber"> the page number that is to be shown </param>
-        /// <returns> a list of item, where the items are what can be seen on the specified page </returns>
-        public List<Item> getPage(int pageNumber) {
+        /// <returns> a tuple containing the page number and the 
+        ///             list of item, where the items are what can be 
+        ///             seen on the specified page </returns>
+        public Tuple<int, List<Item>> getPage(int pageNumber) {
             
             List<Item> itemCatalogue = this.shopList.Values.ToList();
             int numOfPages = (int)Math.Ceiling((double)itemCatalogue.Count / 10.0);
@@ -49,17 +51,21 @@ namespace FarmVille_api.src.Main.Model.Persistence
             {
                 pageNumber = 1;
             }
-            
+
             int lowerBound = (pageNumber * 10) - 10;
+
+            List<Item> items = new List<Item>();
 
             if (pageNumber == numOfPages)
             {
-                return itemCatalogue.GetRange(lowerBound, (itemCatalogue.Count - lowerBound));
+                items = itemCatalogue.GetRange(lowerBound, (itemCatalogue.Count - lowerBound));
             }
             else
             {
-                return itemCatalogue.GetRange(lowerBound, 10);
+                items = itemCatalogue.GetRange(lowerBound, 10);
             }
+
+            return new Tuple<int, List<Item>>(pageNumber, items);
 
         }
 

@@ -23,16 +23,18 @@ namespace FarmVille.Commands
         /// <param name="pageNumber"> The page to display </param>
         /// <returns></returns>
         [Command("shop")]
-        public async Task shop(CommandContext ctx, int pageNumber = 1) {
+        [Description("Displays the shop: .shop (page number)")]
+        public async Task shop(CommandContext ctx, 
+                                [Description("The number of the page to display, defaults to 1")] int pageNumber = 1 ) {
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
-            String pageItems = CommandsHelper.shopController.shopPage(currPlayer, pageNumber);
+            Tuple<int, String> pageItems = CommandsHelper.shopController.shopPage(currPlayer, pageNumber);
 
             DiscordEmbedBuilder embed = new DiscordEmbedBuilder
             {
                 Title = "Shop",
-                Description = pageItems
+                Description = pageItems.Item2
 
-            }.WithFooter("page " + pageNumber);
+            }.WithFooter("page " + pageItems.Item1);
 
             await ctx.Channel.SendMessageAsync(embed);
 
@@ -46,7 +48,10 @@ namespace FarmVille.Commands
         /// <param name="amount"> the amount to purchase </param>
         /// <returns></returns>
         [Command("buy")]
-        public async Task buy(CommandContext ctx, string item, int amount = 1) {
+        [Description("Purchases an item from the shop: .buy (item name) (amount)")]
+        public async Task buy(CommandContext ctx,
+                        [Description("The name of the item to purchase")] string item,
+                        [Description("The amount to buy, defaults to 1")] int amount = 1) {
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
             item = item[0].ToString().ToUpper() + item.Substring(1);
             int result = CommandsHelper.shopController.buy(currPlayer, item, amount);
@@ -87,7 +92,10 @@ namespace FarmVille.Commands
         /// <param name="amount"> How many of the item to sell </param>
         /// <returns></returns>
         [Command("sell")]
-        public async Task sell(CommandContext ctx, string item, int amount = 1) {
+        [Description("Sells an item: .sell (item name) (amount)")]
+        public async Task sell(CommandContext ctx, 
+                        [Description("The name of the item to sell")] string item,
+                        [Description("The amount to sell, defaults to 1")] int amount = 1) {
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
             item = item[0].ToString().ToUpper() + item.Substring(1);
             Item soldItem = CommandsHelper.shopController.sell(currPlayer, item, amount);

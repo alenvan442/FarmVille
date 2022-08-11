@@ -159,13 +159,14 @@ namespace FarmVille_api.src.Main.Model.Structures
         /// <param name="pageIndex"> The page of the inventory that is to be shown </param>
         /// <returns> An array of strings holding data of each item in the inventory </returns>
         public List<String> getInventory(int pageIndex) {
-            List<String> result = new List<string>();
+            List<String> items = new List<string>();
+            List<String> results = new List<string>();
 
             foreach(Item i in this.inventory.Values) {
-                result.Add(i.ToString());
+                items.Add(i.ToString());
             }
 
-            int numOfPages = (int)Math.Ceiling((double)result.Count / 10);
+            int numOfPages = (int)Math.Ceiling((double)items.Count / 10);
 
             if(pageIndex > numOfPages) {
                 pageIndex = numOfPages;
@@ -178,14 +179,17 @@ namespace FarmVille_api.src.Main.Model.Structures
 
             int lowerBound = (10 * pageIndex) - 10;
 
+            results.Add(pageIndex.ToString());
+
             if (pageIndex == numOfPages)
             {
-                return result.GetRange(lowerBound, (result.Count - lowerBound));
-            } else if(result.Count == 0) {
-                return result;
+                results.AddRange(items.GetRange(lowerBound, (items.Count - lowerBound)));
+            } else if(items.Count == 0) {
+                return results;
             } else {
-                return result.GetRange(lowerBound, 10);
+                results.AddRange(items.GetRange(lowerBound, 10));
             }
+            return results;
         }
 
         /// <summary>

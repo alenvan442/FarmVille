@@ -7,7 +7,7 @@
     "PlantID": 131073,
     "Regrow": false,
     "Season": "Fall",
-    "Name": "Spinach Seeds",
+    "Name": "Spinach (Seeds)",
     "ID": 65537,
     "BuyPrice": 4.0,
     "SellPrice": 0.0
@@ -20,7 +20,7 @@
     "PlantID": 131074,
     "Regrow": false,
     "Season": "Spring",
-    "Name": "Turnip Seeds",
+    "Name": "Turnip (Seeds)",
     "ID": 65538,
     "BuyPrice": 4.0,
     "SellPrice": 0.0
@@ -33,7 +33,7 @@
     "PlantID": 131075,
     "Regrow": false,
     "Season": "Winter",
-    "Name": "Beet Seeds",
+    "Name": "Beet (Seeds)",
     "ID": 65539,
     "BuyPrice": 8.0,
     "SellPrice": 0.0
@@ -46,7 +46,7 @@
     "PlantID": 131076,
     "Regrow": false,
     "Season": "Fall",
-    "Name": "Carrot Seeds",
+    "Name": "Carrot (Seeds)",
     "ID": 65540,
     "BuyPrice": 8.0,
     "SellPrice": 0.0
@@ -59,7 +59,7 @@
     "PlantID": 131077,
     "Regrow": false,
     "Season": "Winter",
-    "Name": "Celery Seeds",
+    "Name": "Celery (Seeds)",
     "ID": 65541,
     "BuyPrice": 8.0,
     "SellPrice": 0.0
@@ -72,7 +72,7 @@
     "PlantID": 131078,
     "Regrow": false,
     "Season": "Summer",
-    "Name": "Cucumber Seeds",
+    "Name": "Cucumber (Seeds)",
     "ID": 65542,
     "BuyPrice": 8.0,
     "SellPrice": 0.0
@@ -85,7 +85,7 @@
     "PlantID": 131079,
     "Regrow": false,
     "Season": "Spring",
-    "Name": "Bean Seeds",
+    "Name": "Bean (Seeds)",
     "ID": 65543,
     "BuyPrice": 20.0,
     "SellPrice": 0.0
@@ -98,7 +98,7 @@
     "PlantID": 131080,
     "Regrow": true,
     "Season": "Summer",
-    "Name": "Corn Seeds",
+    "Name": "Corn (Seeds)",
     "ID": 65544,
     "BuyPrice": 20.0,
     "SellPrice": 0.0
@@ -111,7 +111,7 @@
     "PlantID": 131081,
     "Regrow": false,
     "Season": "Spring",
-    "Name": "Lettuce Seeds",
+    "Name": "Lettuce (Seeds)",
     "ID": 65545,
     "BuyPrice": 20.0,
     "SellPrice": 0.0
@@ -124,7 +124,7 @@
     "PlantID": 131082,
     "Regrow": true,
     "Season": "Fall",
-    "Name": "Pepper Seeds",
+    "Name": "Pepper (Seeds)",
     "ID": 65546,
     "BuyPrice": 20.0,
     "SellPrice": 0.0
@@ -137,7 +137,7 @@
     "PlantID": 131083,
     "Regrow": true,
     "Season": "Summer",
-    "Name": "Tomato Seeds",
+    "Name": "Tomato (Seeds)",
     "ID": 65547,
     "BuyPrice": 20.0,
     "SellPrice": 0.0
@@ -150,7 +150,7 @@
     "PlantID": 131084,
     "Regrow": false,
     "Season": "Summer",
-    "Name": "Watermelon Seeds",
+    "Name": "Watermelon (Seeds)",
     "ID": 65548,
     "BuyPrice": 20.0,
     "SellPrice": 0.0
@@ -163,7 +163,7 @@
     "PlantID": 131085,
     "Regrow": false,
     "Season": "Winter",
-    "Name": "Broccoli Seeds",
+    "Name": "Broccoli (Seeds)",
     "ID": 65549,
     "BuyPrice": 40.0,
     "SellPrice": 0.0
@@ -176,7 +176,7 @@
     "PlantID": 131086,
     "Regrow": false,
     "Season": "Winter",
-    "Name": "Cauliflower",
+    "Name": "Cauliflower (Seeds)",
     "ID": 65550,
     "BuyPrice": 40.0,
     "SellPrice": 0.0
@@ -189,7 +189,7 @@
     "PlantID": 131087,
     "Regrow": false,
     "Season": "Summer",
-    "Name": "Onion Seeds",
+    "Name": "Onion (Seeds)",
     "ID": 65551,
     "BuyPrice": 40.0,
     "SellPrice": 0.0
@@ -202,7 +202,7 @@
     "PlantID": 131088,
     "Regrow": false,
     "Season": "Spring",
-    "Name": "Potato Seeds",
+    "Name": "Potato (Seeds)",
     "ID": 65552,
     "BuyPrice": 40.0,
     "SellPrice": 0.0
@@ -215,7 +215,7 @@
     "PlantID": 131089,
     "Regrow": false,
     "Season": "Winter",
-    "Name": "Cabbage Seeds",
+    "Name": "Cabbage (Seeds)",
     "ID": 65553,
     "BuyPrice": 80.0,
     "SellPrice": 0.0
@@ -228,7 +228,7 @@
     "PlantID": 131090,
     "Regrow": true,
     "Season": "Fall",
-    "Name": "Eggplant Seeds",
+    "Name": "Eggplant (Seeds)",
     "ID": 65554,
     "BuyPrice": 80.0,
     "SellPrice": 0.0
@@ -241,7 +241,7 @@
     "PlantID": 131091,
     "Regrow": true,
     "Season": "Fall",
-    "Name": "Pumpkin Seeds",
+    "Name": "Pumpkin (Seeds)",
     "ID": 65555,
     "BuyPrice": 80.0,
     "SellPrice": 0.0
@@ -254,7 +254,7 @@
     "PlantID": 131092,
     "Regrow": true,
     "Season": "Spring",
-    "Name": "Wheat Seeds",
+    "Name": "Wheat (Seeds)",
     "ID": 65556,
     "BuyPrice": 120.0,
     "SellPrice": 0.0
@@ -267,7 +267,7 @@
     "PlantID": 131093,
     "Regrow": false,
     "Season": "Fall",
-    "Name": "Cake Seeds",
+    "Name": "Cake (Seeds)",
     "ID": 65557,
     "BuyPrice": 0.0,
     "SellPrice": 0.0

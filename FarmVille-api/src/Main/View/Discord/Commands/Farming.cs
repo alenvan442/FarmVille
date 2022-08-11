@@ -27,7 +27,9 @@ namespace FarmVille.Commands
         /// <param name="input"> Any input the player makes, whether it is a seed name or seed id </param>
         /// <returns>  </returns>
         [Command("plant")]
-        public async Task plant(CommandContext ctx, string input = "") {
+        [Description("Plants a seed in an empty plant pot: .plant (seed name)")]
+        public async Task plant(CommandContext ctx,
+                        [Description("The name of the seed to plant")] string input = "") {
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
 
             if (input?.Length <= 0 || input == null)
@@ -50,7 +52,9 @@ namespace FarmVille.Commands
         /// <param name="pageIndex"> The page to display </param>
         /// <returns></returns>
         [Command("seeds")]
-        public async Task seedsList(CommandContext ctx, int pageIndex = 1) {
+        [Description("Displays all seeds that the player has in their inventory: .seeds (page number)")]
+        public async Task seedsList(CommandContext ctx,
+                        [Description("The number of the page to display, defaults to 1")] int pageIndex = 1) {
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
             List<String> seeds = currPlayer.getSeeds(pageIndex);
 
@@ -80,6 +84,7 @@ namespace FarmVille.Commands
         /// <param name="ctx"> The context of the command </param>
         /// <returns> an embed displaying the result of the harvest </returns>
         [Command("harvest")]
+        [Description("Harvests all plant pots at the same time: .harvest")]
         public async Task harvest(CommandContext ctx) {
             Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
             String result = CommandsHelper.plantPotController.harvest(currPlayer.UID);
