@@ -90,8 +90,6 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// <returns> The created "empty" item that was harvested </returns>
         public Item output(Boolean regrow) {
 
-            this.growthDuration = TimeSpan.Zero;
-
             Item newItem = new Item(this.outputID, 0, 0, "", this.yield);
 
             if (!regrow)

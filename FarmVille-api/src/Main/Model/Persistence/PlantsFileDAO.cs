@@ -50,7 +50,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         public Plant getPlant(uint id) {
             Plant result;
             this.plantsId.TryGetValue(id, out result);
-            return this.getPlantAmount(result.id);
+            return result;
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         public Plant getPlant(string name) {
             Plant result;
             this.plantsName.TryGetValue(name, out result);
-            return this.getPlantAmount(result.id);
+            return result;
         }
 
         /// <summary>

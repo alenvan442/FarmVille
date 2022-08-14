@@ -33,7 +33,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         /// <param name="oldPlant"></param>
         /// <param name="amount"></param>
         public Plant(Plant oldPlant, int amount) 
-                    :base(oldPlant.id, oldPlant.buyPrice, oldPlant.sellPrice, oldPlant.name, oldPlant.amount) {
+                    :base(oldPlant.id, oldPlant.buyPrice, oldPlant.sellPrice, oldPlant.name, amount) {
 
             this.seedID = oldPlant.seedID;
         }

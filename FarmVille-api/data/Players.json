@@ -39,7 +39,7 @@
         "Amount": 1,
         "Yield": 4,
         "GrowthDuration": "01:00:00",
-        "StartingTime": "2022-08-13T15:47:29.962255-04:00",
+        "StartingTime": "2022-08-14T18:17:22.320521-04:00",
         "OutputID": 131074,
         "Name": "Plant Pot",
         "ID": 196609,
@@ -62,7 +62,7 @@
     "Name": "Sobdh",
     "Seeds": {},
     "Plants": {},
-    "Balance": 2.0
+    "Balance": 10.0
   },
   "363537272739463168": {
     "ID": 363537272739463168,

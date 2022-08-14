@@ -91,11 +91,11 @@ namespace FarmVille_api.src.Main.Controller
         ///             The amount, if the amount is -1 then the player was unable to sell the item
         ///             if the amount is > 0, then the item was successfully sold </returns>
         public Item sell(ulong UID, string item, int amount = 1) {
-            Item? soldItem = this.plantsFileDAO.getPlant(item);
-            if(soldItem is null) {
+            Item? soldItemCopy = this.plantsFileDAO.getPlant(item);
+            if(soldItemCopy is null) {
                 return null;
             } else {
-                soldItem.amount = amount;
+                Item soldItem = this.plantsFileDAO.getPlantAmount(soldItemCopy.id, amount);
                 Player player = this.playersFileDAO.getPlayer(UID);
                 if(player.sellItem(soldItem)) {
                     this.playersFileDAO.save();
