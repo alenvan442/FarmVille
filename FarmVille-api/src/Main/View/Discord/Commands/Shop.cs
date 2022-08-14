@@ -26,8 +26,7 @@ namespace FarmVille.Commands
         [Description("Displays the shop: .shop (page number)")]
         public async Task shop(CommandContext ctx, 
                                 [Description("The number of the page to display, defaults to 1")] int pageNumber = 1 ) {
-            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
-            Tuple<int, String> pageItems = CommandsHelper.shopController.shopPage(currPlayer, pageNumber);
+            Tuple<int, String> pageItems = CommandsHelper.shopController.shopPage(ctx.User.Id, pageNumber);
 
             DiscordEmbedBuilder embed = new DiscordEmbedBuilder
             {
@@ -52,9 +51,8 @@ namespace FarmVille.Commands
         public async Task buy(CommandContext ctx,
                         [Description("The name of the item to purchase")] string item,
                         [Description("The amount to buy, defaults to 1")] int amount = 1) {
-            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
             item = item[0].ToString().ToUpper() + item.Substring(1);
-            int result = CommandsHelper.shopController.buy(currPlayer, item, amount);
+            int result = CommandsHelper.shopController.buy(ctx.User.Id, item, amount);
 
             if(item.Equals("Plantpot")) {
                 amount = 1;
@@ -96,9 +94,8 @@ namespace FarmVille.Commands
         public async Task sell(CommandContext ctx, 
                         [Description("The name of the item to sell")] string item,
                         [Description("The amount to sell, defaults to 1")] int amount = 1) {
-            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
             item = item[0].ToString().ToUpper() + item.Substring(1);
-            Item soldItem = CommandsHelper.shopController.sell(currPlayer, item, amount);
+            Item soldItem = CommandsHelper.shopController.sell(ctx.User.Id, item, amount);
 
             String message = "";
             if(soldItem is null) {

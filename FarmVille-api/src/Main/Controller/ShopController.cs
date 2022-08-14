@@ -31,7 +31,8 @@ namespace FarmVille_api.src.Main.Controller
         /// <param name="currPlayer"> The player requesting the command </param>
         /// <param name="pageNumber"> What page number of the shop to view </param>
         /// <returns> A tuple containing the page number and the items on the page in a string format </returns>
-        public Tuple<int, String> shopPage(Player currPlayer, int pageNumber) {
+        public Tuple<int, String> shopPage(ulong UID, int pageNumber) {
+            Player currPlayer = this.playersFileDAO.getPlayer(UID);
             Tuple<int, List<Item>> pageInfo = this.shopFileDAO.getPage(pageNumber);
             String displayString = "\n";
 
@@ -63,12 +64,13 @@ namespace FarmVille_api.src.Main.Controller
         /// <returns> 0 for success
         ///           1 for insufficient balance 
         ///           2 for unknown item </returns>
-        public int buy(Player player, string item, int amount = 1) {
+        public int buy(ulong UID, string item, int amount = 1) {
             Item? boughtItem = this.shopFileDAO.buy(item);
             if(boughtItem is null) {
                 return 2;
             } else {
                 boughtItem.amount = amount;
+                Player player = this.playersFileDAO.getPlayer(UID);
                 if(player.purchaseItem(boughtItem)) {
                     this.playersFileDAO.save();
                     return 0;
@@ -88,12 +90,13 @@ namespace FarmVille_api.src.Main.Controller
         ///             The name of the item: what was sold
         ///             The amount, if the amount is -1 then the player was unable to sell the item
         ///             if the amount is > 0, then the item was successfully sold </returns>
-        public Item sell(Player player, string item, int amount = 1) {
+        public Item sell(ulong UID, string item, int amount = 1) {
             Item? soldItem = this.plantsFileDAO.getPlant(item);
             if(soldItem is null) {
                 return null;
             } else {
                 soldItem.amount = amount;
+                Player player = this.playersFileDAO.getPlayer(UID);
                 if(player.sellItem(soldItem)) {
                     this.playersFileDAO.save();
                     return soldItem;

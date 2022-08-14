@@ -55,5 +55,51 @@ namespace FarmVille_api.src.Main.Controller
         public Boolean deletePlayer(ulong UID) {
             return playersFileDAO.deletePlayer(UID);
         }
+
+        /// <summary>
+        /// Communicator between front end and backend to retrieve 
+        /// a page out of the list of seeds the player owns
+        /// </summary>
+        /// <param name="UID"> the id of the player </param>
+        /// <param name="pageIndex"> the page to display </param>
+        /// <returns> a tuple containing the page number displayed as well as a list of string
+        ///             holding information on what is on said page </returns>
+        public Tuple<int, List<String>> getSeeds(ulong UID, int pageIndex) {
+            return playersFileDAO.getSeeds(UID, pageIndex);
+        }
+
+        /// <summary>
+        /// Communicator between front end and backend to retrieve 
+        /// a page out of the list of items the player owns
+        /// </summary>
+        /// <param name="UID"> the id of the player </param>
+        /// <param name="pageIndex"> the page to display </param>
+        /// <returns> a tuple containing the page number displayed as well as a list of string
+        ///             holding information on what is on said page </returns>
+        public Tuple<int, List<String>> getInventory(ulong UID, int pageIndex) {
+            return playersFileDAO.getInventory(UID, pageIndex);
+        }
+
+        /// <summary>
+        /// Communicator between front end and backend to retrieve 
+        /// a page out of the list of pots the player owns
+        /// </summary>
+        /// <param name="UID"> the id of the player </param>
+        /// <param name="pageIndex"> the page to display </param>
+        /// <returns> a tuple containing the page number displayed as well as a list of string
+        ///             holding information on what is on said page </returns>
+        public Tuple<int, List<String>> getPots(ulong UID, int pageIndex) {
+            return playersFileDAO.getPots(UID, pageIndex);
+        }
+
+        /// <summary>
+        /// Communicator between front end and backend to retrieve 
+        /// player info in order to display for the user
+        /// </summary>
+        /// <param name="UID"> the id of the player </param>
+        /// <returns> a string containing information on the player </returns>
+        public String getStatus(ulong UID) {
+            return playersFileDAO.getStatus(UID);
+        }
     }
 }

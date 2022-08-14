@@ -15,10 +15,6 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         public uint plantID { get; private set; }
         [JsonProperty("Regrow")]
         public Boolean regrow { get; private set; }
-        [JsonProperty("Season")]
-        public String season { get; private set; }
-
-
 
         /// <summary>
         /// Create a new item that is of type seed by giving it some passed in parameters
@@ -40,7 +36,7 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
         [JsonConstructor]
         public Seeds(uint id, int amount, double buyPrice, double sellPrice,
                         string name, string plantName, int yield, TimeSpan growDuration, uint plantID,
-                        Boolean regrow, String season): 
+                        Boolean regrow): 
                         base(id, buyPrice, sellPrice, name, amount) {
 
             this.plantName = plantName;
@@ -48,7 +44,6 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
             this.growDuration = growDuration;
             this.plantID = plantID;
             this.regrow = regrow;
-            this.season = season;
 
         }
 
@@ -67,7 +62,6 @@ namespace FarmVille_api.src.Main.Model.Structures.Items
             this.growDuration = otherSeed.growDuration;
             this.plantID = otherSeed.plantID;
             this.regrow = otherSeed.regrow;
-            this.season = otherSeed.season;
         }
 
         /// <summary>

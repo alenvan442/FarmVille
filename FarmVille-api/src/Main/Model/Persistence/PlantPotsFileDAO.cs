@@ -65,5 +65,11 @@ namespace FarmVille_api.src.Main.Model.Persistence
             return currPlayer.harvest();
         }
 
+
+        public void clearPot(ulong UID, int index) {
+            Player currPlayer = this.playersFileDAO.getPlayer(UID);
+            currPlayer.clearPot(index);
+        }
+
     }
 }

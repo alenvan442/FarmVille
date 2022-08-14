@@ -5,100 +5,88 @@
         "BuyPrice": 0.0,
         "SellPrice": 0.0
     },
-    "Spinach": {
+    "Lettuce": {
+        "Name": "🥬Lettuce (Seeds)",
         "ID": 65537,
-        "Name": "Spinach (Seeds)",
-        "BuyPrice": 4.00,
-        "SellPrice": 0.00
-    },
-    "Turnip": {
-        "ID": 65538,
-        "Name": "Turnip (Seeds)",
-        "BuyPrice": 4.00,
-        "SellPrice": 0.00
-    },
-    "Beet": {
-        "ID": 65539,
-        "Name": "Beet (Seeds)",
-        "BuyPrice": 8.00,
-        "SellPrice": 0.00
-    },
-    "Carrot": {
-        "ID": 65540,
-        "Name": "Carrot (Seeds)",
-        "BuyPrice": 8.00,
-        "SellPrice": 0.00
-    },
-    "Celery": {
-        "ID": 65541,
-        "Name": "Celery (Seeds)",
-        "BuyPrice": 8.00,
-        "SellPrice": 0.00
+        "BuyPrice": 5.0,
+        "SellPrice": 0.0
     },
     "Cucumber": {
-        "ID": 65542,
-        "Name": "Cucumber (Seeds)",
-        "BuyPrice": 8.00,
-        "SellPrice": 0.00
+        "Name": "🥒Cucumber (Seeds)",
+        "ID": 65538,
+        "BuyPrice": 15.0,
+        "SellPrice": 0.0
     },
-    "Bean": {
-        "ID": 65543,
-        "Name": "Bean (Seeds)",
-        "BuyPrice": 20.00,
-        "SellPrice": 0.00
+    "Corn": {
+        "Name": "🌽Corn (Seeds)",
+        "ID": 65539,
+        "BuyPrice": 15.0,
+        "SellPrice": 0.0
     },
-    "Lettuce": {
-        "ID": 65545,
-        "Name": "Lettuce (Seeds)",
-        "BuyPrice": 20.00,
-        "SellPrice": 0.00
-    },
-    "Watermelon": {
-        "ID": 65548,
-        "Name": "Watermelon (Seeds)",
-        "BuyPrice": 20.00,
-        "SellPrice": 0.00
-    },
-    "Broccoli": {
-        "ID": 65549,
-        "Name": "Broccoli (Seeds)",
-        "BuyPrice": 40.00,
-        "SellPrice": 0.00
-    },
-    "Cauliflower": {
-        "ID": 65550,
-        "Name": "Cauliflower (Seeds)",
-        "BuyPrice": 40.00,
-        "SellPrice": 0.00
-    },
-    "Onion": {
-        "ID": 65551,
-        "Name": "Onion (Seeds)",
-        "BuyPrice": 40.00,
-        "SellPrice": 0.00
+    "Carrot": {
+        "Name": "🥕Carrot (Seeds)",
+        "ID": 65540,
+        "BuyPrice": 35.0,
+        "SellPrice": 0.0
     },
     "Potato": {
-        "ID": 65552,
-        "Name": "Potato (Seeds)",
-        "BuyPrice": 40.00,
-        "SellPrice": 0.00
+        "Name": "🥔Potato (Seeds)",
+        "ID": 65541,
+        "BuyPrice": 35.0,
+        "SellPrice": 0.0
     },
-    "Cabbage": {
-        "ID": 65553,
-        "Name": "Cabbage (Seeds)",
-        "BuyPrice": 80.00,
-        "SellPrice": 0.00
+    "Tomato": {
+        "Name": "🍅Tomato (Seeds)",
+        "ID": 65542,
+        "BuyPrice": 50.0,
+        "SellPrice": 0.0
     },
-    "Pumpkin": {
-        "ID": 65555,
-        "Name": "Pumpkin (Seeds)",
-        "BuyPrice": 80.00,
-        "SellPrice": 0.00
+    "Eggplant": {
+        "Name": "🍆Eggplant (Seeds)",
+        "ID": 65543,
+        "BuyPrice": 50.0,
+        "SellPrice": 0.0
+    },
+    "Pepper": {
+        "Name": "🌶️Pepper (Seeds)",
+        "ID": 65544,
+        "BuyPrice": 50.0,
+        "SellPrice": 0.0
+    },
+    "Broccoli": {
+        "Name": "🥦Broccoli (Seeds)",
+        "ID": 65545,
+        "BuyPrice": 70.0,
+        "SellPrice": 0.0
     },
     "Wheat": {
-        "ID": 65556,
-        "Name": "Wheat (Seeds)",
-        "BuyPrice": 120.00,
-        "SellPrice": 0.00
+        "Name": "🌾Wheat (Seeds)",
+        "ID": 65546,
+        "BuyPrice": 85.0,
+        "SellPrice": 0.0
+    },
+    "Onion": {
+        "Name": "🧅Onion (Seeds)",
+        "ID": 65547,
+        "BuyPrice": 120.0,
+        "SellPrice": 0.0
+    },
+    "Garlic": {
+        "Name": "🧄Garlic (Seeds)",
+        "ID": 65548,
+        "BuyPrice": 250.0,
+        "SellPrice": 0.0
+    },
+    "Pumpkin": {
+        "Name": "🎃Pumpkin (Seeds)",
+        "ID": 65549,
+        "BuyPrice": 300.0,
+        "SellPrice": 0.0
+    },
+    "Watermelon": {
+        "Name": "🍉Watermelon (Seeds)",
+        "ID": 65550,
+        "BuyPrice": 350.0,
+        "SellPrice": 0.0
     }
 }

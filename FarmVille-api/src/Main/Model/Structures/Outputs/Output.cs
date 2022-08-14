@@ -86,17 +86,35 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// Create a new "empty" item which consists of only the outputted item's
         /// id and amount
         /// </summary>
+        /// <param name="regrow"> boolean representing whether or not this input regrows </param>
         /// <returns> The created "empty" item that was harvested </returns>
-        public Item output() {
+        public Item output(Boolean regrow) {
 
-            this.startingTime = DateTime.MinValue;
             this.growthDuration = TimeSpan.Zero;
 
             Item newItem = new Item(this.outputID, 0, 0, "", this.yield);
-            this.outputID = 0;
-            this.yield = 0;
+
+            if (!regrow)
+            {
+                this.startingTime = DateTime.MinValue;
+                this.growthDuration = TimeSpan.Zero;
+                this.outputID = 0;
+                this.yield = 0;
+            } else {
+                this.startingTime = DateTime.Now;
+            }
 
             return newItem;
+        }
+
+        /// <summary>
+        /// resets its contents 
+        /// </summary>
+        public void clear() {
+            this.outputID = 0;
+            this.yield = 0;
+            this.growthDuration = TimeSpan.Zero;
+            this.startingTime = DateTime.MinValue;
         }
 
         /// <summary>

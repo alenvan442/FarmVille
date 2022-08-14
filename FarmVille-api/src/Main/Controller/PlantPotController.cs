@@ -56,5 +56,17 @@ namespace FarmVille_api.src.Main.Controller
             return result;
         }
 
+        /// <summary>
+        /// by receiving information from the front end commands,
+        /// we invoke the necessary DAO and clear the requested pot for the player
+        /// that requested the command
+        /// </summary>
+        /// <param name="UID"> the id of the player who requested the action </param>
+        /// <param name="index"> the index of the requested plant pot to clear </param>
+        public void clearPot(ulong UID, int index) {
+            this.plantPotsFileDAO.clearPot(UID, index);
+            this.playersFileDAO.save();
+        }
+
     }
 }

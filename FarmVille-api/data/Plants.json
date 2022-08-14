@@ -1,163 +1,115 @@
 {
-    "Spinach": {
+    "Lettuce": {
         "ID": 131073,
-        "Name": "Spinach",
-        "SeedName": "Spinach Seeds",
+        "Name": "🥬Lettuce",
+        "SeedName": "🥬Lettuce Seeds",
         "SeedID": 65537,
-        "BuyPrice": 0.00,
-        "SellPrice": 2.50
-    },
-    "Turnip": {
-        "ID": 131074,
-        "Name": "Turnip",
-        "SeedName": "Turnip Seeds",
-        "SeedID": 65538,
-        "BuyPrice": 0.00,
-        "SellPrice": 2.50
-    },
-    "Beets": {
-        "ID": 131075,
-        "Name": "Beets",
-        "SeedName": "Beet Seeds",
-        "SeedID": 65539,
-        "BuyPrice": 0.00,
-        "SellPrice": 3.40
-    },
-    "Carrot": {
-        "ID": 131076,
-        "Name": "Carrot",
-        "SeedName": "Carrot Seeds",
-        "SeedID": 65540,
-        "BuyPrice": 0.00,
-        "SellPrice": 5.60
-    },
-    "Celery": {
-        "ID": 131077,
-        "Name": "Celery",
-        "SeedName": "Celery Seeds",
-        "SeedID": 65541,
-        "BuyPrice": 0.00,
-        "SellPrice": 3.73
-    },
-    "Cucumber": {
-        "ID": 131078,
-        "Name": "Cucumber",
-        "SeedName": "Cucumber Seeds",
-        "SeedID": 65542,
         "BuyPrice": 0.00,
         "SellPrice": 3.50
     },
-    "Beans": {
-        "ID": 131079,
-        "Name": "Beans",
-        "SeedName": "Bean Seeds",
-        "SeedID": 65543,
+    "Cucumber": {
+        "ID": 131074,
+        "Name": "🥒Cucumber",
+        "SeedName": "🥒Cucumber Seeds",
+        "SeedID": 65538,
         "BuyPrice": 0.00,
-        "SellPrice": 3.30
+        "SellPrice": 2.00
     },
     "Corn": {
-        "ID": 131080,
-        "Name": "Corn",
-        "SeedName": "Corn Seeds",
-        "SeedID": 65544,
+        "ID": 131075,
+        "Name": "🌽Corn",
+        "SeedName": "🌽Corn Seeds",
+        "SeedID": 65539,
         "BuyPrice": 0.00,
         "SellPrice": 4.00
     },
-    "Lettuce": {
-        "ID": 131081,
-        "Name": "Lettuce",
-        "SeedName": "Lettuce Seeds",
-        "SeedID": 65545,
+    "Carrot": {
+        "ID": 131076,
+        "Name": "🥕Carrot",
+        "SeedName": "🥕Carrot Seeds",
+        "SeedID": 65540,
         "BuyPrice": 0.00,
-        "SellPrice": 8.45
-    },
-    "Peppers": {
-        "ID": 131082,
-        "Name": "Peppers",
-        "SeedName": "Pepper Seeds",
-        "SeedID": 65546,
-        "BuyPrice": 0.00,
-        "SellPrice": 2.00
-    },
-    "Tomato": {
-        "ID": 131083,
-        "Name": "🍅Tomato",
-        "SeedName": "🍅Tomato Seeds",
-        "SeedID": 65547,
-        "BuyPrice": 0.00,
-        "SellPrice": 2.00
-    },
-    "Watermelon": {
-        "ID": 131084,
-        "Name": "Watermelon",
-        "SeedName": "Watermelon Seeds",
-        "SeedID": 65548,
-        "BuyPrice": 0.00,
-        "SellPrice": 13.21
-    },
-    "Broccoli": {
-        "ID": 131085,
-        "Name": "Broccoli",
-        "SeedName": "Broccoli Seeds",
-        "SeedID": 65549,
-        "BuyPrice": 0.00,
-        "SellPrice": 16.15
-    },
-    "Cauliflower": {
-        "ID": 131086,
-        "Name": "Cauliflower",
-        "SeedName": "Cauliflower Seeds",
-        "SeedID": 65550,
-        "BuyPrice": 0.00,
-        "SellPrice": 24.20
-    },
-    "Onion": {
-        "ID": 131087,
-        "Name": "Onion",
-        "SeedName": "Onion Seeds",
-        "SeedID": 65551,
-        "BuyPrice": 0.00,
-        "SellPrice": 25.60
+        "SellPrice": 60.0
     },
     "Potato": {
-        "ID": 131088,
-        "Name": "Potato",
-        "SeedName": "Potato Seeds",
-        "SeedID": 65552,
+        "ID": 131077,
+        "Name": "🥔Potato",
+        "SeedName": "🥔Potato Seeds",
+        "SeedID": 65541,
         "BuyPrice": 0.00,
-        "SellPrice": 12.80
+        "SellPrice": 10.00
     },
-    "Cabbage": {
-        "ID": 131089,
-        "Name": "Cabbage",
-        "SeedName": "Cabbage Seeds",
-        "SeedID": 65553,
+    "Tomato": {
+        "ID": 131078,
+        "Name": "🍅Tomato",
+        "SeedName": "🍅Tomato Seeds",
+        "SeedID": 65542,
         "BuyPrice": 0.00,
-        "SellPrice": 14.2
+        "SellPrice": 10.00
     },
     "Eggplant": {
-        "ID": 131090,
-        "Name": "Eggplant",
-        "SeedName": "Eggplant Seeds",
-        "SeedID": 65554,
+        "ID": 131079,
+        "Name": "🍆Eggplant",
+        "SeedName": "🍆Eggplant Seeds",
+        "SeedID": 65543,
         "BuyPrice": 0.00,
-        "SellPrice": 12.50
+        "SellPrice": 15.00
     },
-    "Pumpkin": {
-        "ID": 131091,
-        "Name": "Pumpkin",
-        "SeedName": "Pumpkin Seeds",
-        "SeedID": 65555,
+    "Pepper": {
+        "ID": 131080,
+        "Name": "🌶️Pepper",
+        "SeedName": "🌶️Pepper Seeds",
+        "SeedID": 65544,
         "BuyPrice": 0.00,
-        "SellPrice": 42.50
+        "SellPrice": 15.00
+    },
+    "Broccoli": {
+        "ID": 131081,
+        "Name": "🥦Broccoli",
+        "SeedName": "🥦Broccoli Seeds",
+        "SeedID": 65545,
+        "BuyPrice": 0.00,
+        "SellPrice": 130.00
     },
     "Wheat": {
-        "ID": 131092,
-        "Name": "Wheat",
-        "SeedName": "Wheat Seeds",
-        "SeedID": 65556,
+        "ID": 131082,
+        "Name": "🌾Wheat",
+        "SeedName": "🌾Wheat Seeds",
+        "SeedID": 65546,
         "BuyPrice": 0.00,
-        "SellPrice": 12.30
+        "SellPrice": 20.0
+    },
+    "Onion": {
+        "ID": 131083,
+        "Name": "🧅Onion",
+        "SeedName": "🧅Onion Seeds",
+        "SeedID": 65547,
+        "BuyPrice": 0.00,
+        "SellPrice": 210.0
+    },
+    "Garlic": {
+        "ID": 131084,
+        "Name": "🧄Garlic",
+        "SeedName": "🧄Garlic Seeds",
+        "SeedID": 65548,
+        "BuyPrice": 0.00,
+        "SellPrice": 100.00
+    },
+    "Pumpkin": {
+        "ID": 131085,
+        "Name": "🎃Pumpkin",
+        "SeedName": "🎃Pumpkin Seeds",
+        "SeedID": 65549,
+        "BuyPrice": 0.00,
+        "SellPrice": 100.00
+    },
+    "Watermelon": {
+        "ID": 131086,
+        "Name": "🍉Watermelon",
+        "SeedName": "🍉Watermelon Seeds",
+        "SeedID": 65550,
+        "BuyPrice": 0.00,
+        "SellPrice": 150.0
     },
     "Cake": {
         "ID": 131093,

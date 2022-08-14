@@ -36,8 +36,8 @@ namespace FarmVille_api.src.Main.Model.Persistence
                 foreach (Plant plant in tempPlants.Values)
                 {
                     this.plantsId.Add(plant.id, plant);
-                    this.plantsName.Add(plant.name, plant);
                 }
+                plantsName = tempPlants;
             }
 
         }

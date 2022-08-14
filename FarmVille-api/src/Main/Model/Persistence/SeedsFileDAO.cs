@@ -67,7 +67,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         public Seeds getSeeds(string name) {
             Seeds result;
             this.seedsDataString.TryGetValue(name, out result);
-            return this.getSeedsAmonut(result.id);
+            return result;
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
         public Seeds getSeeds(uint ID) {
             Seeds result;
             seedsDataID.TryGetValue(ID, out result);
-            return this.getSeedsAmonut(result.id);
+            return result;
         }
 
         /// <summary>

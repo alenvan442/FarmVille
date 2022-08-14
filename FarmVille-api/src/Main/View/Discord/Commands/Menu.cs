@@ -32,16 +32,14 @@ namespace FarmVille.Commands
         [Description("Displays the player's status: .status")]
         public async Task displayPlayerStatus(CommandContext ctx) {
 
-            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.Member.Id);
-
             //create the embed
             DiscordEmbedBuilder baseEmbed = new DiscordEmbedBuilder
             {
                 Color = DiscordColor.Green,
-                Title = ctx.Member.Username + "'s Status Card",
-                Description = currPlayer.ToString()
+                Title = ctx.User.Username + "'s Status Card",
+                Description = CommandsHelper.playerController.getStatus(ctx.User.Id)
 
-            };
+        };
 
             await ctx.Channel.SendMessageAsync(baseEmbed);
 
@@ -58,11 +56,10 @@ namespace FarmVille.Commands
         [Description("Displays the player's plant pots: .pots (page number)")]
         public async Task displayPots(CommandContext ctx,
                         [Description("The number of the page to display, defailts to 1")] int pageIndex = 1) {
-            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
-            List<String> pots = currPlayer.getPots(pageIndex);
+            Tuple<int, List<String>> potList = CommandsHelper.playerController.getPots(ctx.User.Id, pageIndex);
 
             String pageString = "\n";
-            foreach (String i in pots)
+            foreach (String i in potList.Item2)
             {
                 pageString += i + "\n\n";
             }
@@ -72,7 +69,7 @@ namespace FarmVille.Commands
                 Color = DiscordColor.Turquoise,
                 Title = ctx.User.Username + "'s Pots",
                 Description = pageString
-            }.WithFooter("page " + pageIndex);
+            }.WithFooter("page " + potList.Item1);
 
             await ctx.Channel.SendMessageAsync(embed);
 
@@ -88,13 +85,10 @@ namespace FarmVille.Commands
         [Description("Displays the player's inventory: .bag (page number)")]
         public async Task displayPlayerInventory(CommandContext ctx,
                         [Description("The number of the page to display, defaults to 1")] int pageIndex = 1) {
-            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
-            List<String> inventory = currPlayer.getInventory(pageIndex);
-            string pageNum = inventory.First();
-            inventory.RemoveAt(0);
+            Tuple<int, List<String>> inventory = CommandsHelper.playerController.getInventory(ctx.User.Id, pageIndex);
 
             String pageString = "";
-            foreach (String i in inventory)
+            foreach (String i in inventory.Item2)
             {
                 pageString += "\n" + i;
             }
@@ -108,7 +102,7 @@ namespace FarmVille.Commands
                 Title = ctx.User.Username + "'s Inventory",
                 Description = pageString
 
-            }.WithFooter("page " + pageNum);
+            }.WithFooter("page " + inventory.Item1);
 
             await ctx.Channel.SendMessageAsync(baseEmbed);
 

@@ -38,8 +38,14 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// </summary>
         /// <returns> The item that was harvested </returns>
         public Item harvest() {
-            this.seed = null;
-            return base.output();
+            bool regrow = this.seed.regrow;
+
+            if (!regrow)
+            {
+                this.seed = null;
+            }
+
+            return base.output(regrow);
         } 
 
         /// <summary>
@@ -64,6 +70,14 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
                 base.setAttributes(seed.yield, seed.growDuration, DateTime.Now, seed.plantID);
                 return true;
             }
+        }
+
+        /// <summary>
+        /// clears itself
+        /// </summary>
+        public void clear() {
+            this.seed = null;
+            base.clear();
         }
 
         /// <summary>

@@ -30,7 +30,6 @@ namespace FarmVille.Commands
         [Description("Plants a seed in an empty plant pot: .plant (seed name)")]
         public async Task plant(CommandContext ctx,
                         [Description("The name of the seed to plant")] string input = "") {
-            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
 
             if (input?.Length <= 0 || input == null)
             {
@@ -38,7 +37,7 @@ namespace FarmVille.Commands
                                                     "Or use the command: /seeds (page number), to view your list of seeds");
             } else {
                 input = input[0].ToString().ToUpper() + input.Substring(1);
-                String result = CommandsHelper.plantPotController.plantSeed(currPlayer.UID, input);
+                String result = CommandsHelper.plantPotController.plantSeed(ctx.User.Id, input);
 
                 await ctx.Channel.SendMessageAsync(result);
             }
@@ -55,11 +54,10 @@ namespace FarmVille.Commands
         [Description("Displays all seeds that the player has in their inventory: .seeds (page number)")]
         public async Task seedsList(CommandContext ctx,
                         [Description("The number of the page to display, defaults to 1")] int pageIndex = 1) {
-            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
-            List<String> seeds = currPlayer.getSeeds(pageIndex);
+            Tuple<int, List<String>> seeds = CommandsHelper.playerController.getSeeds(ctx.User.Id, pageIndex);
 
             String message = "\n";
-            foreach(string i in seeds) {
+            foreach(string i in seeds.Item2) {
                 message += i + "\n";
             }
 
@@ -67,7 +65,7 @@ namespace FarmVille.Commands
             {
                 Title = ctx.User.Username + "'s Seeds",
                 Description = message,
-            }.WithFooter("page " + pageIndex);
+            }.WithFooter("page " + seeds.Item1);
 
             await ctx.Channel.SendMessageAsync(embed);
 
@@ -86,18 +84,33 @@ namespace FarmVille.Commands
         [Command("harvest")]
         [Description("Harvests all plant pots at the same time: .harvest")]
         public async Task harvest(CommandContext ctx) {
-            Player currPlayer = CommandsHelper.playerController.getPlayer(ctx.User.Id);
-            String result = CommandsHelper.plantPotController.harvest(currPlayer.UID);
+            String result = CommandsHelper.plantPotController.harvest(ctx.User.Id);
 
             DiscordEmbedBuilder embed = new DiscordEmbedBuilder
             {
                 Color = DiscordColor.Azure,
-                Title = currPlayer.name + "'s Harvest",
+                Title = ctx.User.Username + "'s Harvest",
                 Description = "\n" + result
 
             };
 
             await ctx.Channel.SendMessageAsync(embed);
+        }
+
+        /// <summary>
+        /// Command to clear a pot of its contents
+        /// </summary>
+        /// <param name="ctx"> the context of the command </param>
+        /// <param name="index"> the index of the pot to clear </param>
+        /// <returns></returns>
+        [Command("clearpot")]
+        [Description("Clears a plant pot of it's contents: .clearpot (index)")]
+        public async Task clear(CommandContext ctx,
+                                    [Description("The plant pot you wish to clear")] int index) {
+
+            CommandsHelper.plantPotController.clearPot(ctx.User.Id, index);
+
+            await ctx.Channel.SendMessageAsync("Pot #" + index + " was cleared!");
         }
         
     }

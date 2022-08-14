@@ -24,12 +24,23 @@
     "ID": 336759879765065730,
     "Pots": [
       {
-        "Seed": null,
+        "Seed": {
+          "Amount": 1,
+          "PlantName": "🥒Cucumber",
+          "Yield": 4,
+          "GrowthDuration": "01:00:00",
+          "PlantID": 131074,
+          "Regrow": true,
+          "Name": "🥒Cucumber (Seeds)",
+          "ID": 65538,
+          "BuyPrice": 15.0,
+          "SellPrice": 0.0
+        },
         "Amount": 1,
-        "Yield": 0,
-        "GrowthDuration": "00:00:00",
-        "StartingTime": "0001-01-01T00:00:00",
-        "OutputID": 0,
+        "Yield": 4,
+        "GrowthDuration": "01:00:00",
+        "StartingTime": "2022-08-13T15:47:29.962255-04:00",
+        "OutputID": 131074,
         "Name": "Plant Pot",
         "ID": 196609,
         "BuyPrice": 0.0,
@@ -51,30 +62,18 @@
     "Name": "Sobdh",
     "Seeds": {},
     "Plants": {},
-    "Balance": 22.660000000000004
+    "Balance": 2.0
   },
   "363537272739463168": {
     "ID": 363537272739463168,
     "Pots": [
       {
-        "Seed": {
-          "Amount": 1,
-          "PlantName": "Cauliflower",
-          "Yield": 2,
-          "GrowthDuration": "02:00:00",
-          "PlantID": 131086,
-          "Regrow": false,
-          "Season": "Winter",
-          "Name": "Cauliflower",
-          "ID": 65550,
-          "BuyPrice": 40.0,
-          "SellPrice": 0.0
-        },
+        "Seed": null,
         "Amount": 1,
-        "Yield": 2,
-        "GrowthDuration": "02:00:00",
-        "StartingTime": "2022-08-10T14:30:17.019391-04:00",
-        "OutputID": 131086,
+        "Yield": 0,
+        "GrowthDuration": "00:00:00",
+        "StartingTime": "0001-01-01T00:00:00",
+        "OutputID": 0,
         "Name": "Plant Pot",
         "ID": 196609,
         "BuyPrice": 0.0,
@@ -93,7 +92,7 @@
         "SellPrice": 50.0
       }
     },
-    "Balance": 13.129999999999995
+    "Balance": 63.0
   },
   "472256680152006660": {
     "ID": 472256680152006660,

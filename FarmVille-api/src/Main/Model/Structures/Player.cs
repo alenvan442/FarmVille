@@ -113,9 +113,11 @@ namespace FarmVille_api.src.Main.Model.Structures
         /// As well as the remaining time left on the plant pot
         /// </summary>
         /// <param name="pageIndex"> the page number that is to be shown </param>
-        /// <returns> An array of strings containing each of the player's plant pots to strings </returns>
-        public List<String> getPots(int pageNumber) {
+        /// <returns> A tuple holding the page number and an
+        ///  array of strings containing each of the player's plant pots to strings </returns>
+        public Tuple<int, List<String>> getPots(int pageNumber) {
             List<String> potData = new List<string>();
+
             foreach(PlantPot i in this.plantPots) {
                 potData.Add(i.ToString(potData.Count+1));
             }
@@ -133,16 +135,20 @@ namespace FarmVille_api.src.Main.Model.Structures
             
             int lowerBound = (4 * pageNumber) - 4;
 
+            List<String> result;
             if (pageNumber == numOfPages)
             {
-                return potData.GetRange(lowerBound, (potData.Count - lowerBound));
+                result = potData.GetRange(lowerBound, (potData.Count - lowerBound));
             } else if(potData.Count() == 0) {
-                return potData;
+                result = new List<string>();
             }
             else
             {
-                return potData.GetRange(lowerBound, 4);
+                result = potData.GetRange(lowerBound, 4);
             }
+
+            return new Tuple<int, List<string>>(pageNumber, result);
+
         }
 
         /// <summary>
@@ -157,10 +163,10 @@ namespace FarmVille_api.src.Main.Model.Structures
         /// Retrieves a list of items in order to display the inventory
         /// </summary>
         /// <param name="pageIndex"> The page of the inventory that is to be shown </param>
-        /// <returns> An array of strings holding data of each item in the inventory </returns>
-        public List<String> getInventory(int pageIndex) {
+        /// <returns> a tuple holding the page number and an
+        ///  array of strings holding data of each item in the inventory </returns>
+        public Tuple<int, List<String>> getInventory(int pageIndex) {
             List<String> items = new List<string>();
-            List<String> results = new List<string>();
 
             foreach(Item i in this.inventory.Values) {
                 items.Add(i.ToString());
@@ -179,17 +185,17 @@ namespace FarmVille_api.src.Main.Model.Structures
 
             int lowerBound = (10 * pageIndex) - 10;
 
-            results.Add(pageIndex.ToString());
+            List<String> inventoryList;
 
             if (pageIndex == numOfPages)
             {
-                results.AddRange(items.GetRange(lowerBound, (items.Count - lowerBound)));
+                inventoryList = items.GetRange(lowerBound, (items.Count - lowerBound));
             } else if(items.Count == 0) {
-                return results;
+                inventoryList = new List<string>();
             } else {
-                results.AddRange(items.GetRange(lowerBound, 10));
+                inventoryList = items.GetRange(lowerBound, 10);
             }
-            return results;
+            return new Tuple<int, List<String>>(pageIndex, inventoryList);
         }
 
         /// <summary>
@@ -276,15 +282,16 @@ namespace FarmVille_api.src.Main.Model.Structures
         /// <summary>
         /// Retrieves a list of seeds in order to display the seeds this user has
         /// </summary>
-        /// <returns> An array of strings holding data of each seed item </returns>
-        public List<String> getSeeds(int pageIndex) {
-            List<String> result = new List<string>();
+        /// <returns> A tuple holding the page number and an 
+        /// array of strings holding data of each seed item </returns>
+        public Tuple<int, List<String>> getSeeds(int pageIndex) {
+            List<String> seeds = new List<string>();
             foreach (Item i in this.seeds.Values)
             {
-                result.Add(i.ToString());
+                seeds.Add(i.ToString());
             }
     
-            int numOfPages = (int)Math.Ceiling((double)result.Count / 10);
+            int numOfPages = (int)Math.Ceiling((double)seeds.Count / 10);
 
             if(pageIndex > numOfPages) {
                 pageIndex = numOfPages;
@@ -296,16 +303,21 @@ namespace FarmVille_api.src.Main.Model.Structures
             
             int lowerBound = (10 * pageIndex) - 10;
 
+            List<String> result;
+
             if (pageIndex == numOfPages)
             {
-                return result.GetRange(lowerBound, (result.Count - lowerBound));
-            } else if(result.Count() == 0) {
-                return result;
+                result = seeds.GetRange(lowerBound, (seeds.Count - lowerBound));
+            } else if(seeds.Count() == 0) {
+                result = new List<string>();
             }
             else
             {
-                return result.GetRange(lowerBound, 10);
+                result = seeds.GetRange(lowerBound, 10);
             }
+
+            return new Tuple<int, List<String>>(pageIndex, result);
+
         }
 
 
@@ -399,6 +411,15 @@ namespace FarmVille_api.src.Main.Model.Structures
                 }
                 return true;
             }
+        }
+
+        /// <summary>
+        /// Clears a plant pot based on the index given
+        /// </summary>
+        /// <param name="index"> the index of the plant pot to clear </param>
+        public void clearPot(int index) {
+            PlantPot currPot = this.plantPots.ElementAt(index - 1);
+            currPot.clear();
         }
 
 

@@ -82,7 +82,7 @@ namespace FarmVille_api.src.Main.Model.Persistence
             } else
             {
                 Player newPlayer = new Player(member);
-                newPlayer.addItem(seedsFileDAO.getSeeds("wheat"));
+                newPlayer.addItem(seedsFileDAO.getSeeds("lettuce"));
                 playersData.Add(member.Id, newPlayer);
                 save();
                 return true;
@@ -98,6 +98,49 @@ namespace FarmVille_api.src.Main.Model.Persistence
             playersData.Remove(UID);
             save();
             return true;
+        }
+
+        /// <summary>
+        /// Invokes the getSeeds method from the requested player
+        /// </summary>
+        /// <param name="UID"> Id of the requested player </param>
+        /// <param name="pageIndex"> the page to display </param>
+        /// <returns> a tuple that consists of the requested info and the page number </returns>
+        public Tuple<int, List<String>> getSeeds(ulong UID, int pageIndex) {
+            Player currPlayer = this.getPlayer(UID);
+            return currPlayer.getSeeds(pageIndex);
+        }
+
+        /// <summary>
+        /// Invokes the getInventory method from the requested player
+        /// </summary>
+        /// <param name="UID"> Id of the requested player </param>
+        /// <param name="pageIndex"> the page to display </param>
+        /// <returns> a tuple that consists of the requested info and the page number </returns>
+        public Tuple<int, List<String>> getInventory(ulong UID, int pageIndex) {
+            Player currPlayer = this.getPlayer(UID);
+            return currPlayer.getInventory(pageIndex);
+        }
+
+        /// <summary>
+        /// Invokes the getPots method from the requested player
+        /// </summary>
+        /// <param name="UID"> Id of the requested player </param>
+        /// <param name="pageIndex"> the page to display </param>
+        /// <returns> a tuple that consists of the requested info and the page number </returns>
+        public Tuple<int, List<String>> getPots(ulong UID, int pageIndex) {
+            Player currPlayer = this.getPlayer(UID);
+            return currPlayer.getPots(pageIndex);
+        }
+
+        /// <summary>
+        /// Retrieves the requested player's status information
+        /// </summary>
+        /// <param name="UID"> the id of the player to search for </param>
+        /// <returns> the player's information in a string </returns>
+        public String getStatus(ulong UID) {
+            Player currPlayer = this.getPlayer(UID);
+            return currPlayer.ToString();
         }
 
     }
