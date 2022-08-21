@@ -26,21 +26,90 @@
       {
         "Seed": {
           "Amount": 1,
-          "PlantName": "🥒Cucumber",
-          "Yield": 4,
-          "GrowthDuration": "01:00:00",
-          "PlantID": 131074,
+          "PlantName": "🍉Watermelon",
+          "Yield": 1,
+          "GrowthDuration": "03:00:00",
+          "PlantID": 131086,
           "Regrow": true,
-          "Name": "🥒Cucumber (Seeds)",
-          "ID": 65538,
-          "BuyPrice": 15.0,
+          "Name": "🍉Watermelon (Seeds)",
+          "ID": 65550,
+          "BuyPrice": 350.0,
           "SellPrice": 0.0
         },
         "Amount": 1,
-        "Yield": 4,
-        "GrowthDuration": "01:00:00",
-        "StartingTime": "2022-08-14T18:17:22.320521-04:00",
-        "OutputID": 131074,
+        "Yield": 1,
+        "GrowthDuration": "03:00:00",
+        "StartingTime": "2022-08-20T07:15:10.885556-04:00",
+        "OutputID": 131086,
+        "Name": "Plant Pot",
+        "ID": 196609,
+        "BuyPrice": 0.0,
+        "SellPrice": 0.0
+      },
+      {
+        "Seed": {
+          "Amount": 1,
+          "PlantName": "🍉Watermelon",
+          "Yield": 1,
+          "GrowthDuration": "03:00:00",
+          "PlantID": 131086,
+          "Regrow": true,
+          "Name": "🍉Watermelon (Seeds)",
+          "ID": 65550,
+          "BuyPrice": 350.0,
+          "SellPrice": 0.0
+        },
+        "Amount": 1,
+        "Yield": 1,
+        "GrowthDuration": "03:00:00",
+        "StartingTime": "2022-08-20T07:15:10.88556-04:00",
+        "OutputID": 131086,
+        "Name": "Plant Pot",
+        "ID": 196609,
+        "BuyPrice": 0.0,
+        "SellPrice": 0.0
+      },
+      {
+        "Seed": {
+          "Amount": 1,
+          "PlantName": "🍉Watermelon",
+          "Yield": 1,
+          "GrowthDuration": "03:00:00",
+          "PlantID": 131086,
+          "Regrow": true,
+          "Name": "🍉Watermelon (Seeds)",
+          "ID": 65550,
+          "BuyPrice": 350.0,
+          "SellPrice": 0.0
+        },
+        "Amount": 1,
+        "Yield": 1,
+        "GrowthDuration": "03:00:00",
+        "StartingTime": "2022-08-20T07:15:10.885561-04:00",
+        "OutputID": 131086,
+        "Name": "Plant Pot",
+        "ID": 196609,
+        "BuyPrice": 0.0,
+        "SellPrice": 0.0
+      },
+      {
+        "Seed": {
+          "Amount": 1,
+          "PlantName": "🍉Watermelon",
+          "Yield": 1,
+          "GrowthDuration": "03:00:00",
+          "PlantID": 131086,
+          "Regrow": true,
+          "Name": "🍉Watermelon (Seeds)",
+          "ID": 65550,
+          "BuyPrice": 350.0,
+          "SellPrice": 0.0
+        },
+        "Amount": 1,
+        "Yield": 1,
+        "GrowthDuration": "03:00:00",
+        "StartingTime": "2022-08-20T07:15:48.907854-04:00",
+        "OutputID": 131086,
         "Name": "Plant Pot",
         "ID": 196609,
         "BuyPrice": 0.0,
@@ -62,18 +131,75 @@
     "Name": "Sobdh",
     "Seeds": {},
     "Plants": {},
-    "Balance": 10.0
+    "Balance": 21.0
   },
   "363537272739463168": {
     "ID": 363537272739463168,
     "Pots": [
       {
-        "Seed": null,
+        "Seed": {
+          "Amount": 1,
+          "PlantName": "🌶️Pepper",
+          "Yield": 2,
+          "GrowthDuration": "01:30:00",
+          "PlantID": 131080,
+          "Regrow": true,
+          "Name": "🌶️Pepper (Seeds)",
+          "ID": 65544,
+          "BuyPrice": 50.0,
+          "SellPrice": 0.0
+        },
         "Amount": 1,
-        "Yield": 0,
-        "GrowthDuration": "00:00:00",
-        "StartingTime": "0001-01-01T00:00:00",
-        "OutputID": 0,
+        "Yield": 2,
+        "GrowthDuration": "01:30:00",
+        "StartingTime": "2022-08-18T18:40:59.733075-04:00",
+        "OutputID": 131080,
+        "Name": "Plant Pot",
+        "ID": 196609,
+        "BuyPrice": 0.0,
+        "SellPrice": 0.0
+      },
+      {
+        "Seed": {
+          "Amount": 1,
+          "PlantName": "🌽Corn",
+          "Yield": 2,
+          "GrowthDuration": "01:00:00",
+          "PlantID": 131075,
+          "Regrow": true,
+          "Name": "🌽Corn (Seeds)",
+          "ID": 65539,
+          "BuyPrice": 15.0,
+          "SellPrice": 0.0
+        },
+        "Amount": 1,
+        "Yield": 2,
+        "GrowthDuration": "01:00:00",
+        "StartingTime": "2022-08-18T18:40:59.733078-04:00",
+        "OutputID": 131075,
+        "Name": "Plant Pot",
+        "ID": 196609,
+        "BuyPrice": 0.0,
+        "SellPrice": 0.0
+      },
+      {
+        "Seed": {
+          "Amount": 1,
+          "PlantName": "🌾Wheat",
+          "Yield": 8,
+          "GrowthDuration": "03:30:00",
+          "PlantID": 131082,
+          "Regrow": false,
+          "Name": "🌾Wheat (Seeds)",
+          "ID": 65546,
+          "BuyPrice": 85.0,
+          "SellPrice": 0.0
+        },
+        "Amount": 1,
+        "Yield": 8,
+        "GrowthDuration": "03:30:00",
+        "StartingTime": "2022-08-18T18:41:56.668281-04:00",
+        "OutputID": 131082,
         "Name": "Plant Pot",
         "ID": 196609,
         "BuyPrice": 0.0,
@@ -92,7 +218,7 @@
         "SellPrice": 50.0
       }
     },
-    "Balance": 63.0
+    "Balance": 34.0
   },
   "472256680152006660": {
     "ID": 472256680152006660,

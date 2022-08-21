@@ -107,6 +107,27 @@ namespace FarmVille.Commands
             await ctx.Channel.SendMessageAsync(baseEmbed);
 
         }
+
+        /// <summary>
+        /// Retrieves and displays information on items, or
+        /// another way to describe it: is to give a description
+        /// on items in the game.
+        /// </summary>
+        /// <param name="ctx"> the context of the command </param>
+        /// <param name="item"> the name of the item to describe </param>
+        /// <returns></returns>
+        public async Task getInfo(CommandContext ctx, string item) {
+
+        }
+
+        /// <summary>
+        /// displays a leaderboard of the richest person on the current guild/server
+        /// </summary>
+        /// <param name="ctx"> the contect of the command </param>
+        /// <returns></returns>
+        public async Task getTop(CommandContext ctx) {
+
+        }
         
     }
 }

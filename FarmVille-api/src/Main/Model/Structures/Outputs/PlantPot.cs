@@ -39,12 +39,14 @@ namespace FarmVille_api.src.Main.Model.Structures.Outputs
         /// <returns> The item that was harvested </returns>
         public Item harvest() {
 
+            Item result = base.output(this.seed.regrow);
+            
             if (!this.seed.regrow)
             {
                 this.seed = null;
             }
 
-            return base.output(this.seed.regrow);
+            return result;
         } 
 
         /// <summary>
