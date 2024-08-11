@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/sobdh/FarmVille/FarmVille.csproj": {}
+    "/Volumes/ES/Coding Projects/C#/2022/FarmVille (New C#)/FarmVille.csproj": {}
   },
   "projects": {
-    "/Users/sobdh/FarmVille/FarmVille.csproj": {
+    "/Volumes/ES/Coding Projects/C#/2022/FarmVille (New C#)/FarmVille.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sobdh/FarmVille/FarmVille.csproj",
+        "projectUniqueName": "/Volumes/ES/Coding Projects/C#/2022/FarmVille (New C#)/FarmVille.csproj",
         "projectName": "FarmVille",
-        "projectPath": "/Users/sobdh/FarmVille/FarmVille.csproj",
+        "projectPath": "/Volumes/ES/Coding Projects/C#/2022/FarmVille (New C#)/FarmVille.csproj",
         "packagesPath": "/Users/sobdh/.nuget/packages/",
-        "outputPath": "/Users/sobdh/FarmVille/obj/",
+        "outputPath": "/Volumes/ES/Coding Projects/C#/2022/FarmVille (New C#)/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/sobdh/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net7.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -35,24 +35,24 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "DSharpPlus": {
               "target": "Package",
-              "version": "[4.2.0, )"
+              "version": "[5.0.0, )"
             },
             "DSharpPlus.CommandsNext": {
               "target": "Package",
-              "version": "[4.2.0, )"
+              "version": "[5.0.0, )"
             },
             "DSharpPlus.Interactivity": {
               "target": "Package",
-              "version": "[4.2.0, )"
+              "version": "[5.0.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[13.0.1, )"
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
@@ -61,7 +61,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -70,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
         }
       }
     }

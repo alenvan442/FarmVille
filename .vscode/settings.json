@@ -1,0 +1,5 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/a9f9ba2a-43bd-4e55-aa85-e8a93d8282df/microsoft.web/sites/subscriptions/a9f9ba2a-43bd-4e55-aa85-e8a93d8282df/resourceGroups/discord-bots/providers/Microsoft.Web/sites/FarmVille",
+    "appService.deploySubpath": "publish",
+    "dotnet.defaultSolution": "FarmVille.sln"
+}

@@ -1,0 +1,14 @@
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/FarmVille
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/FarmVille.dll
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/FarmVille.deps.json
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/FarmVille.runtimeconfig.json
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/FarmVille.pdb
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/ConcurrentCollections.dll
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/DSharpPlus.dll
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/DSharpPlus.CommandsNext.dll
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/DSharpPlus.Interactivity.dll
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/Emzi0767.Common.dll
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/Microsoft.Extensions.DependencyInjection.dll
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/sobdh/Projects/FarmVille (New C#)/bin/Release/net6.0/publish/Newtonsoft.Json.dll
