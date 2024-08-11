@@ -365,11 +365,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Volumes/ES/Coding Projects/C#/2022/FarmVille (New C#)/FarmVille.csproj",
+      "projectUniqueName": "/Volumes/ES/Coding Projects/C#/2022/FarmVille/FarmVille.csproj",
       "projectName": "FarmVille",
-      "projectPath": "/Volumes/ES/Coding Projects/C#/2022/FarmVille (New C#)/FarmVille.csproj",
+      "projectPath": "/Volumes/ES/Coding Projects/C#/2022/FarmVille/FarmVille.csproj",
       "packagesPath": "/Users/sobdh/.nuget/packages/",
-      "outputPath": "/Volumes/ES/Coding Projects/C#/2022/FarmVille (New C#)/obj/",
+      "outputPath": "/Volumes/ES/Coding Projects/C#/2022/FarmVille/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/sobdh/.nuget/NuGet/NuGet.Config"

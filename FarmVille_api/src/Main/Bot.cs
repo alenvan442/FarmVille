@@ -8,6 +8,7 @@ using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
 using FarmVille_api.src.Main.Model.Utilities;
 using FarmVille.Commands;
+using System.ComponentModel.DataAnnotations.Schema;
 
 /// <summary>
 /// This is the class that holds the Discord Bot configuration
