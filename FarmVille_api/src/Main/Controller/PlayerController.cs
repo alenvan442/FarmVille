@@ -1,8 +1,8 @@
 using DSharpPlus.Entities;
-using FarmVille_api.src.Main.Model.Persistence;
-using FarmVille_api.src.Main.Model.Structures;
+using FarmVille.FarmVille_api.src.Main.Model.Persistence;
+using FarmVille.FarmVille_api.src.Main.Model.Structures;
 
-namespace FarmVille_api.src.Main.Controller
+namespace FarmVille.FarmVille_api.src.Main.Controller
 {
     /// <summary>
     /// This controller will receive information from the view and either add, delete, or update a player accordingly

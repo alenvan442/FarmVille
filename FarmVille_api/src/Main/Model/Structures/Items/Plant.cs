@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace FarmVille_api.src.Main.Model.Structures.Items
+namespace FarmVille.FarmVille_api.src.Main.Model.Structures.Items
 {
     public class Plant : Item
     {

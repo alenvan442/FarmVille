@@ -1,6 +1,6 @@
-using FarmVille_api.src.Main.Model.Persistence;
+using FarmVille.FarmVille_api.src.Main.Model.Persistence;
 
-namespace FarmVille_api.src.Main.Controller
+namespace FarmVille.FarmVille_api.src.Main.Controller
 {
     /// <summary>
     /// This is the controller when a plant pot is to be manipulated in a player's data

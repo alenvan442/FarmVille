@@ -1,7 +1,7 @@
-using FarmVille_api.src.Main.Model.Structures;
-using FarmVille_api.src.Main.Model.Structures.Items;
+using FarmVille.FarmVille_api.src.Main.Model.Structures;
+using FarmVille.FarmVille_api.src.Main.Model.Structures.Items;
 
-namespace FarmVille_api.src.Main.Model.Persistence
+namespace FarmVille.FarmVille_api.src.Main.Model.Persistence
 {
     /// <summary>
     /// This DAO file will handle all manipulation with a specified player's plant pots

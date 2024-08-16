@@ -1,11 +1,11 @@
 using System;
 using System.Globalization;
-using FarmVille_api.src.Main.Model.Persistence;
-using FarmVille_api.src.Main.Model.Structures;
-using FarmVille_api.src.Main.Model.Structures.Items;
-using FarmVille_api.src.Main.Model.Utilities;
+using FarmVille.FarmVille_api.src.Main.Model.Persistence;
+using FarmVille.FarmVille_api.src.Main.Model.Structures;
+using FarmVille.FarmVille_api.src.Main.Model.Structures.Items;
+using FarmVille.FarmVille_api.src.Main.Model.Utilities;
 
-namespace FarmVille_api.src.Main.Controller
+namespace FarmVille.FarmVille_api.src.Main.Controller
 {
     public class ShopController
     {

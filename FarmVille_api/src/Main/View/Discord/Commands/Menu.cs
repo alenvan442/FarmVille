@@ -8,11 +8,11 @@ using DSharpPlus.Entities;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Enums;
 using DSharpPlus.Interactivity.Extensions;
-using FarmVille_api.src.Main.Controller;
-using FarmVille_api.src.Main.Model;
-using FarmVille_api.src.Main.Model.Structures;
-using FarmVille_api.src.Main.Model.Utilities;
-using FarmVille_api.src.Main.View.Discord.Commands;
+using FarmVille.FarmVille_api.src.Main.Controller;
+using FarmVille.FarmVille_api.src.Main.Model;
+using FarmVille.FarmVille_api.src.Main.Model.Structures;
+using FarmVille.FarmVille_api.src.Main.Model.Utilities;
+using FarmVille.FarmVille_api.src.Main.View.Discord.Commands;
 
 namespace FarmVille.Commands
 {

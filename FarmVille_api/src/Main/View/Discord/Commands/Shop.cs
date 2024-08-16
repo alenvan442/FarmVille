@@ -1,10 +1,10 @@
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
-using FarmVille_api.src.Main.Controller;
-using FarmVille_api.src.Main.Model.Structures;
-using FarmVille_api.src.Main.Model.Structures.Items;
-using FarmVille_api.src.Main.View.Discord.Commands;
+using FarmVille.FarmVille_api.src.Main.Controller;
+using FarmVille.FarmVille_api.src.Main.Model.Structures;
+using FarmVille.FarmVille_api.src.Main.Model.Structures.Items;
+using FarmVille.FarmVille_api.src.Main.View.Discord.Commands;
 
 namespace FarmVille.Commands
 {

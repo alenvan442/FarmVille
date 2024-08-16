@@ -1,4 +1,4 @@
-namespace FarmVille_api.src.Main.Model.Utilities
+namespace FarmVille.FarmVille_api.src.Main.Model.Utilities
 {
     public static class StaticUtilTemplate
     {

@@ -1,8 +1,8 @@
 using System.Globalization;
-using FarmVille_api.src.Main.Controller;
-using FarmVille_api.src.Main.Model.Utilities;
+using FarmVille.FarmVille_api.src.Main.Controller;
+using FarmVille.FarmVille_api.src.Main.Model.Utilities;
 
-namespace FarmVille_api.src.Main.View.Discord.Commands
+namespace FarmVille.FarmVille_api.src.Main.View.Discord.Commands
 {
     public static class CommandsHelper
     {

@@ -1,7 +1,7 @@
-using FarmVille_api.src.Main.Model.Structures.Items;
-using FarmVille_api.src.Main.Model.Utilities;
+using FarmVille.FarmVille_api.src.Main.Model.Structures.Items;
+using FarmVille.FarmVille_api.src.Main.Model.Utilities;
 
-namespace FarmVille_api.src.Main.Model.Persistence
+namespace FarmVille.FarmVille_api.src.Main.Model.Persistence
 {
     public class PlantsFileDAO
     {

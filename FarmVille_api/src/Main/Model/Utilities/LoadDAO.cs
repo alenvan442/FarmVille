@@ -1,10 +1,10 @@
 using DSharpPlus.Entities;
 using FarmVille.Commands;
-using FarmVille_api.src.Main.Controller;
-using FarmVille_api.src.Main.Model.Persistence;
-using FarmVille_api.src.Main.View.Discord.Commands;
+using FarmVille.FarmVille_api.src.Main.Controller;
+using FarmVille.FarmVille_api.src.Main.Model.Persistence;
+using FarmVille.FarmVille_api.src.Main.View.Discord.Commands;
 
-namespace FarmVille_api.src.Main.Model.Utilities
+namespace FarmVille.FarmVille_api.src.Main.Model.Utilities
 {
     public static class LoadDAO
     {

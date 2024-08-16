@@ -1,12 +1,12 @@
 using System.Runtime.CompilerServices;
 using System.Collections;
 using DSharpPlus.Entities;
-using FarmVille_api.src.Main.Model.Structures.Items;
-using FarmVille_api.src.Main.Model.Structures.Outputs;
-using FarmVille_api.src.Main.Model.Utilities;
+using FarmVille.FarmVille_api.src.Main.Model.Structures.Items;
+using FarmVille.FarmVille_api.src.Main.Model.Structures.Outputs;
+using FarmVille.FarmVille_api.src.Main.Model.Utilities;
 using Newtonsoft.Json;
 
-namespace FarmVille_api.src.Main.Model.Structures
+namespace FarmVille.FarmVille_api.src.Main.Model.Structures
 {
     /// <summary>
     /// 

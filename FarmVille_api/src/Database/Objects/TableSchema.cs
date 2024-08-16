@@ -2,175 +2,139 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FarmVille_api.src.Database.Objects;
+using FarmVille.FarmVille_api.src.Database.Utility;
 
-namespace FarmVille_api.src.Database.StorageManager
+namespace FarmVille.FarmVille_api.src.Database.Objects
 {
-    public class TableSchema : SchemaInterface
+    public class TableSchema
     {
         private int tableNumber;
         private String tableName;
         private List<AttributeSchema> attributes;
         private int numPages;
-        private List<Integer> pageOrder;
+        private List<int> pageOrder;
         private int numRecords;
-        private int indexRootNumber;
-        private int numIndexPages;
-
+        
         public TableSchema(String tableName, int tableNumber) {
             this.tableName = tableName;
             this.tableNumber = tableNumber;
+            this.attributes = new List<AttributeSchema>();
             this.numPages = 0;
-            this.numIndexPages = 0;
-            this.pageOrder = new ArrayList<Integer>();
             this.numRecords = 0;
-            this.attributes = new ArrayList<AttributeSchema>();
-            this.indexRootNumber = -1; // initialize to -1 in the case that there is no current B+ tree
+            this.pageOrder = new List<int>();
         }
 
         public TableSchema(String tableName) {
             this.tableName = tableName;
-            this.tableNumber = this.hashName();
+            this.tableNumber = this.HashName();
+            this.attributes = new List<AttributeSchema>();
             this.numPages = 0;
-            this.numIndexPages = 0;
-            this.pageOrder = new ArrayList<Integer>();
             this.numRecords = 0;
-            this.attributes = new ArrayList<AttributeSchema>();
-            this.indexRootNumber = -1; // initialize to -1 in the case that there is no current B+ tree
+            this.pageOrder = new List<int>();
         }
 
-        public int getTableNumber() {
+        public int GetTableNumber() {
             return tableNumber;
         }
 
-        public String getTableName() {
+        public String GetTableName() {
             return tableName;
         }
 
-        public void setTableName(String tableName) {
-            this.tableName = tableName;
-            this.tableNumber = this.hashName();
+        public void SetTableName(String name) {
+            this.tableName = name;
+            this.tableNumber = this.HashName();
         }
 
-        public List<AttributeSchema> getAttributes() {
+        public List<AttributeSchema> GetAttributes() {
             return attributes;
         }
 
-        public void setAttributes(List<AttributeSchema> attributes) {
-            this.attributes = attributes;
+        public void SetAttributes(List<AttributeSchema> attrs) {
+            this.attributes = attrs;
         }
 
-        public boolean hasAttribute(String name) {
-            for (AttributeSchema attr : this.attributes) {
-            if (attr.getAttributeName().equals(name)) {
+        public bool HasAttribute(String name) {
+            foreach (AttributeSchema attr in this.attributes) {
+            if (attr.GetAttributeName().equals(name)) {
                 return true;
             }
             }
             return false;
         }
 
-        public int getNumPages() {
+        public void AddAttribute(AttributeSchema attr) {
+            this.attributes.Add(attr);
+        }
+
+        public int GetNumPages() {
             return numPages;
         }
 
-        public void setNumPages() {
-            this.numPages = this.pageOrder.size();
+        public int GetNumRecords() {
+            return numRecords;
         }
 
-        public int getNumIndexPages() {
-            return this.numIndexPages;
+        public void SetNumPages() {
+            this.numPages = this.pageOrder.Count();
         }
 
-        public int incrementNumIndexPages() {
-            this.numIndexPages++;
-            return this.numIndexPages;
-        }
-
-        public int decrementNumIndexPages() {
-            this.numIndexPages--;
-            return this.numIndexPages;
-        }
-
-        public int incrementNumRecords() {
+        public int IncrementNumRecords() {
             this.numRecords += 1;
             return this.numRecords;
         }
 
-        public int decrementNumRecords() {
+        public int DecrementNumRecords() {
             this.numRecords -= 1;
             return this.numRecords;
         }
 
-        public void setRoot(int rootNumber) {
-            this.indexRootNumber = rootNumber;
-        }
-
-        public int getRootNumber() {
-            return this.indexRootNumber;
-        }
-
-        public List<Integer> getPageOrder() {
+        public List<int> GetPageOrder() {
             return this.pageOrder;
         }
 
-        public void setPageOrder(List<Integer> pageOrder) {
+        public void SetPageOrder(List<int> pageOrder) {
             this.pageOrder = pageOrder;
         }
 
-        public void addPageNumber(int pageNumber) {
-            this.pageOrder.add(pageNumber);
-            this.setNumPages();
+        public void AddPageNumber(int pageNumber) {
+            this.pageOrder.Add(pageNumber);
+            this.SetNumPages();
         }
 
-        public void addPageNumber(int numberBefore, int pageNumber) {
-            int index = this.pageOrder.indexOf(numberBefore);
-            this.pageOrder.add(index + 1, pageNumber);
-            this.setNumPages();
+        public void AddPageNumber(int numberBefore, int pageNumber) {
+            int index = this.pageOrder.IndexOf(numberBefore);
+            this.pageOrder.Insert(index + 1, pageNumber);
+            this.SetNumPages();
         }
 
-        /**
-        * Decrements all pageNumbers that are greater than the input
-        * @param pageNum   The pageNum that was deleted
-        */
-        private void decrementPageOrder(int pageNum) {
-            for (int i = 0; i < this.pageOrder.size(); i++) {
-            if (this.pageOrder.get(i) > pageNum) {
-                this.pageOrder.set(i, this.pageOrder.get(i)-1);
+        private int HashName() {
+            char[] chars = this.tableName.ToCharArray();
+            int hash = 0;
+            int index = 0;
+            foreach (char c in chars) {
+                hash += c.GetHashCode() + index;
+                index++;
             }
-            }
+            return hash;
         }
 
-        /**
-        * deletes a page from the tableSchema
-        * then decrement all pageNumber that appear after
-        * the deleted page
-        */
-        public void deletePageNumber(Integer pageNumber) {
-            this.pageOrder.remove(pageNumber);
-            this.setNumPages();
-            this.decrementPageOrder(pageNumber);
-        }
-
-        public int getRecords() {
-            return numRecords;
-        }
-
-        public Type getAttributeType(int index) throws Exception {
-            String type = this.attributes.get(index).getDataType().toLowerCase();
-            Type pkType = null;
+          public Datatype GetAttributeType(int index) {
+            String type = this.attributes[index].GetDataType().toLowerCase();
+            Datatype pkType = Datatype.NULL;
             switch (type) {
             case "integer":
-                pkType = Type.INTEGER;
+                pkType = Datatype.INTEGER;
                 break;
             case "double":
-                pkType = Type.DOUBLE;
+                pkType = Datatype.DOUBLE;
                 break;
             case "boolean":
-                pkType = Type.BOOLEAN;
+                pkType = Datatype.BOOLEAN;
                 break;
             default:
-                if (type.contains("char")) {
-                    pkType = Type.STRING;
+                if (type.Contains("char")) {
+                    pkType = Datatype.STRING;
                 } else {
                     MessagePrinter.printMessage(MessageType.ERROR, String.format("Invalid data type: %s", type));
                 }
@@ -180,116 +144,18 @@ namespace FarmVille_api.src.Database.StorageManager
             return pkType;
         }
 
-        public int getSizeofDataType(String dataType) throws Exception {
-            int dataSize = 0;
-            switch (dataType) {
-            case "integer":
-                dataSize = Integer.BYTES;
-                break;
-            case "double":
-                dataSize = Double.BYTES;
-                break;
-            case "boolean":
-                dataSize = 1;
-                break;
-            default:
-                if (dataType.contains("char") || dataType.contains("varchar")) {
-                Pattern pattern = Pattern.compile("\\((\\d+)\\)");
-                Matcher matcher = pattern.matcher(dataType);
-                while (matcher.find()) {
-                    dataSize = Integer.parseInt(matcher.group(1));
-                }
-                } else {
-                    MessagePrinter.printMessage(MessageType.ERROR, String.format("Invalid data type: %s", dataType));
+        public int getPrimaryIndex() {
+            // determine index of the primary key
+            int primaryIndex = -1;
+            for (int i = 0; i < this.attributes.Count(); i++) {
+                if (this.attributes[i].IsPrimaryKey()) {
+                    primaryIndex = i;
                 }
             }
-
-            return dataSize;
-        }
-
-        public int computeN(Catalog catalog) throws Exception {
-            int pageSize = catalog.getPageSize();
-            int dataSize = 0;
-            String dataType = this.attributes.get(this.getPrimaryIndex()).getDataType();
-
-            dataSize = getSizeofDataType(dataType);
-            return Math.floorDiv(pageSize, dataSize+8) - 1;
-        }
-
-        public int computeSizeOfNode(Catalog catalog) throws Exception {
-            int N = computeN(catalog);
-            String dataType = this.attributes.get(this.getPrimaryIndex()).getDataType();
-            int size = 1 + (Integer.BYTES * 4) + ((N-1) * getSizeofDataType(dataType)) + (N * (Integer.BYTES * 2));
-            return size;
-        }
-
-        private int hashName() {
-            char[] chars = this.tableName.toCharArray();
-            int hash = 0;
-            int index = 0;
-            for (char c : chars) {
-                hash += Character.hashCode(c) + index;
-                index++;
-            }
-            return hash;
-        }
-
-        public static int hashName(String name) {
-            char[] chars = name.toCharArray();
-            int hash = 0;
-            int index = 0;
-            for (char c : chars) {
-                hash += Character.hashCode(c) + index;
-                index++;
-            }
-            return hash;
+            return primaryIndex;
         }
 
         /**
-        * {@inheritDoc}
-        */
-        @Override
-        public void saveSchema(RandomAccessFile catalogAccessFile) throws Exception {
-            // Write table name to the catalog file as UTF string
-            catalogAccessFile.writeUTF(this.tableName);
-
-            // Write table number to the catalog file
-            catalogAccessFile.writeInt(this.tableNumber);
-
-            // Write the pageNumber of the root of the B+ tree
-            catalogAccessFile.writeInt(this.indexRootNumber);
-
-            // Write number of index pages to the catalog file
-            catalogAccessFile.writeInt(this.numIndexPages);
-
-            // Write the number of pages to the catalog file
-            catalogAccessFile.writeInt(this.numPages);
-
-            // Write page order to the catalog file
-            for (int i = 0; i < this.numPages; ++i) {
-                catalogAccessFile.writeInt(this.pageOrder.get(i));
-            }
-
-            // Write the number of records to the catalog file
-            catalogAccessFile.writeInt(this.numRecords);
-
-            // Write the number of attributes to the catalog file
-            catalogAccessFile.writeInt(this.attributes.size());
-
-            // Iterate over each attribute and save its schema to the catalog file
-            for (int i = 0; i < this.attributes.size(); ++i) {
-                this.attributes.get(i).saveSchema(catalogAccessFile);
-            }
-        }
-
-        public void addAttribute(AttributeSchema attributeSchema) {
-            this.attributes.add(attributeSchema);
-        }
-
-        /**
-            * {@inheritDoc}
-        */
-        @Override
         public void loadSchema(RandomAccessFile catalogAccessFile) throws Exception {
             // at this point both table name and table number have already been read
 
@@ -326,15 +192,39 @@ namespace FarmVille_api.src.Database.StorageManager
             }
         }
 
-        public int getPrimaryIndex() {
-            // determine index of the primary key
-            int primaryIndex = -1;
-            for (int i = 0; i < this.attributes.size(); i++) {
-                if (this.attributes.get(i).isPrimaryKey()) {
-                    primaryIndex = i;
-                }
+        public void saveSchema(RandomAccessFile catalogAccessFile) throws Exception {
+            // Write table name to the catalog file as UTF string
+            catalogAccessFile.writeUTF(this.tableName);
+
+            // Write table number to the catalog file
+            catalogAccessFile.writeInt(this.tableNumber);
+
+            // Write the pageNumber of the root of the B+ tree
+            catalogAccessFile.writeInt(this.indexRootNumber);
+
+            // Write number of index pages to the catalog file
+            catalogAccessFile.writeInt(this.numIndexPages);
+
+            // Write the number of pages to the catalog file
+            catalogAccessFile.writeInt(this.numPages);
+
+            // Write page order to the catalog file
+            for (int i = 0; i < this.numPages; ++i) {
+                catalogAccessFile.writeInt(this.pageOrder.get(i));
             }
-            return primaryIndex;
+
+            // Write the number of records to the catalog file
+            catalogAccessFile.writeInt(this.numRecords);
+
+            // Write the number of attributes to the catalog file
+            catalogAccessFile.writeInt(this.attributes.size());
+
+            // Iterate over each attribute and save its schema to the catalog file
+            for (int i = 0; i < this.attributes.size(); ++i) {
+                this.attributes.get(i).saveSchema(catalogAccessFile);
+            }
         }
+        */
+
     }
 }

@@ -1,8 +1,8 @@
 using DSharpPlus.Entities;
-using FarmVille_api.src.Main.Model.Structures;
-using FarmVille_api.src.Main.Model.Utilities;
+using FarmVille.FarmVille_api.src.Main.Model.Structures;
+using FarmVille.FarmVille_api.src.Main.Model.Utilities;
 
-namespace FarmVille_api.src.Main.Model.Persistence
+namespace FarmVille.FarmVille_api.src.Main.Model.Persistence
 {
     /// <summary>
     /// This DAO file will handle all player data in terms of loading, saving, creating, and deleting player data

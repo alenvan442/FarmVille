@@ -1,7 +1,7 @@
-using FarmVille_api.src.Main.Model.Structures.Items;
+using FarmVille.FarmVille_api.src.Main.Model.Structures.Items;
 using Newtonsoft.Json;
 
-namespace FarmVille_api.src.Main.Model.Structures.Outputs
+namespace FarmVille.FarmVille_api.src.Main.Model.Structures.Outputs
 {
     /// <summary>
     /// 
